@@ -21,13 +21,10 @@ class RedirectIfAuthenticated
         if ($guard == "admin" && Auth::guard($guard)->check()) {
             return redirect('/AYLJAPANEL');
         }
-        // if (Auth::guard($guard)->check()) {
-        //     return redirect(RouteServiceProvider::HOME);
-        // }
-        else
-        {
-            abort(403);
+        if (Auth::guard($guard)->check()) {
+            return redirect(RouteServiceProvider::HOME);
         }
+       
 
         return $next($request);
     }
