@@ -20,8 +20,10 @@ class CreateAdminsTable extends Migration
 
             $table->dropColumn('identity');
             $table->string('name');
+            $table->string('remember_token')->nullable();
  
             $table->string('email');
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
@@ -35,6 +37,7 @@ class CreateAdminsTable extends Migration
         Schema::table('admin', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->dropColumn('email');
+            $table->dropColumn('remember_token');
             $table->string('user_name');
             $table->string('identity');
 

@@ -5,15 +5,10 @@ namespace App\Http\Controllers;
 use App\Admin;
 use Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('guest:admin')->except('logout');
-
-    }
+  
     /**
      *  Admin Login
      *  @param  \Illuminate\Http\Request  $request
@@ -40,7 +35,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $data = ["admins"=>Admin::paginate(5)];
+        return view('users.index',$data);
+        
     }
 
     /**
@@ -61,7 +58,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+        Admin::create(["email" => $request->email, "password" => bcrypt($request->password), "name" => $request->name]);
+        return redirect()->route('admin.index')->withSuccess("Admin Added!");
     }
 
     /**
@@ -95,7 +94,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $admin->update(["email" => $request->email, "password" => bcrypt($request->password), "name" => $request->name]);
+         return redirect()->route('admin.index')->withSuccess("Admin Updated!");
+
     }
 
     /**
@@ -106,6 +107,23 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        $admin->delete();
+         return redirect()->route('admin.index')->withSuccess("Admin Deleted!");
+
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:admin'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
     }
 }

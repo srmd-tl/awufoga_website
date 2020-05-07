@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-
+use Illuminate\Support\Facades\Password;
 class ForgotPasswordController extends Controller
 {
     /*
@@ -16,7 +17,18 @@ class ForgotPasswordController extends Controller
     | includes a trait which assists in sending these notifications from
     | your application to your users. Feel free to explore this trait.
     |
-    */
+     */
 
     use SendsPasswordResetEmails;
+
+
+    /**
+     * Get the broker to be used during password reset.
+     *
+     * @return PasswordBroker
+     */
+    public function broker()
+    {
+        return Password::broker('admins');
+    }
 }
