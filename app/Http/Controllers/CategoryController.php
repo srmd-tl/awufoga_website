@@ -49,7 +49,7 @@ class CategoryController extends Controller
         $path = $request->file('image')->store('category');
 
         Category::insert(["name" => $request->name, "status" => $request->status, "image" => $path]);
-        return redirect()->route('subCategory.index')->withSuccess("Sub Category Added!");
+        return redirect()->route('category.index')->withSuccess("Sub Category Added!");
     }
 
     /**
