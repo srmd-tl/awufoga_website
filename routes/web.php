@@ -29,6 +29,8 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
         Route::get('/home', 'HomeController@index')->name('home');
         // Route::resource('user', 'UserController', ['except' => ['show']]);
         Route::resource('admin', 'AdminController');
+        Route::resource('category', 'CategoryController');
+        Route::resource('subCategory', 'SubCategoryController');
         Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
         Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
         Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
