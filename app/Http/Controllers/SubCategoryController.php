@@ -14,9 +14,19 @@ class SubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = ["subCategories" => SubCategory::paginate(5), "categories" => Category::all()];
+
+        $data = [
+            "subCategories" => !is_null(request()->filter) ?
+            SubCategory::when(request()->filter == "0" || request()->filter == "1", function ($query, $filter) {
+                return $query->whereStatus(request()->filter);
+            }, function ($query, $filter) use ($request) {
+                return $query->whereName(request()->filter);
+            })
+                ->paginate(5) :
+
+            SubCategory::paginate(5), "categories" => Category::all()];
         return view('subCategories.index', $data);
     }
 

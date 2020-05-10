@@ -9,11 +9,23 @@
          <div class="card shadow">
             <div class="card-header border-0">
                <div class="row align-items-center">
-                  <div class="col-8">
+                  <div class="col-4">
                      <h3 class="mb-0">Sub Categories</h3>
                   </div>
-                  <div class="col-4 text-right">
-                     <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Sub Category</a>
+                  <div class="col-8 text-right">
+                     <form action="{{route('subCategory.index')}}">
+                        <div class="form-group">
+                         <div class="input-group">
+                           <div class="input-group-prepend">
+                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                           </div>
+                           <input class="form-control" placeholder="Search" type="text" name="filter">
+                         </div>
+                         <button class="btn btn-sm btn-primary" >Search</button>
+                         <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Sub Category</a>
+                        </div>
+                     </form>
+                     
                   </div>
                </div>
             </div>
@@ -43,7 +55,7 @@
 
                            <span class="badge badge-{{$subCategory->status==1?'success':'danger'}}">{{$subCategory->status==1?'Active':'Inactive'}}</span>
                            
-                           </td>
+                        </td>
                         <td class="text-right">
                            <div class="dropdown">
                               <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,7 +79,7 @@
                   </tbody>
                   <tfoot>
                      <tr>
-                        <td>{{$subCategories->links()}}</td>
+                        <td>{{$subCategories->withQueryString()->links()}}</td>
                      </tr>
                   </tfoot>
                </table>

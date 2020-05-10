@@ -13,15 +13,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // dd(!is_null(request()->filter) ?
-        //     Category::whereName(request()->filter)->orWhere('status', (int)request()->filter)->get() :
-        //     Category::paginate(15));
-
+       
         $data = [
             "categories" => !is_null(request()->filter) ?
-            Category::whereName(request()->filter)->orWhere('status', (int)request()->filter)->paginate(15) :
+            Category::when(request()->filter == "0" || request()->filter == "1", function ($query, $filter) {
+                return $query->whereStatus(request()->filter);
+            }, function ($query, $filter) use ($request) {
+                return $query->whereName(request()->filter);
+            })
+            ->paginate(5) :
+
             Category::paginate(5),
         ];
         return view('categories.index', $data);
@@ -49,7 +52,7 @@ class CategoryController extends Controller
         $path = $request->file('image')->store('category');
 
         Category::insert(["name" => $request->name, "status" => $request->status, "image" => $path]);
-        return redirect()->route('category.index')->withSuccess("Sub Category Added!");
+        return redirect()->route('category.index')->withSuccess("  Category Added!");
     }
 
     /**

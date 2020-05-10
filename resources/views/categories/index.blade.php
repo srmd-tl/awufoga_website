@@ -9,11 +9,23 @@
          <div class="card shadow">
             <div class="card-header border-0">
                <div class="row align-items-center">
-                  <div class="col-8">
+                  <div class="col-4">
                      <h3 class="mb-0">Categories</h3>
                   </div>
-                  <div class="col-4 text-right">
-                     <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Category</a>
+                  <div class="col-8 text-right">
+                     <form action="{{route('category.index')}}">
+                        <div class="form-group">
+                         <div class="input-group">
+                           <div class="input-group-prepend">
+                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                           </div>
+                           <input class="form-control" placeholder="Search" type="text" name="filter">
+                         </div>
+                         <button class="btn btn-sm btn-primary" >Search</button>
+                         <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Category</a>
+                        </div>
+                     </form>
+                     
                   </div>
                </div>
             </div>
@@ -30,6 +42,7 @@
                      </tr>
                   </thead>
                   <tbody>
+
                      @forelse($categories as $category)
                      <tr>
                         <td>{{$category->name}}</td>
@@ -37,7 +50,11 @@
                             <img class="tableImage" src="{{asset('storage/'.$category->image)}}">
                            
                         </td>
-                        <td>{{$category->status==1?"Active":"Inactive"}}</td>
+                        <td>
+
+                           <span class="badge badge-{{$category->status==1?'success':'danger'}}">{{$category->status==1?'Active':'Inactive'}}</span>
+                           
+                        </td>
                         <td class="text-right">
                            <div class="dropdown">
                               <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,11 +68,14 @@
                         </td>
                      </tr>
                      @empty
+                     <tr>
+                        <td>Nothing Found!</td>
+                     </tr>
                      @endforelse
                   </tbody>
                   <tfoot>
                      <tr>
-                        <td>{{$categories->links()}}</td>
+                        <td>{{$categories->withQueryString()->links()}}</td>
                      </tr>
                   </tfoot>
                </table>
