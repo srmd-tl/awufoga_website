@@ -37,7 +37,6 @@
                      <tr>
                         <th scope="col">Sub Category Name</th>
                         <th scope="col">Category Name</th>
-                        <th scope="col">Image</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                      </tr>
@@ -47,10 +46,7 @@
                      <tr>
                         <td>{{$subCategory->name}}</td>
                         <td>{{$subCategory->category->name}}</td>
-                        <td>
-                            <img class="tableImage" src="{{asset('storage/'.$subCategory->image)}}">
-                           
-                        </td>
+                       
                         <td>
 
                            <span class="badge badge-{{$subCategory->status==1?'success':'danger'}}">{{$subCategory->status==1?'Active':'Inactive'}}</span>
@@ -62,13 +58,19 @@
                               <i class="fas fa-ellipsis-v"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                 <button class="dropdown-item editSubCategory" 
+                                 <button class="dropdown-item viewSubCategory" 
+                             
+                                 data-image="{{$subCategory->image}}" 
+                              
+                                 >View Image</button>
+                                  <button class="dropdown-item editSubCategory" 
                                  data-id="{{$subCategory->id}}" 
                                  data-name="{{$subCategory->name}}" 
                                  data-image="{{$subCategory->image}}" 
                                  data-status="{{$subCategory->status}}" 
                                  data-category="{{$subCategory->category_id}}"
                                  >Edit</button>
+
                                  <button class="dropdown-item deleteSubCategory" data-id="{{$subCategory->id}}" >Delete</button>
                               </div>
                            </div>
@@ -262,6 +264,37 @@
       </div>
    </div>
    <!-- End Delete Admin Modal -->
+      <!-- View Subcat Modal -->
+     <div class="col-md-4">
+      <div class="modal fade" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+               <div class="modal-body p-0">
+                  <div class="card bg-secondary border-0 mb-0">
+                     <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                           <small>View  Image</small>
+                        </div>
+                        <form role="form">
+                          
+                            <div class="form-group mb-3">
+                              <div class="input-group input-group-merge input-group-alternative">
+                                 <img src="" id="viewImage">
+                              </div>
+                            </div>
+                           
+                           <div class="text-center">
+                              <button type="button" class="btn btn-success my-4" data-dismiss="modal">Close </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- End View SUb cat Modal -->
 @include('layouts.footers.auth')
 </div>
 
@@ -284,6 +317,12 @@
             $("#editForm").attr("action",route)
 
             $("#edit-category-form").modal()       
+
+        })
+          $(".viewSubCategory").click(function(){
+            var image = "{{asset('storage')}}/"+$(this).data('image')
+            $("#viewImage").attr('src',image)
+            $("#view-category-form").modal()       
 
         })
 

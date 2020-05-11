@@ -24,9 +24,9 @@ class SubCategoryController extends Controller
             }, function ($query, $filter) use ($request) {
                 return $query->whereName(request()->filter);
             })
-                ->paginate(5) :
+                ->paginate(20) :
 
-            SubCategory::paginate(5), "categories" => Category::all()];
+            SubCategory::paginate(20), "categories" => Category::all()];
         return view('subCategories.index', $data);
     }
 

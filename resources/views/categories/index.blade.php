@@ -36,7 +36,6 @@
                   <thead class="thead-light">
                      <tr>
                         <th scope="col">Category Name</th>
-                        <th scope="col">Image</th>
                         <th scope="col">Status</th>
                         <th scope="col"></th>
                      </tr>
@@ -46,10 +45,7 @@
                      @forelse($categories as $category)
                      <tr>
                         <td>{{$category->name}}</td>
-                        <td>
-                            <img class="tableImage" src="{{asset('storage/'.$category->image)}}">
-                           
-                        </td>
+                       
                         <td>
 
                            <span class="badge badge-{{$category->status==1?'success':'danger'}}">{{$category->status==1?'Active':'Inactive'}}</span>
@@ -61,6 +57,11 @@
                               <i class="fas fa-ellipsis-v"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <button class="dropdown-item viewCategory" 
+                             
+                                 data-image="{{$category->image}}" 
+                              
+                                 >View Image</button>
                                  <button class="dropdown-item editCategory" data-id="{{$category->id}}" data-name="{{$category->name}}" data-image="{{$category->image}}" data-status="{{$category->status}}" >Edit</button>
                                  <button class="dropdown-item deleteCategory" data-id="{{$category->id}}" >Delete</button>
                               </div>
@@ -230,6 +231,38 @@
       </div>
    </div>
    <!-- End Delete Admin Modal -->
+
+     <!-- View Subcat Modal -->
+     <div class="col-md-4">
+      <div class="modal fade" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+               <div class="modal-body p-0">
+                  <div class="card bg-secondary border-0 mb-0">
+                     <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                           <small>View  Image</small>
+                        </div>
+                        <form role="form">
+                          
+                            <div class="form-group mb-3">
+                              <div class="input-group input-group-merge input-group-alternative">
+                                 <img src="" id="viewImage">
+                              </div>
+                            </div>
+                           
+                           <div class="text-center">
+                              <button type="button" class="btn btn-success my-4" data-dismiss="modal">Close </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- End View SUb cat Modal -->
 @include('layouts.footers.auth')
 </div>
 
@@ -252,7 +285,12 @@
             $("#edit-category-form").modal()       
 
         })
+          $(".viewCategory").click(function(){
+            var image = "{{asset('storage')}}/"+$(this).data('image')
+            $("#viewImage").attr('src',image)
+            $("#view-category-form").modal()       
 
+        })
         $(".deleteCategory").click(function(){
              var id = $(this).data('id')
              var route="{{route('category.destroy',':id')}}"

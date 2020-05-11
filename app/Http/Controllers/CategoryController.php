@@ -23,9 +23,9 @@ class CategoryController extends Controller
             }, function ($query, $filter) use ($request) {
                 return $query->whereName(request()->filter);
             })
-            ->paginate(5) :
+            ->paginate(20) :
 
-            Category::paginate(5),
+            Category::paginate(20),
         ];
         return view('categories.index', $data);
     }
