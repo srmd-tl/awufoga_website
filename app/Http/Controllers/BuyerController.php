@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Buyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
 class BuyerController extends Controller
 {
     /**
@@ -16,13 +17,20 @@ class BuyerController extends Controller
     {
         $data = [
             "buyers" => !is_null(request()->filter) ?
-            Buyer::when(request()->filter == "0" || request()->filter == "1", function ($query, $filter) {
-                return $query->whereStatus(request()->filter);
+            Buyer::when(request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive", function ($query, $filter) {
+                $data = request()->filter;
+                if (request()->filter == "Active" || request()->filter == "1") {
+                    $data = 1;
+                } else {
+                    $data = 0;
+                }
+
+                return $query->whereStatus($data);
             }, function ($query, $filter) use ($request) {
                 return $query->whereFullName(request()->filter)
-                            ->orWhere('user_name',request()->filter)
-                            ->orWhere('email',request()->filter)
-                            ->orWhere('phone',request()->filter)
+                    ->orWhere('user_name', request()->filter)
+                    ->orWhere('email', request()->filter)
+                    ->orWhere('phone', request()->filter)
                 ;
             })
                 ->paginate(20) :
@@ -56,9 +64,9 @@ class BuyerController extends Controller
 
         Buyer::insert(
             [
-                'full_name'                => $request->fullname,
-                'password'                =>bcrypt($request->password),
-                'user_name'            => $request->username,
+                'full_name'           => $request->fullname,
+                'password'            => bcrypt($request->password),
+                'user_name'           => $request->username,
                 'email'               => $request->email,
                 'phone'               => $request->phone,
                 'country_code'        => $request->country_code,
@@ -102,8 +110,8 @@ class BuyerController extends Controller
     {
         $path = null;
         $data = [
-            'full_name'                => $request->fullname,
-            'user_name'            => $request->username,
+            'full_name'           => $request->fullname,
+            'user_name'           => $request->username,
             'email'               => $request->email,
             'phone'               => $request->phone,
             'country_code'        => $request->country_code,
@@ -139,13 +147,13 @@ class BuyerController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username'                => ['required', 'string', 'max:255'],
-            'fullname'            => ['required', 'string', 'max:255'],
-            'email'               => ['required', 'email', 'max:255'],
-            'phone'               => ['required', 'string', 'max:255'],
-            'country_code'        => ['required', 'string', 'max:255'],
-            'image'               => ['required', 'file'],
-            'status'              => ['required', 'string'],
+            'username'     => ['required', 'string', 'max:255'],
+            'fullname'     => ['required', 'string', 'max:255'],
+            'email'        => ['required', 'email', 'max:255'],
+            'phone'        => ['required', 'string', 'max:255'],
+            'country_code' => ['required', 'string', 'max:255'],
+            'image'        => ['required', 'file'],
+            'status'       => ['required', 'string'],
             'notification' => ['required', 'string'],
         ]);
     }
