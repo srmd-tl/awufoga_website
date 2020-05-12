@@ -17,4 +17,10 @@ class Buyer extends Model
     ];
 
     const UPDATED_AT = null;
+
+    /*Getters*/
+    public function getFullPhoneAttribute()
+    {
+        return "{$this->country_code} {$this->phone}";
+    }
 }

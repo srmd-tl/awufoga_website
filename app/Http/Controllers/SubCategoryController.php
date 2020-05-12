@@ -26,7 +26,7 @@ class SubCategoryController extends Controller
             })
                 ->paginate(20) :
 
-            SubCategory::paginate(20), "categories" => Category::all()];
+            SubCategory::whereStatus(1)->paginate(20), "categories" => Category::all()];
         return view('subCategories.index', $data);
     }
 

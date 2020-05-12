@@ -27,7 +27,7 @@ class BuyerController extends Controller
             })
                 ->paginate(20) :
 
-            Buyer::paginate(20),
+            Buyer::whereStatus(1)->paginate(20),
         ];
         return view('buyers.index', $data);
 

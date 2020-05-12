@@ -25,7 +25,7 @@ class CategoryController extends Controller
             })
             ->paginate(20) :
 
-            Category::paginate(20),
+            Category::whereStatus(1)->paginate(20),
         ];
         return view('categories.index', $data);
     }
