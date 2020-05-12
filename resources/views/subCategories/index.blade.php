@@ -12,8 +12,10 @@
                   <div class="col-12">
                      <div class="categories-detail">
                         <h3 class="mb-0">Sub Category</h3>
-                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Sub Category</a>
-                        <a href="{{route('subCategory.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                        <div class="btn_style12">
+                           <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Sub Category</a>
+                           <a href="{{route('subCategory.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                        </div>
                      </div>
                   </div>
                   <div class="col-12">

@@ -12,8 +12,10 @@
                   <div class="col-12">
                      <div class="categories-detail">
                         <h3 class="mb-0">Buyers</h3>
-                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
-                        <a href="{{route('buyer.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                        <div class="btn_style1">
+                           <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
+                           <a href="{{route('buyer.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                        </div>
                      </div>
                   </div>
                   <div class="col-12">
@@ -29,7 +31,6 @@
                               <datalist id="filters">
                                   <option value="Active">
                                   <option value="Inactive">
-                         
                                 </datalist>
                             </div>
                             <button class="btn btn-sm btn-primary" >Search</button>

@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="table_design">
-                        <div class="table-responsive">
+                        <div class="table-responsive myTable">
                             <!-- Projects table -->
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div class="table_design">
-                        <div class="table-responsive">
+                        <div class="table-responsive myTable">
                             <!-- Projects table -->
                               <table class="table align-items-center table-flush">
                                 <thead class="thead-light">

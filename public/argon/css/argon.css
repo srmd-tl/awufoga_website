@@ -13903,6 +13903,19 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 }
 
 
+.table-responsive.myTable {
+    overflow: initial;
+}
+
+.table-responsive.myTable table td, 
+.table-responsive.myTable table th {
+    padding: 10px 18px !important;
+}
+
+.btn_style12 a:first-child {
+    width: 135px;
+}
+
 /*================== table style // start ==========================*/
 
 
@@ -13915,6 +13928,65 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 
 
+
+
+
+@media (max-width: 1200px) {
+
+}
+
+
+@media (max-width: 992px) {
+
+}
+
+
+@media (max-width: 768px) {
+
+}
+
+
+@media (max-width: 576px) {
+
+.categories-detail {
+    flex-direction: column;
+}
+
+.btn_style12 {
+    margin-top: 14px;
+}
+
+.Search_item form .form-group .input-group input {
+    height: 45px;
+    border-radius: 0 !important;
+    min-width: 200px;
+}
+
+.Search_item {
+    justify-content: center;
+}
+
+
+
+}
+
+@media (max-width: 480px) {
+
+.Search_item form .form-group .input-group input {
+    min-width: 72px;
+}
+
+.Search_item {
+    justify-content: center;
+    width: 236px;
+    margin: auto;
+    margin-top: 15px;
+}
+.btn_style12 a:first-child {
+    width: 120px;
+}
+
+}
 
 
 
