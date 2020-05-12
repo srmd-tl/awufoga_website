@@ -13888,8 +13888,8 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 .table_design .table .thead-light th {
     color: #ffffff;
     background-color: #6772e5;
-    padding: 15px 25px;
-    font-size: 18px;
+    padding: 10px 20px;
+    font-size: 15px;
 }
 
 .table_design .table td {

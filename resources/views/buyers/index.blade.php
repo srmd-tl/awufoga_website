@@ -9,93 +9,106 @@
          <div class="card shadow">
             <div class="card-header border-0">
                <div class="row align-items-center">
-                  <div class="col-4">
-                     <h3 class="mb-0">Buyers</h3>
+                  <div class="col-12">
+                     <div class="categories-detail">
+                        <h3 class="mb-0">Buyers</h3>
+                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
+                        <a href="{{route('buyer.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                     </div>
                   </div>
-                  <div class="col-8 text-right">
-                     <form action="{{route('buyer.index')}}">
-                        <div class="form-group">
-                         <div class="input-group">
-                           <div class="input-group-prepend">
-                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  <div class="col-12">
+                     <div class="Search_item">
+                        <form action="{{route('buyer.index')}}">
+                           <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                              </div>
+                              <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
+
+                              <datalist id="filters">
+                                  <option value="Active">
+                                  <option value="Inactive">
+                         
+                                </datalist>
+                            </div>
+                            <button class="btn btn-sm btn-primary" >Search</button>
                            </div>
-                           <input class="form-control" placeholder="Search" type="text" name="filter">
-                         </div>
-                         <button class="btn btn-sm btn-primary" >Search</button>
-                         <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
-                        </div>
-                     </form>
+                        </form>
+                     </div>
                      
                   </div>
                </div>
             </div>
             <div class="col-12">
             </div>
-            <div class="table-responsive">
-               <table class="table align-items-center table-flush">
-                  <thead class="thead-light">
-                     <tr>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Notification</th>
-                        <th scope="col"></th>
-                     </tr>
-                  </thead>
-                  <tbody>
+            <div class="table_design">
+               <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                     <thead class="thead-light">
+                        <tr>
+                           <th scope="col">Full Name</th>
+                           <th scope="col">Username</th>
+                           <th scope="col">Email</th>
+                           <th scope="col">Phone</th>
+                           <th scope="col">Status</th>
+                           <th scope="col">Created At</th>
+                           <th scope="col">Notification</th>
+                           <th scope="col"></th>
+                        </tr>
+                     </thead>
+                     <tbody>
 
-                     @forelse($buyers as $buyer)
-                     <tr>
-                        <td class="viewBuyer" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
-                        <td>{{$buyer->user_name}}</td>
-                        <td>{{$buyer->email}}</td>
-                        <td>{{$buyer->full_phone}}</td>
-                        <td>
-                           <span class="badge badge-{{$buyer->status==1?'success':'danger'}}">{{$buyer->status==1?'Active':'Inactive'}}</span>
-                        </td>
-                        <td>{{$buyer->created_at}}</td>
-                          <td>
-                           <span class="badge badge-{{$buyer->notification_on_off==1?'success':'danger'}}">{{$buyer->notification_on_off==1?'On':'Off'}}</span>
-                        </td>
-                  
-                        <td class="text-right">
-                           <div class="dropdown">
-                              <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                              
-                                 <button class="dropdown-item editBuyer" 
-                                 data-id="{{$buyer->id}}" 
-                                 data-username="{{$buyer->user_name}}" 
-                                 data-fullname="{{$buyer->full_name}}" 
-                                 data-email="{{$buyer->email}}" 
-                                 data-countrycode="{{$buyer->country_code}}" 
-                                 data-phone="{{$buyer->phone}}" 
-                                 data-notification="{{$buyer->notification_on_off}}" 
-                                 data-image="{{$buyer->image}}" 
-                                 data-status="{{$buyer->status}}" 
-                                 >Edit</button>
-                                 <button class="dropdown-item deleteBuyer" data-id="{{$buyer->id}}" >Delete</button>
+                        @forelse($buyers as $buyer)
+                        <tr>
+                           <td class="viewBuyer" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
+                           <td>{{$buyer->user_name}}</td>
+                           <td>{{$buyer->email}}</td>
+                           <td>{{$buyer->full_phone}}</td>
+                           <td>
+                              <span class="badge badge-{{$buyer->status==1?'success':'danger'}}">{{$buyer->status==1?'Active':'Inactive'}}</span>
+                           </td>
+                           <td>{{$buyer->created_at}}</td>
+                             <td>
+                              <span class="badge badge-{{$buyer->notification_on_off==1?'success':'danger'}}">{{$buyer->notification_on_off==1?'On':'Off'}}</span>
+                           </td>
+                     
+                           <td class="text-right">
+                              <div class="dropdown">
+                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 <i class="fas fa-ellipsis-v"></i>
+                                 </a>
+                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                 
+                                    <button class="dropdown-item editBuyer" 
+                                    data-id="{{$buyer->id}}" 
+                                    data-username="{{$buyer->user_name}}" 
+                                    data-fullname="{{$buyer->full_name}}" 
+                                    data-email="{{$buyer->email}}" 
+                                    data-countrycode="{{$buyer->country_code}}" 
+                                    data-phone="{{$buyer->phone}}" 
+                                    data-notification="{{$buyer->notification_on_off}}" 
+                                    data-image="{{$buyer->image}}" 
+                                    data-status="{{$buyer->status}}" 
+                                    >Edit</button>
+                                    <button class="dropdown-item deleteBuyer" data-id="{{$buyer->id}}" >Delete</button>
+                                 </div>
                               </div>
-                           </div>
-                        </td>
-                     </tr>
-                     @empty
-                     <tr>
-                        <td>Nothing Found!</td>
-                     </tr>
-                     @endforelse
-                  </tbody>
-                  <tfoot>
-                     <tr>
-                        <td>{{$buyers->withQueryString()->links()}}</td>
-                     </tr>
-                  </tfoot>
-               </table>
+                           </td>
+                        </tr>
+                        @empty
+                        <tr>
+                           <td>Nothing Found!</td>
+                        </tr>
+                        @endforelse
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <td>{{$buyers->withQueryString()->links()}}</td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
             </div>
             <div class="card-footer py-4">
                <nav class="d-flex justify-content-end" aria-label="...">

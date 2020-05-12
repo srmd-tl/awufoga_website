@@ -16,13 +16,25 @@ class SubCategoryController extends Controller
      */
     public function index(Request $request)
     {
-
+        $category = null;
+        if (!is_null(request()->filter)) {
+            $category = Category::whereName($request->filter)->first();
+        }
         $data = [
             "subCategories" => !is_null(request()->filter) ?
-            SubCategory::when(request()->filter == "0" || request()->filter == "1", function ($query, $filter) {
-                return $query->whereStatus(request()->filter);
-            }, function ($query, $filter) use ($request) {
-                return $query->whereName(request()->filter);
+            SubCategory::when(request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive", function ($query, $filter) {
+                $data = request()->filter;
+                if (request()->filter == "Active" || request()->filter == "1") {
+                    $data = 1;
+                } else {
+                    $data = 0;
+                }
+
+                return $query->whereStatus($data);
+            }, function ($query, $filter) use ($request, $category) {
+
+                return $query->whereName($request->filter)
+                    ->orWhere("category_id",$category->id);
             })
                 ->paginate(20) :
 

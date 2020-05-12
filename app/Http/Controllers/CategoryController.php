@@ -18,8 +18,18 @@ class CategoryController extends Controller
        
         $data = [
             "categories" => !is_null(request()->filter) ?
-            Category::when(request()->filter == "0" || request()->filter == "1", function ($query, $filter) {
-                return $query->whereStatus(request()->filter);
+            Category::when(request()->filter == "0" || request()->filter == "1"||request()->filter == "Active" || request()->filter == "Inactive", function ($query, $filter) {
+                $data= request()->filter;
+                if(request()->filter=="Active"||request()->filter=="1")
+                {
+                      $data=1;
+                }
+                else
+                {
+                    $data=0;
+                }
+
+                return $query->whereStatus($data);
             }, function ($query, $filter) use ($request) {
                 return $query->whereName(request()->filter);
             })
