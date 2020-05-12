@@ -13802,3 +13802,136 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
     width: 30%;
     height: 100px;
 }
+
+
+
+/*=========================== custom css // start =================================*/
+
+
+
+.categories-detail {
+    display: flex;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+     align-items: center;
+}
+
+.categories-detail h3 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.categories-detail a {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    border-radius: 7px !important;
+}
+.Search_item {
+    margin-top: 25px;
+}
+
+.Search_item form .form-group {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    max-width: 450px;
+}
+
+.Search_item form .form-group button {
+    height: 45px;
+    width: 100px;
+    border-radius: 0;
+}
+
+.Search_item form .form-group .input-group {
+     display: inline-flex !important; 
+}
+
+
+
+.Search_item form .form-group .input-group{
+    display: inline-block;
+}
+
+.Search_item form .form-group .input-group input {
+    height: 45px;
+    border-radius: 0 !important;
+    min-width: 300px;
+}
+
+.input-group-alternative img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+/*================== table style // start ==========================*/
+
+.table_design .table .thead-light th {
+    color: #ffffff;
+    background-color: #6772e5;
+    padding: 15px 25px;
+    font-size: 18px;
+}
+
+.table_design .table td {
+    padding: 3px 25px !important;
+}
+
+.Search_item {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/*================== table style // start ==========================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

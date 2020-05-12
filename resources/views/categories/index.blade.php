@@ -9,28 +9,41 @@
          <div class="card shadow">
             <div class="card-header border-0">
                <div class="row align-items-center">
-                  <div class="col-4">
-                     <h3 class="mb-0">Categories</h3>
+                  <div class="col-12">
+                     <div class="categories-detail">
+                        <h3 class="mb-0">Categories</h3>
+                        <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Category</a>
+                     </div>
                   </div>
-                  <div class="col-8 text-right">
-                     <form action="{{route('category.index')}}">
-                        <div class="form-group">
-                         <div class="input-group">
-                           <div class="input-group-prepend">
-                             <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                  <div class="col-12">
+                     <div class="Search_item">
+                        <form action="{{route('category.index')}}">
+                           <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                              </div>
+                              <input list="browsers" class="form-control" placeholder="Search" type="text" name="filter">
+
+                              <datalist id="browsers">
+                                  <option value="Edge">
+                                  <option value="Firefox">
+                                  <option value="Chrome">
+                                  <option value="Opera">
+                                  <option value="Safari">
+                                </datalist>
+                            </div>
+                            <button class="btn btn-sm btn-primary" >Search</button>
                            </div>
-                           <input class="form-control" placeholder="Search" type="text" name="filter">
-                         </div>
-                         <button class="btn btn-sm btn-primary" >Search</button>
-                         <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Category</a>
-                        </div>
-                     </form>
+                        </form>
+                     </div>
                      
                   </div>
                </div>
             </div>
             <div class="col-12">
             </div>
+            <div class="table_design">
             <div class="table-responsive">
                <table class="table align-items-center table-flush">
                   <thead class="thead-light">
@@ -76,6 +89,8 @@
                      </tr>
                   </tfoot>
                </table>
+            </div>
+            </div>
             </div>
             <div class="card-footer py-4">
                <nav class="d-flex justify-content-end" aria-label="...">
