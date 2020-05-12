@@ -50,7 +50,7 @@
 
                      @forelse($buyers as $buyer)
                      <tr>
-                        <td>{{$buyer->full_name}}</td>
+                        <td class="viewBuyer" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
                         <td>{{$buyer->user_name}}</td>
                         <td>{{$buyer->email}}</td>
                         <td>{{$buyer->phone}}</td>
@@ -69,11 +69,7 @@
                               <i class="fas fa-ellipsis-v"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                   <button class="dropdown-item viewBuyer" 
-                             
-                                 data-image="{{$buyer->image}}" 
                               
-                                 >View Image</button>
                                  <button class="dropdown-item editBuyer" 
                                  data-id="{{$buyer->id}}" 
                                  data-username="{{$buyer->user_name}}" 

@@ -44,7 +44,7 @@
 
                      @forelse($categories as $category)
                      <tr>
-                        <td>{{$category->name}}</td>
+                        <td class="viewCategory"  data-image="{{$category->image}}" >{{$category->name}}</td>
                        
                         <td>
 
@@ -57,11 +57,7 @@
                               <i class="fas fa-ellipsis-v"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <button class="dropdown-item viewCategory" 
-                             
-                                 data-image="{{$category->image}}" 
-                              
-                                 >View Image</button>
+                                 
                                  <button class="dropdown-item editCategory" data-id="{{$category->id}}" data-name="{{$category->name}}" data-image="{{$category->image}}" data-status="{{$category->status}}" >Edit</button>
                                  <button class="dropdown-item deleteCategory" data-id="{{$category->id}}" >Delete</button>
                               </div>

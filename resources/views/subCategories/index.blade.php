@@ -44,7 +44,7 @@
                   <tbody>
                      @forelse($subCategories as $subCategory)
                      <tr>
-                        <td>{{$subCategory->name}}</td>
+                        <td class="viewSubCategory" data-image="{{$subCategory->image}}" >{{$subCategory->name}}</td>
                         <td>{{$subCategory->category->name}}</td>
                        
                         <td>
@@ -58,11 +58,7 @@
                               <i class="fas fa-ellipsis-v"></i>
                               </a>
                               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                 <button class="dropdown-item viewSubCategory" 
-                             
-                                 data-image="{{$subCategory->image}}" 
-                              
-                                 >View Image</button>
+                           
                                   <button class="dropdown-item editSubCategory" 
                                  data-id="{{$subCategory->id}}" 
                                  data-name="{{$subCategory->name}}" 
