@@ -18,7 +18,7 @@ class SubCategoryController extends Controller
     {
         $category = null;
         if (!is_null(request()->filter)) {
-            $category = Category::whereName($request->filter)->first();
+            $category = Category::where("name","like","%".$request->filter."%")->first();
         }
         $data = [
             "subCategories" => !is_null(request()->filter) ?

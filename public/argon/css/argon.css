@@ -13987,10 +13987,23 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 }
 
 }
+.viewCategory:hover
+{
+  color:blue;
+  cursor: pointer;  
 
+}
+.viewSubCategory:hover
+{
+ color:blue;
+  cursor: pointer;  
+}
 
-
-
+.viewBuyer:hover
+{
+     color:blue;
+  cursor: pointer;  
+}
 
 
 

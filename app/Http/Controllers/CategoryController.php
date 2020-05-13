@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
                 return $query->whereStatus($data);
             }, function ($query, $filter) use ($request) {
-                return $query->whereName(request()->filter);
+                return $query->where("name","like","%".request()->filter."%");
             })
             ->paginate(20) :
 

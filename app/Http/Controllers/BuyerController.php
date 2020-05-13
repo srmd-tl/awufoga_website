@@ -28,7 +28,7 @@ class BuyerController extends Controller
                 return $query->whereStatus($data);
             }, function ($query, $filter) use ($request) {
                 return $query->whereFullName(request()->filter)
-                    ->orWhere('user_name', request()->filter)
+                    ->orWhere('user_name','like', "%".request()->filter."%")
                     ->orWhere('email', request()->filter)
                     ->orWhere('phone', request()->filter)
                 ;
