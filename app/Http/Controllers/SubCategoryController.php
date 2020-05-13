@@ -32,9 +32,12 @@ class SubCategoryController extends Controller
 
                 return $query->whereStatus($data);
             }, function ($query, $filter) use ($request, $category) {
-
-                return $query->whereName($request->filter)
+            	if($category->id??false)
+            	{
+            		return $query->whereName($request->filter)
                     ->orWhere("category_id",$category->id);
+            	}
+                return $query->whereName($request->filter);
             })
                 ->paginate(20) :
 
