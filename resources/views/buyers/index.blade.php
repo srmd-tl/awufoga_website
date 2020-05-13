@@ -13,19 +13,31 @@
                      <div class="categories-detail">
                         <h3 class="mb-0">Buyers</h3>
                         <div class="btn_style1">
-                           <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
                            <a href="{{route('buyer.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
+                           
+                           <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add Buyer</a>
+                           
                         </div>
                      </div>
                   </div>
                   <div class="col-12">
                      <div class="Search_item">
+                          <form method="GET" action="{{route('buyer.index')}}" class="mr-2">
+                           <div class="form-group">
+                                 <button value="1" class="btn btn-sm btn-primary" name="statusFilter">Active Search</button>
+                                 <button value="0" class="btn btn-sm btn-primary" name="statusFilter">Inactive Search</button>
+                           </div>
+                           </form>
                         <form action="{{route('buyer.index')}}">
                            <div class="form-group">
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                               </div>
+                              
+                              @if(isset(request()->statusFilter))
+                              <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
+                              @endif
                               <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
 
                               <datalist id="filters">
@@ -36,6 +48,7 @@
                             <button class="btn btn-sm btn-primary" >Search</button>
                            </div>
                         </form>
+
                      </div>
                      
                   </div>

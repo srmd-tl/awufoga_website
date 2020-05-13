@@ -34,10 +34,10 @@ class SubCategoryController extends Controller
             }, function ($query, $filter) use ($request, $category) {
             	if($category->id??false)
             	{
-            		return $query->whereName($request->filter)
+            		return $query->where("name",'like',"%".$request->filter."%")
                     ->orWhere("category_id",$category->id);
             	}
-                return $query->whereName($request->filter);
+              return $query->where("name",'like',"%".$request->filter."%");
             })
                 ->paginate(20) :
 
