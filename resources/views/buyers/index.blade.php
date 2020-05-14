@@ -30,10 +30,9 @@
                            </form> -->
                         <form action="{{route('buyer.index')}}">
                            <div class="select_option">
-                              <select name="" id="">
-                                 <option value="">Search Status</option>
-                                 <option value="">Active Search</option>
-                                 <option value="">Inactive Search</option>
+                              <select name="statusFilter">
+                                 <option {{request()->statusFilter=='1'?'selected':''}} value="1">Active Search</option>
+                                 <option {{request()->statusFilter=='0'?'selected':''}} value="0">Inactive Search</option>
                               </select>
                            </div>
                            <div class="form-group">
@@ -42,9 +41,9 @@
                                    <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                                  </div>
                                  
-                                 @if(isset(request()->statusFilter))
+                                <!--  @if(isset(request()->statusFilter))
                                  <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
-                                 @endif
+                                 @endif -->
                                  <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
 
                                  <datalist id="filters">
