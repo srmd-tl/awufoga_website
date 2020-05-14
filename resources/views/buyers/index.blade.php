@@ -31,8 +31,8 @@
                         <form action="{{route('buyer.index')}}">
                            <div class="select_option">
                               <select name="statusFilter">
-                                 <option {{request()->statusFilter=='1'?'selected':''}} value="1">Active Search</option>
-                                 <option {{request()->statusFilter=='0'?'selected':''}} value="0">Inactive Search</option>
+                                 <option {{request()->statusFilter=='1'?'selected':''}} value="1">Active</option>
+                                 <option {{request()->statusFilter=='0'?'selected':''}} value="0">Inactive</option>
                               </select>
                            </div>
                            <div class="form-group">
