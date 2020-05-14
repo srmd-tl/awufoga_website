@@ -22,30 +22,37 @@
                   </div>
                   <div class="col-12">
                      <div class="Search_item">
-                          <form method="GET" action="{{route('buyer.index')}}" class="mr-2">
+                          <!-- <form method="GET" action="{{route('buyer.index')}}" class="mr-2">
                            <div class="form-group">
                                  <button value="1" class="btn btn-sm btn-primary" name="statusFilter">Active Search</button>
                                  <button value="0" class="btn btn-sm btn-primary" name="statusFilter">Inactive Search</button>
                            </div>
-                           </form>
+                           </form> -->
                         <form action="{{route('buyer.index')}}">
+                           <div class="select_option">
+                              <select name="" id="">
+                                 <option value="">Search Status</option>
+                                 <option value="">Active Search</option>
+                                 <option value="">Inactive Search</option>
+                              </select>
+                           </div>
                            <div class="form-group">
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-                              </div>
-                              
-                              @if(isset(request()->statusFilter))
-                              <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
-                              @endif
-                              <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
+                               <div class="input-group">
+                                 <div class="input-group-prepend">
+                                   <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                                 </div>
+                                 
+                                 @if(isset(request()->statusFilter))
+                                 <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
+                                 @endif
+                                 <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
 
-                              <datalist id="filters">
-                                  <option value="Active">
-                                  <option value="Inactive">
-                                </datalist>
-                            </div>
-                            <button class="btn btn-sm btn-primary" >Search</button>
+                                 <datalist id="filters">
+                                     <option value="Active">
+                                     <option value="Inactive">
+                                   </datalist>
+                               </div>
+                               <button class="btn btn-sm btn-primary" >Search</button>
                            </div>
                         </form>
 

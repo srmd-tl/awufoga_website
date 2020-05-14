@@ -13918,7 +13918,30 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 /*================== table style // start ==========================*/
 
+.select_option select {
+    color: #fff;
+    border-color: #5e72e4;
+    background-color: #5e72e4;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    height: 40px;
+    width: 150px;
+    padding: 0px 6px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
 
+.Search_item form {
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    align-items: center;
+}
+
+.Search_item .form-group {
+    margin: 0;
+}
 
 
 
@@ -13937,6 +13960,16 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 
 @media (max-width: 992px) {
+
+    .Search_item form {
+    flex-direction: column;
+}
+.Search_item {
+    justify-content: center;
+}
+.select_option select {
+    margin-bottom: 20px;
+}
 
 }
 
