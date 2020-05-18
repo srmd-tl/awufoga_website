@@ -119,6 +119,11 @@
                         <i class="ni ni-circle-08 text-red"></i> {{ __('Buyer') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('vendor.index')}}">
+                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Vendor') }}
+                    </a>
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
