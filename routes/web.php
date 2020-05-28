@@ -32,9 +32,21 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
         Route::resource('subCategory', 'SubCategoryController');
         Route::resource('buyer', 'BuyerController');
         Route::resource('vendor', 'VendorController');
+        Route::resource('coupon', 'CouponController');
+        Route::resource('apiKey', 'ApiKeyController');
+        Route::resource('blog', 'BlogController');
+        Route::resource('privacyAndPolicy', 'PrivacyAndPolicyController');
+        Route::resource('termAndCondition', 'TermAndConditionController');
+        Route::put('updateStatus/{coupon}', 'CouponController@updateStatus')->name('coupon.updateStatus');
         Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
         Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
         Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+        //Reports
+        Route::group(['prefix' => 'reports'], function () {
+            Route::resource('vendorsReport','VendorReportController');
+            Route::resource('buyersReport','BuyerReportController');
+        });
     });
 
 });
