@@ -26,6 +26,21 @@ class Coupon extends Model
     }
     public function categories()
     {
-        return $this->belongsToMany('App\Category','coupon_category','coupon_id','category_id');
+        return $this->belongsToMany('App\Category', 'coupon_category', 'coupon_id', 'category_id');
+    }
+    public function subcategories()
+    {
+        return $this->belongsToMany('App\Category', 'coupon_category', 'coupon_id', 'category_id');
+    }
+    public function ratings()
+    {
+        return $this->belongsToMany('App\Buyer', 'coupon_rating', 'coupon_id', 'buyer_id');
+    }
+
+    /*Customn Function*/
+    public function singleCouponRating($buyerId)
+    {
+        $data = $this->belongsToMany('App\Buyer', 'coupon_rating', 'coupon_id', 'buyer_id')->withPivot('rating')->whereBuyerId($buyerId)->first();
+        return $data;
     }
 }

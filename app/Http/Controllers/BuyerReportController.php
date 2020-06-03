@@ -56,7 +56,7 @@ class BuyerReportController extends Controller
                 })
                 ->paginate(20) :
 
-            Buyer::whereStatus(1)->paginate(20),
+            Buyer::where('id','>=',25)->whereStatus(1)->paginate(20),
         ];
         return view('reports.buyerReport', $data);
     }

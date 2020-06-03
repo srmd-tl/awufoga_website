@@ -62,6 +62,122 @@
             </div>
             <div class="col-12">
             </div>
+
+            <div class="leader-box">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="title-leader">
+                        <h3>Buy leader board</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                <div class="col-12">
+                  <form action="">
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">From Date</label>
+                              <input type="text" id="datepicker">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">To Date</label>
+                              <input type="text">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Category</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Sub Category</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Active Buyer</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Order By</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">City</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Coupon Type</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="leader-btn">
+                              <a href="" class="search-btn">Search</a>
+                              <a href="" class="clear-btn">Clear</a>
+                              <a href="" class="export-btn">Export To PDF</a>
+                              <a href="" class="export-btn">Export To Excel</a>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+                </div>
+            </div>
+            </div>
             <div class="table_design">
                <div class="table-responsive">
                   <table class="table align-items-center table-flush">
@@ -87,22 +203,47 @@
                      </thead>
                      <tbody>
 
-                        @forelse($buyers as $vendor)
+                        @forelse($buyers as $buyer)
                         <tr>
-                           <td  class="viewVendor" data-image="{{$vendor->image}}">{{$vendor->id}}</td>
-                           <td ><a >{{$vendor->full_name}}</a></td>
-                           <td>{{$vendor->phone}}</td>
-                           <td>{{$vendor->created_at}}</td>
-                           <td>{{$vendor->created_at}}</td>
+                           <td  class="viewVendor" data-image="{{$buyer->image}}">{{$buyer->id}}</td>
+                           <td ><a >{{$buyer->full_name}}</a></td>
+                           <td>{{$buyer->phone}}</td>
+                           <td>{{$buyer->created_at}}</td>
+                           <td>{{$buyer->created_at}}</td>
                           
-                           <td>{{$vendor->usedCoupons->count()}}</td>
-                           <td>{{$vendor->usedCoupons->sum('paid_price')}}</td>
-                           <td>{{$vendor->usedCoupons->sum('payment_wallet')}}</td>
-                           <td>{{$vendor->favCoupons->count()}}</td>
-                           <td>{{$vendor->most()}}</td>
+                           <td>{{$buyer->usedCoupons->count()}}</td>
+                           <td>{{$buyer->usedCoupons->sum('paid_price')}}</td>
+                           <td>{{$buyer->usedCoupons->sum('payment_wallet')}}</td>
+                           <td>{{$buyer->favCoupons->count()}}</td>
+                           <td>
+                            @php
+                            $mostCoupon = json_decode($buyer->mostUsedCategories());
+                            //print_r($mostCoupon->id??0);
+
+                            @endphp
+                            @if($mostCoupon)
+                              @foreach($mostCoupon->categories as $data)
+                              @dd($data)
+                              {{$data->id}} {{$data->name}}
+                              @endforeach
+                            @endif
+                            </td>
+                             <td>
+                            @php
+                            $mostCoupon = json_decode($buyer->mostUsedCategories());
+                            //print_r($mostCoupon->id??0);
+
+                            @endphp
+                            @if($mostCoupon)
+                              @foreach($mostCoupon->categories as $data)
+                              {{$data->id}} {{$data->name}}
+                              @endforeach
+                            @endif
+                            </td>
+                           
 
                            <td>
-                              <span class="badge badge-{{$vendor->notification_on_off==1?'success':'danger'}}">{{$vendor->notification_on_off==1?'On':'Off'}}</span>
+                              <span class="badge badge-{{$buyer->notification_on_off==1?'success':'danger'}}">{{$buyer->notification_on_off==1?'On':'Off'}}</span>
                            </td>
                            <td class="text-right">
                               <div class="dropdown">
@@ -112,29 +253,29 @@
                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                  
                                     <button class="dropdown-item editVendor" 
-                                    data-id="{{$vendor->id}}" 
-                                    data-username="{{$vendor->user_name}}" 
-                                    data-fullname="{{$vendor->full_name}}" 
-                                    data-email="{{$vendor->email}}" 
-                                    data-countrycode="{{$vendor->country_code}}" 
-                                    data-phone="{{$vendor->phone}}" 
-                                    data-businessname="{{$vendor->business_name}}" 
-                                    data-businessemail="{{$vendor->business_email}}" 
-                                    data-businesscountrycode="{{$vendor->business_country_code}}" 
-                                    data-businessphone="{{$vendor->business_phone}}" 
-                                    data-businesswebsite="{{$vendor->website}}" 
-                                    data-businessaddress="{{$vendor->address}}" 
-                                    data-longitude="{{$vendor->longitude}}" 
-                                    data-latitude="{{$vendor->latitude}}" 
-                                    data-correctaddress="{{$vendor->correct_address}}" 
-                                    data-rate="{{$vendor->rate}}" 
-                                    data-reviewcount="{{$vendor->review_count}}" 
-                                    data-firstreferral="{{$vendor->first_referral}}" 
-                                    data-notification="{{$vendor->notification_on_off}}" 
-                                    data-image="{{$vendor->image}}" 
-                                    data-status="{{$vendor->status}}" 
+                                    data-id="{{$buyer->id}}" 
+                                    data-username="{{$buyer->user_name}}" 
+                                    data-fullname="{{$buyer->full_name}}" 
+                                    data-email="{{$buyer->email}}" 
+                                    data-countrycode="{{$buyer->country_code}}" 
+                                    data-phone="{{$buyer->phone}}" 
+                                    data-businessname="{{$buyer->business_name}}" 
+                                    data-businessemail="{{$buyer->business_email}}" 
+                                    data-businesscountrycode="{{$buyer->business_country_code}}" 
+                                    data-businessphone="{{$buyer->business_phone}}" 
+                                    data-businesswebsite="{{$buyer->website}}" 
+                                    data-businessaddress="{{$buyer->address}}" 
+                                    data-longitude="{{$buyer->longitude}}" 
+                                    data-latitude="{{$buyer->latitude}}" 
+                                    data-correctaddress="{{$buyer->correct_address}}" 
+                                    data-rate="{{$buyer->rate}}" 
+                                    data-reviewcount="{{$buyer->review_count}}" 
+                                    data-firstreferral="{{$buyer->first_referral}}" 
+                                    data-notification="{{$buyer->notification_on_off}}" 
+                                    data-image="{{$buyer->image}}" 
+                                    data-status="{{$buyer->status}}" 
                                     >Edit</button>
-                                    <button class="dropdown-item deleteVendor" data-id="{{$vendor->id}}" >Delete</button>
+                                    <button class="dropdown-item deleteVendor" data-id="{{$buyer->id}}" >Delete</button>
                                  </div>
                               </div>
                            </td>

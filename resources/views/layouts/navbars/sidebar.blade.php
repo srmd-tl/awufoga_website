@@ -168,6 +168,16 @@
                                     {{ __('Buyer Leader Board') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blogsReport.index') }}">
+                                    {{ __('Blog Report') }}
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('salesReport.index') }}">
+                                    {{ __('Sales Report') }}
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

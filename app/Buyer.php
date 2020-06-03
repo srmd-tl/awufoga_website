@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Buyer extends Model
 {
     /*Table name*/
@@ -26,7 +26,7 @@ class Buyer extends Model
     //Relations
     public function usedCoupons()
     {
-        return $this->hasMany('App\UsedCoupon');
+        return $this->hasMany('App\UsedCoupon','buyer_id');
     }
     public function usedFavCoupons()
     {
@@ -38,7 +38,27 @@ class Buyer extends Model
         return $this->belongsToMany('App\Category', 'vendor_category', 'vendor_id', 'category_id');
     }
 
-    public function most()
+    public function mostUsedCategories()
+    {
+        $data = $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->selectRaw('coupon_id,count(*) as count,SUM(paid_price) as price_total')
+            ->orderByRaw('count DESC')
+            ->first();
+        if ($data) {
+            $coupon = Coupon::with('categories')->whereId($data->coupon_id)->first();
+
+            return $coupon;
+           
+        }
+        return null;
+        // dd($data);
+
+        return $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->count();
+    } 
+    public function mostUsedSubCategories()
     {
         $data = $this->usedCoupons()
             ->groupBy('coupon_id')
@@ -47,9 +67,9 @@ class Buyer extends Model
             ->first();
         if ($data) {
             
-            $coupon = Coupon::whereId($data->coupon_id)->first();
-            dd($coupon->with('categories')->get());
-            return $coupon->with('categories');
+            $coupon = Coupon::with('subcategories')->whereId($data->coupon_id)->first();
+            return $coupon;
+           
         }
         return null;
         // dd($data);
