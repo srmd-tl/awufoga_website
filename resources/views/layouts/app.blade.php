@@ -17,6 +17,18 @@
         <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      
+      <!-- Javascript -->
+      <script>
+         jquery(function() {
+            jquery( "#datepicker" ).datepicker();
+            jquery( "#datepicker" ).datepicker("show");
+         });
+      </script>
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()

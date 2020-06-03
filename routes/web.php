@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('AYLJAPANEL');
 });
+Route::get('filter' , 'VendorController@index');
 Route::group(['prefix' => 'AYLJAPANEL'], function () {
 
     Auth::routes();

@@ -13918,6 +13918,94 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 /*================== table style // start ==========================*/
 
+/*================== buyer-leader-box // start ==========================*/
+
+.leader-box {
+    padding: 0px 25px 40px 25px;
+}
+
+.leader-box .buyer-leader-box {
+    margin-bottom: 13px;
+}
+
+.leader-box .title-leader h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #32325d;
+    margin: 0px 0px 24px 0px;
+}
+
+.leader-box .buyer-leader-box input, 
+.leader-box .buyer-leader-box select {
+    width: 100%;
+    max-width: 260px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #d6d2d2;
+    font-size: 15px;
+    color: #868282;
+    padding: 0px 6px;
+}
+
+.leader-box .buyer-leader-box label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #757070;
+    margin: 0;
+    width: 113px;
+}
+
+.search-btn {
+    display: inline-block;
+    padding: 6px 15px;
+    background: #5e72e4;
+    color: #fff;
+    border-radius: 7px;
+}
+
+.clear-btn {
+    display: inline-block;
+    padding: 6px 15px;
+    background: #e7b63a;
+    color: #fff;
+    border-radius: 7px;
+}
+
+.export-btn {
+    display: inline-block;
+    padding: 6px 15px;
+    background: #28a745;
+    color: #fff;
+    border-radius: 7px;
+}
+
+.leader-btn {
+    margin-top: 16px;
+}
+
+.leader-btn a {
+    margin: 5px;
+}
+
+.leader-btn a:hover {
+
+    color: #ffffff;
+}
+
+
+
+input:focus , select:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+
+
+/*================== buyer-leader-box // end ==========================*/
+
+
+
+
 .select_option select {
     color: #fff;
     border-color: #5e72e4;
@@ -13942,16 +14030,6 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 .Search_item .form-group {
     margin: 0;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 @media (max-width: 1200px) {
