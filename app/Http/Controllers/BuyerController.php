@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Buyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use App\Coupon;
 class BuyerController extends Controller
 {
     /**
@@ -15,6 +15,7 @@ class BuyerController extends Controller
      */
     public function index(Request $request)
     {
+        // $favouriteCount=Coupon::where
         $data = [
             "buyers" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 

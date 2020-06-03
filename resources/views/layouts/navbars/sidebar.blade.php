@@ -124,6 +124,63 @@
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Vendor') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('coupon.index')}}">
+                        <i class="fa fa-tag text-yellow"></i> {{ __('Coupon') }}
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('apiKey.index')}}">
+                        <i class="fa fa-tag text-yellow"></i> {{ __('API Key') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('blog.index')}}">
+                        <i class="fa fa-tag text-yellow"></i> {{ __('Blog') }}
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('privacyAndPolicy.index')}}">
+                        <i class="fa fa-tag text-yellow"></i> {{ __('Privacy And Policy') }}
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('termAndCondition.index')}}">
+                        <i class="fa fa-tag text-yellow"></i> {{ __('Term And Condition') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Reports') }}</span>
+                    </a>
+
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('vendorsReport.index') }}">
+                                    {{ __('Vendor Leader Board') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('buyersReport.index') }}">
+                                    {{ __('Buyer Leader Board') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blogsReport.index') }}">
+                                    {{ __('Blog Report') }}
+                                </a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('salesReport.index') }}">
+                                    {{ __('Sales Report') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}

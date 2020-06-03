@@ -23,7 +23,7 @@ class CreateAdminsTable extends Migration
             $table->string('remember_token')->nullable();
  
             $table->string('email');
-            $table->timestamp('updated_at')->nullable();
+            // $table->timestamp('updated_at')->nullable();
         });
     }
 

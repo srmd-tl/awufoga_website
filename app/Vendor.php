@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Vendor extends Model
@@ -22,5 +23,38 @@ class Vendor extends Model
     public function getFullPhoneAttribute()
     {
         return "{$this->country_code} {$this->phone}";
+    }
+    //Relations
+    public function usedCoupons()
+    {
+        return $this->hasMany('App\UsedCoupon');
+    }
+    public function activeCoupons()
+    {
+        return $this->hasMany('App\Coupon')->where('created_at', '>', Carbon::now());
+    }
+    public function expiredCoupons()
+    {
+        return $this->hasMany('App\Coupon')->where('created_at', '<', Carbon::now());
+    }
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category', 'vendor_category', 'vendor_id', 'category_id');
+    }
+
+    public function most()
+    {
+        $data = $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->selectRaw('coupon_id,count(*) as count')
+            ->orderByRaw('count DESC')
+            ->first();
+        $coupon = Coupon::whereId($data->coupon_id)->first();
+        $coupon->category;
+        // dd($data);
+
+        return $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->count();
     }
 }
