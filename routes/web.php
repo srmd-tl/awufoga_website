@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,15 +12,16 @@ use Illuminate\Support\Facades\Route;
 |
  */
 Route::get('/', function () {
+
     return redirect('AYLJAPANEL');
 });
-Route::get('filter' , 'VendorController@index');
+Route::get('filter', 'VendorController@index');
 Route::group(['prefix' => 'AYLJAPANEL'], function () {
 
     Auth::routes();
 
     /*Custom Login*/
-    Route::post('login','AdminController@login')->name('admin.login');
+    Route::post('login', 'AdminController@login')->name('admin.login');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', function () {
@@ -45,10 +45,10 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
 
         //Reports
         Route::group(['prefix' => 'reports'], function () {
-            Route::resource('vendorsReport','VendorReportController');
-            Route::resource('buyersReport','BuyerReportController');
-            Route::resource('blogsReport','BlogReportController');
-            Route::resource('salesReport','SalesReportController');
+            Route::resource('vendorsReport', 'VendorReportController');
+            Route::resource('buyersReport', 'BuyerReportController');
+            Route::resource('blogsReport', 'BlogReportController');
+            Route::resource('salesReport', 'SalesReportController');
         });
     });
 

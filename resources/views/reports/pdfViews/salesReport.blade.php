@@ -4,10 +4,8 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href = "{{asset('argon/css/reports.css')}}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
   
 </head>
 <body style="margin: 15px 0px 0px 0px !important;">
@@ -15,11 +13,11 @@
 <div class="container" >
   <h2 style="margin-top: 20px !important">Basic Table</h2>
   <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
-  <table class="table" style="
+  <table  style="
     table-layout: fixed;
     margin: 30px auto !important;">
     
-    <thead class="thead-light">
+    <thead >
        <tr>
           <th scope="col" style="
            font-size: 12px !important;">Vendor Name</th>

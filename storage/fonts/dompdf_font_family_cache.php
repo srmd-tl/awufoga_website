@@ -93,4 +93,7 @@
     'normal' => $fontDir . '/font-awesome-5-free-normal_2528e79a4331f35662026802e128f807',
     '900' => $fontDir . '/font-awesome-5-free-900_ae1fa70bed0ff54b737524945eb57a01',
   ),
+  'nunito' => array(
+    'normal' => $fontDir . '/nunito-normal_176125b1b6dc4704cbf0390040859779',
+  ),
 ) ?>
