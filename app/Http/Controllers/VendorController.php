@@ -14,6 +14,7 @@ class VendorController extends Controller
      */
     public function index(Request $request)
     {
+       
         $data = [
             "vendors" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 

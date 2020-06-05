@@ -1,46 +1,26 @@
-<!DOCTYPE html>
-<html lang="en" style=" margin: 15px 0px 0px 0px !important;">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  
-</head>
-<body style="margin: 15px 0px 0px 0px !important;">
-
+@extends('layouts.report')
+@section('content')
 <div class="container" >
   <h2 style="margin-top: 20px !important">Basic Table</h2>
   <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
   <table  style="
     table-layout: fixed;
-    margin: 30px auto !important;">
+    margin: 30px auto !important; width: 100%;border-collapse: collapse;">
     
-    <thead >
+
+    <thead class="thead-light" style="background: #e8e8e8;">
        <tr>
-          <th scope="col" style="
-           font-size: 12px !important;">Vendor Name</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Buyer name </th>
-          <th scope="col" style="
-           font-size: 12px !important;">Buyer Mobile No</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Sales Date</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Total Amount</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Cash back %</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Cash back Amount</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Vendor Amount</th>
-          <th scope="col" style="
-           font-size: 12px !important;">AwufOga commission</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Buyer Rating</th>
-          <th scope="col" style="
-           font-size: 12px !important;">Payment Type</th>
+          <th scope="col">Vendor Name</th>
+          <th scope="col">Buyer name </th>
+          <th scope="col">Buyer Mobile No</th>
+          <th scope="col">Sales Date</th>
+          <th scope="col">Total Amount</th>
+          <th scope="col">Cash back %</th>
+          <th scope="col">Cash back Amount</th>
+          <th scope="col">Vendor Amount</th>
+          <th scope="col">AwufOga commission</th>
+          <th scope="col">Buyer Rating</th>
+          <th scope="col">Payment Type</th>
        </tr>
     </thead>
     <tbody>
@@ -101,5 +81,4 @@
   </table>
 </div>
 
-</body>
-</html>
+@endsection

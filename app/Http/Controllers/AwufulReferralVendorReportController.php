@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Vendor;
-use App\Exports\VendorExport;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
-class VendorReportController extends Controller
+use App\Vendor;
+class AwufulReferralVendorReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +13,9 @@ class VendorReportController extends Controller
      */
     public function index()
     {
+        // Vendor::whereHas('referrals',function($query){
+        //     return $query->select('count()')->groupBy('referral_vendor')
+        // })
         $data = [
             "vendors" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 
@@ -67,7 +66,7 @@ class VendorReportController extends Controller
         } elseif (request()->excel) {
             return Excel::download(new VendorExport, 'vendorReport_' . Carbon::now() . '.xlsx');
         }
-        return view('reports.vendorReport', $data);
+        return view('reports.awufulReferralVendorReport', $data);
     }
 
     /**

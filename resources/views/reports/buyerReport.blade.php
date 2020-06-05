@@ -62,7 +62,6 @@
             </div>
             <div class="col-12">
             </div>
-
             <div class="leader-box">
                <div class="row">
                   <div class="col-md-12">
@@ -169,15 +168,16 @@
                            <div class="leader-btn">
                               <a href="" class="search-btn">Search</a>
                               <a href="" class="clear-btn">Clear</a>
-                              <a href="" class="export-btn">Export To PDF</a>
-                              <a href="" class="export-btn">Export To Excel</a>
+                              <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
+                              <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
                            </div>
                         </div>
                      </div>
                   </form>
                 </div>
             </div>
-            </div>
+
+         
             <div class="table_design">
                <div class="table-responsive">
                   <table class="table align-items-center table-flush">
@@ -223,7 +223,7 @@
                             @endphp
                             @if($mostCoupon)
                               @foreach($mostCoupon->categories as $data)
-                              @dd($data)
+              
                               {{$data->id}} {{$data->name}}
                               @endforeach
                             @endif

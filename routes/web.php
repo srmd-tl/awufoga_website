@@ -46,6 +46,7 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
         //Reports
         Route::group(['prefix' => 'reports'], function () {
             Route::resource('vendorsReport', 'VendorReportController');
+            Route::resource('awufulReferralVendorsReport', 'AwufulReferralVendorReportController');
             Route::resource('buyersReport', 'BuyerReportController');
             Route::resource('blogsReport', 'BlogReportController');
             Route::resource('salesReport', 'SalesReportController');

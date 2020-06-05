@@ -21,14 +21,8 @@
          rel = "stylesheet">
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-      
-      <!-- Javascript -->
-      <script>
-         jquery(function() {
-            jquery( "#datepicker" ).datepicker();
-            jquery( "#datepicker" ).datepicker("show");
-         });
-      </script>
+
+
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -37,7 +31,7 @@
             </form>
             @include('layouts.navbars.sidebar')
         @endauth
-        
+
         <div class="main-content">
             @include('layouts.navbars.navbar')
             @yield('content')
@@ -49,10 +43,14 @@
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        
+
         @stack('js')
-        
+          <!-- Argon Datepicker -->
+
+      <script src="{{asset('argon/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
     </body>
 </html>

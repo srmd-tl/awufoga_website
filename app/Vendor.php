@@ -41,6 +41,10 @@ class Vendor extends Model
     {
         return $this->belongsToMany('App\Category', 'vendor_category', 'vendor_id', 'category_id');
     }
+    public function referrals()
+    {
+        return $this->hasMany('App\ReferralHistory','vendor_id')->where('referral_vendor','like','vendor_%');
+    }
 
     public function most()
     {

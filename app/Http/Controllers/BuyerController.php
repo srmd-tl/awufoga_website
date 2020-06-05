@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Buyer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Coupon;
+
 class BuyerController extends Controller
 {
     /**
@@ -60,6 +60,7 @@ class BuyerController extends Controller
 
             Buyer::whereStatus(1)->paginate(20),
         ];
+      
         return view('buyers.index', $data);
 
     }

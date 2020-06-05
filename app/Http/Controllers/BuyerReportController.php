@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Buyer;
+use App\Exports\BuyerExport;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class BuyerReportController extends Controller
 {
@@ -56,8 +60,14 @@ class BuyerReportController extends Controller
                 })
                 ->paginate(20) :
 
-            Buyer::where('id','>=',25)->whereStatus(1)->paginate(20),
+            Buyer::where('id', '>=', 25)->whereStatus(1)->paginate(20),
         ];
+        if (request()->pdf) {
+            $pdf = PDF::loadView('reports.pdfViews.buyerReport', $data);
+            return $pdf->download('buyerReport_' . Carbon::now() . '.pdf');
+        } elseif (request()->excel) {
+            return Excel::download(new BuyerExport, 'buyerReport_' . Carbon::now() . '.xlsx');
+        }
         return view('reports.buyerReport', $data);
     }
 

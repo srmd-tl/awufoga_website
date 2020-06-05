@@ -162,6 +162,11 @@
                                 <a class="nav-link" href="{{ route('vendorsReport.index') }}">
                                     {{ __('Vendor Leader Board') }}
                                 </a>
+                            </li>  
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('awufulReferralVendorsReport.index') }}">
+                                    {{ __('Awuful Referral Vendor Report') }}
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('buyersReport.index') }}">

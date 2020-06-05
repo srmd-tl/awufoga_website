@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\SalesExport;
-use App\UsedCoupon;
-use Carbon\Carbon;
+use App\ReferralHitory;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
 
-class SalesReportController extends Controller
+class ReferralHitoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +14,7 @@ class SalesReportController extends Controller
      */
     public function index()
     {
-        $data = ["sales" => UsedCoupon::paginate()];
-        if (request()->pdf) {
-            $pdf = PDF::loadView('reports.pdfViews.salesReport', $data);
-            return $pdf->download('salesReport_' . Carbon::now() . '.pdf');
-        } elseif (request()->excel) {
-            return Excel::download(new SalesExport, 'salesReport_' . Carbon::now() . '.xlsx');
-        }
-
-        return view('reports.salesReport', $data);
+        //
     }
 
     /**
@@ -53,10 +41,10 @@ class SalesReportController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\ReferralHitory  $referralHitory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ReferralHitory $referralHitory)
     {
         //
     }
@@ -64,10 +52,10 @@ class SalesReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\ReferralHitory  $referralHitory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ReferralHitory $referralHitory)
     {
         //
     }
@@ -76,10 +64,10 @@ class SalesReportController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\ReferralHitory  $referralHitory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ReferralHitory $referralHitory)
     {
         //
     }
@@ -87,10 +75,10 @@ class SalesReportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\ReferralHitory  $referralHitory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ReferralHitory $referralHitory)
     {
         //
     }

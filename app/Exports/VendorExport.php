@@ -1,21 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Exports;
 
 use App\Vendor;
-use App\Exports\VendorExport;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
-class VendorReportController extends Controller
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+
+class VendorExport implements FromView
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function view(): View
     {
         $data = [
             "vendors" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
@@ -61,78 +54,6 @@ class VendorReportController extends Controller
 
             Vendor::whereStatus(1)->paginate(20),
         ];
-        if (request()->pdf) {
-            $pdf = PDF::loadView('reports.pdfViews.vendorReport', $data);
-            return $pdf->download('vendorReport_' . Carbon::now() . '.pdf');
-        } elseif (request()->excel) {
-            return Excel::download(new VendorExport, 'vendorReport_' . Carbon::now() . '.xlsx');
-        }
-        return view('reports.vendorReport', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('reports.pdfViews.vendorReport', $data);
     }
 }

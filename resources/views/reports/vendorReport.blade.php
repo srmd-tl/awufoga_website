@@ -62,6 +62,121 @@
             </div>
             <div class="col-12">
             </div>
+               <div class="leader-box">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="title-leader">
+                        <h3>Buy leader board</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                <div class="col-12">
+                  <form action="">
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">From Date</label>
+                              <input type="text" id="datepicker">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">To Date</label>
+                              <input type="text">
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Category</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Sub Category</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Active Buyer</label>
+                              <select name="" id="">
+                                 <option value="">All</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Order By</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">City</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="buyer-leader-box">
+                              <label for="">Coupon Type</label>
+                              <select name="" id="">
+                                 <option value="">Most Purchasing Buyers</option>
+                                 <option value="">Category 1</option>
+                                 <option value="">Category 2</option>
+                                 <option value="">Category 3</option>
+                                 <option value="">Category 4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="leader-btn">
+                              <a href="" class="search-btn">Search</a>
+                              <a href="" class="clear-btn">Clear</a>
+                              <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
+                              <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+                </div>
+            </div>
+
             <div class="table_design">
                <div class="table-responsive">
                   <table class="table align-items-center table-flush">
@@ -198,60 +313,7 @@
 @push('js')
 <script type="text/javascript">
     $(function(){
-        $(".editVendor").click(function(){
-            var id = $(this).data('id')
-            var username = $(this).data('username')
-            var fullname = $(this).data('fullname')
-            var email = $(this).data('email')
-            var phone = $(this).data('phone')
-            var countrycode = $(this).data('countrycode')
 
-            var businessName = $(this).data('businessname')
-            var businessEmail = $(this).data('businessemail')
-            var businessPhone = $(this).data('businessphone')
-            var businessCountryCode = $(this).data('businesscountrycode')
-            var businessWebsite = $(this).data('businesswebsite')
-            var businessAddress = $(this).data('businessaddress')
-            var longitude = $(this).data('longitude')
-            var latitude = $(this).data('latitude')
-            var correctAddress = $(this).data('correctaddress')
-            var rate = $(this).data('rate')
-            var reviewCount = $(this).data('reviewcount')
-            var firstReferral = $(this).data('firstreferral')
-
-
-            var notification = $(this).data('notification')
-            var image = $(this).data('image')
-            var status = $(this).data('status')
-
-            var route="{{route('vendor.update',':id')}}"
-            route = route.replace(':id',id)
-            $("#editUsername").val(username)
-            $("#editFullname").val(fullname)
-            $("#editEmail").val(email)
-            $("#editPhone").val(phone)
-            $("#editCountryCode").val(countrycode)
-
-            $("#editBusinessName").val(businessName)
-            $("#editBusinessEmail").val(businessEmail)
-            $("#editBusinessPhone").val(businessPhone)
-            $("#editBusinessWebsite").val(businessWebsite)
-            $("#editBusinessAddress").val(businessAddress)
-            $("#editBusinessLongitude").val(longitude)
-            $("#editBusinessLatitude").val(latitude)
-            $("#editBusinessCorrectAddress").val(correctAddress)
-            $("#editRate").val(rate)
-            $("#editReviewCount").val(reviewCount)
-            $("#editFirstReferral").val(firstReferral)
-
-            $("#editNotification").val(notification)
-            $("#editShowImage").attr('src',image)
-            $("#editStatus").val(status)
-            $("#editForm").attr("action",route)
-
-            $("#edit-vendor-form").modal()       
-
-        })
           $(".viewVendor").click(function(){
             var image = "{{asset('storage')}}/"+$(this).data('image')
             $("#viewImage").attr('src',image)
@@ -259,13 +321,6 @@
 
         })
 
-        $(".deleteVendor").click(function(){
-             var id = $(this).data('id')
-             var route="{{route('vendor.destroy',':id')}}"
-             route = route.replace(':id',id)
-             $("#deleteForm").attr("action",route)
-            $("#delete-vendor-form").modal()
-        })
     })
 </script>
 @endpush

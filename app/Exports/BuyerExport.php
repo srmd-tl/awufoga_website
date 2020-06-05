@@ -1,36 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Exports;
 
-use App\Blog;
-use App\Category;
-use App\Exports\BlogExport;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
+use App\Buyer;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class BlogReportController extends Controller
+class BuyerExport implements FromView
 {
-    //
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function view(): View
     {
-        $categories =
-        $data       = [
-            "blogs"      => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
+        $data = [
+            "buyers" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 
-            Blog::when(
+            Buyer::when(
                 (
                     (!is_null(request()->filter) && is_null(request()->statusFilter) || (is_null(request()->filter) && !is_null(request()->statusFilter)))
 
                     && (request()->statusFilter == "0" || request()->statusFilter == "1" || request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive")
-                ), function ($query, $filter) use ($keyType) {
+                ), function ($query, $filter) {
                     $data = request()->filter;
                     if (request()->filter == "Active" || request()->filter == "1" || request()->statusFilter == "1") {
                         $data = 1;
@@ -39,7 +27,7 @@ class BlogReportController extends Controller
                     }
 
                     return $query->whereStatus($data);
-                }, function ($query, $filter) use ($keyType) {
+                }, function ($query, $filter) use ($request) {
                     return $query
                         ->where(function ($query) {
 
@@ -54,22 +42,18 @@ class BlogReportController extends Controller
 
                             return;
                         })
-                        ->where(function ($query) use ($keyType) {
-                            return $query->where("key_type_id", $keyType->id ?? null);
+                        ->where(function ($query) {
+                            return $query->where("full_name", "like", "%" . request()->filter . "%")
+                                ->orWhere('user_name', 'like', "%" . request()->filter . "%")
+                                ->orWhere('email', request()->filter)
+                                ->orWhere('phone', request()->filter);
                         });
 
                 })
                 ->paginate(20) :
 
-            Blog::paginate(20),
-            'categories' => Category::all(),
+            Buyer::where('id', '>=', 25)->whereStatus(1)->paginate(20),
         ];
-        if (request()->pdf) {
-            $pdf = PDF::loadView('reports.pdfViews.blogReport', $data);
-            return $pdf->download('blogReport_' . Carbon::now() . '.pdf');
-        } elseif (request()->excel) {
-            return Excel::download(new BlogExport, 'blogReport_' . Carbon::now() . '.xlsx');
-        }
-        return view('reports.blogReport', $data);
+        return view('reports.pdfViews.buyerReport', $data);
     }
 }

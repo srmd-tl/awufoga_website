@@ -165,7 +165,7 @@
                               <a href="" class="search-btn">Search</a>
                               <a href="" class="clear-btn">Clear</a>
                               <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
-                              <a href="" class="export-btn">Export To Excel</a>
+                              <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
                            </div>
                         </div>
                      </div>

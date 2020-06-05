@@ -1,28 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Exports;
 
 use App\Blog;
 use App\Category;
-use App\Exports\BlogExport;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use PDF;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class BlogReportController extends Controller
+class BlogExport implements FromView
 {
-    //
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function view(): View
     {
-        $categories =
-        $data       = [
+        $data = [
             "blogs"      => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 
             Blog::when(
@@ -64,12 +54,6 @@ class BlogReportController extends Controller
             Blog::paginate(20),
             'categories' => Category::all(),
         ];
-        if (request()->pdf) {
-            $pdf = PDF::loadView('reports.pdfViews.blogReport', $data);
-            return $pdf->download('blogReport_' . Carbon::now() . '.pdf');
-        } elseif (request()->excel) {
-            return Excel::download(new BlogExport, 'blogReport_' . Carbon::now() . '.xlsx');
-        }
-        return view('reports.blogReport', $data);
+        return view('reports.pdfViews.blogReport', $data);
     }
 }
