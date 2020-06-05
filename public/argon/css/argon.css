@@ -13806,6 +13806,24 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 
 /*=========================== custom css // start =================================*/
+.modal-content{
+    width: initial !important;
+}
+
+.close_btn a {
+    display: inline-block;
+    width: 115px;
+    height: 35px;
+    background: #6356c0;
+    line-height: 35px;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.close_btn {
+    text-align: center;
+    margin-top: 20px;
+}
 
 
 

@@ -178,6 +178,10 @@
                                  </tr>
                              </tbody>
                          </table>
+
+                         <div class="close_btn">
+                           <a href="#">Close</a>
+                         </div>
                      </div>
                   </div>
                </div>
