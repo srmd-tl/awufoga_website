@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+
 class Buyer extends Model
 {
     /*Table name*/
@@ -26,7 +26,7 @@ class Buyer extends Model
     //Relations
     public function usedCoupons()
     {
-        return $this->hasMany('App\UsedCoupon','buyer_id');
+        return $this->hasMany('App\UsedCoupon', 'buyer_id');
     }
     public function usedFavCoupons()
     {
@@ -37,7 +37,10 @@ class Buyer extends Model
     {
         return $this->belongsToMany('App\Category', 'vendor_category', 'vendor_id', 'category_id');
     }
-
+    public function referrals()
+    {
+        return $this->hasMany('App\ReferralHistory', 'buyer_id')->where('referral_buyer', 'like', 'buyer_%');
+    }
     public function mostUsedCategories()
     {
         $data = $this->usedCoupons()
@@ -49,7 +52,7 @@ class Buyer extends Model
             $coupon = Coupon::with('categories')->whereId($data->coupon_id)->first();
 
             return $coupon;
-           
+
         }
         return null;
         // dd($data);
@@ -57,7 +60,7 @@ class Buyer extends Model
         return $this->usedCoupons()
             ->groupBy('coupon_id')
             ->count();
-    } 
+    }
     public function mostUsedSubCategories()
     {
         $data = $this->usedCoupons()
@@ -66,10 +69,10 @@ class Buyer extends Model
             ->orderByRaw('count DESC')
             ->first();
         if ($data) {
-            
+
             $coupon = Coupon::with('subcategories')->whereId($data->coupon_id)->first();
             return $coupon;
-           
+
         }
         return null;
         // dd($data);

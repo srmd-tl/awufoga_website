@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Vendor;
+use App\Buyer;
+use App\Exports\AwufulBuyerExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\AwufulVendorExport;
 use PDF;
 
-class AwufulReferralVendorReportController extends Controller
+class AwufulReferralBuyerReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class AwufulReferralVendorReportController extends Controller
     {
         $data = [
 
-            "vendors" => Vendor::
+            "buyers" => Buyer::
                 when(!is_null(request()->fromDate) || !is_null(request()->toDate) || !is_null(request()->filterorderBy), function ($query) {
 
             }
@@ -28,8 +28,8 @@ class AwufulReferralVendorReportController extends Controller
                     return $query->whereHas('referrals')
                         ->with(['referrals' => function ($query) {
                             $query
-                                ->groupBy('referral_vendor', 'vendor_id')
-                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,vendor_id');
+                                ->groupBy('referral_vendor', 'buyer_id')
+                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,buyer_id');
                         }]);
                 })
 
@@ -38,12 +38,12 @@ class AwufulReferralVendorReportController extends Controller
         ];
 
         if (request()->pdf) {
-            $pdf = PDF::loadView('reports.pdfViews.awufulReferralVendorReport', $data);
-            return $pdf->download('awufulReferralVendorReport_' . Carbon::now() . '.pdf');
+            $pdf = PDF::loadView('reports.pdfViews.awufulReferralBuyerReport', $data);
+            return $pdf->download('awufulReferralBuyerReport_' . Carbon::now() . '.pdf');
         } elseif (request()->excel) {
-            return Excel::download(new AwufulVendorExport, 'awufulReferralVendorReport_' . Carbon::now() . '.xlsx');
+            return Excel::download(new AwufulBuyerExport, 'awufulReferralBuyerReport_' . Carbon::now() . '.xlsx');
         }
-        return view('reports.awufulReferralVendorReport', $data);
+        return view('reports.awufulReferralBuyerReport', $data);
     }
 
     /**

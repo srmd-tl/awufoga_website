@@ -13,7 +13,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader mt-3">
-                        <h3>Awuful Vendor Referral Report</h3>
+                        <h3>Awuful Buyer Referral Report</h3>
                      </div>
                   </div>
                </div>
@@ -66,50 +66,51 @@
                   <table class="table align-items-center table-flush">
                  
                      <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Sl No</th>
-                            <th scope="col">Vendor Name</th>
-                            <th scope="col">Vendor  mobile</th>
-                            <th scope="col">Total No Refferal</th>
-                            <th scope="col">Referral Sale Amount</th>
-                            <th scope="col">Earned From Referral</th>
-                            <th>Referral Details</th>
-                        </tr>
+                       <tr>
+                          <th scope="col">Sl No</th>
+                          <th scope="col">Buyer Name</th>
+                          <th scope="col">Buyer  mobile</th>
+                          <th scope="col">Total No Refferal</th>
+                          <th scope="col">Referral Sale Amount</th>
+                          <th scope="col">Earned From Referral</th>
+                          <th>Referral Details</th>
+                      </tr>
                     </thead>
+
                      <tbody>
 
-                        @forelse($vendors as $vendor)
+                        @forelse($buyers as $buyer)
                         <tr>
-                           <td ><a >{{$vendor->id}}</a></td>
-                           <td  ><a >{{$vendor->full_name}}</a></td>
-                           <td>{{$vendor->mobile}}</td>
-                           <td>{{$vendor->phone}}</td>
-                           <td>{{$vendor->created_at}}</td>
+                           <td ><a >{{$buyer->id}}</a></td>
+                           <td  ><a >{{$buyer->full_name}}</a></td>
+                           <td>{{$buyer->mobile}}</td>
+                           <td>{{$buyer->phone}}</td>
+                           <td>{{$buyer->created_at}}</td>
                           
-                           <td>{{$vendor->referrals[0]->earnedFromReferral}}</td>
+                           <td>{{$buyer->referrals[0]->earnedFromReferral}}</td>
                       
-                           <td class="viewVendor" data-image="{{$vendor->image}}" 
-                               data-id="{{$vendor->id}}" 
-                                    data-username="{{$vendor->user_name}}" 
-                                    data-fullname="{{$vendor->full_name}}" 
-                                    data-email="{{$vendor->email}}" 
-                                    data-countrycode="{{$vendor->country_code}}" 
-                                    data-phone="{{$vendor->phone}}" 
-                                    data-businessname="{{$vendor->business_name}}" 
-                                    data-businessemail="{{$vendor->business_email}}" 
-                                    data-businesscountrycode="{{$vendor->business_country_code}}" 
-                                    data-businessphone="{{$vendor->business_phone}}" 
-                                    data-businesswebsite="{{$vendor->website}}" 
-                                    data-businessaddress="{{$vendor->address}}" 
-                                    data-longitude="{{$vendor->longitude}}" 
-                                    data-latitude="{{$vendor->latitude}}" 
-                                    data-correctaddress="{{$vendor->correct_address}}" 
-                                    data-rate="{{$vendor->rate}}" 
-                                    data-reviewcount="{{$vendor->review_count}}" 
-                                    data-firstreferral="{{$vendor->first_referral}}" 
-                                    data-notification="{{$vendor->notification_on_off}}" 
-                                    data-image="{{$vendor->image}}" 
-                                    data-status="{{$vendor->status}}" 
+                           <td class="viewVendor" data-image="{{$buyer->image}}" 
+                               data-id="{{$buyer->id}}" 
+                                    data-username="{{$buyer->user_name}}" 
+                                    data-fullname="{{$buyer->full_name}}" 
+                                    data-email="{{$buyer->email}}" 
+                                    data-countrycode="{{$buyer->country_code}}" 
+                                    data-phone="{{$buyer->phone}}" 
+                                    data-businessname="{{$buyer->business_name}}" 
+                                    data-businessemail="{{$buyer->business_email}}" 
+                                    data-businesscountrycode="{{$buyer->business_country_code}}" 
+                                    data-businessphone="{{$buyer->business_phone}}" 
+                                    data-businesswebsite="{{$buyer->website}}" 
+                                    data-businessaddress="{{$buyer->address}}" 
+                                    data-longitude="{{$buyer->longitude}}" 
+                                    data-latitude="{{$buyer->latitude}}" 
+                                    data-correctaddress="{{$buyer->correct_address}}" 
+                                    data-rate="{{$buyer->rate}}" 
+                                    data-reviewcount="{{$buyer->review_count}}" 
+                                    data-firstreferral="{{$buyer->first_referral}}" 
+                                    data-notification="{{$buyer->notification_on_off}}" 
+                                    data-image="{{$buyer->image}}" 
+                                    data-status="{{$buyer->status}}" 
                               >  
                               <a  >Click To View</a>
                              
@@ -123,7 +124,7 @@
                      </tbody>
                      <tfoot>
                         <tr>
-                           <td>{{$vendors->withQueryString()->links()}}</td>
+                           <td>{{$buyers->withQueryString()->links()}}</td>
                         </tr>
                      </tfoot>
                   </table>
