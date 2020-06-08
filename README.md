@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -78,8 +78,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# awufoga_website
 
-This is AwufOga Website and Admin Panel
->>>>>>> 9feef011c8be6bdd63606977d42711e0f0059845
+# AwufOga_Website
+
+This is for AwufOga Website & Admin Panel Project
+
