@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Arr;
 class Buyer extends Model
 {
     /*Table name*/
@@ -61,8 +61,9 @@ class Buyer extends Model
             ->groupBy('coupon_id')
             ->count();
     }
-    public function mostUsedSubCategories()
+    public function mostUsedSubCategories($categoryId)
     {
+        $categoryIds=Arr::pluck($categoryId,'id');
         $data = $this->usedCoupons()
             ->groupBy('coupon_id')
             ->selectRaw('coupon_id,count(*) as count')
@@ -70,7 +71,9 @@ class Buyer extends Model
             ->first();
         if ($data) {
 
-            $coupon = Coupon::with('subcategories')->whereId($data->coupon_id)->first();
+            $coupon = Coupon::with(['subcategories'=>function($query) use($categoryIds){
+                $query->whereIn('coupon_sub_category.category_id',$categoryIds);
+            }])->whereId($data->coupon_id)->first();
             return $coupon;
 
         }

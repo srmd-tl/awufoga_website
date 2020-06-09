@@ -18,7 +18,7 @@ class SubCategoryController extends Controller
     {
         $category = null;
         if (!is_null(request()->filter)) {
-            $category = Category::where("name","like","%".$request->filter."%")->first();
+            $category = Category::where("name", "like", "%" . $request->filter . "%")->first();
         }
         $data = [
             "subCategories" => !is_null(request()->filter) ?
@@ -32,12 +32,11 @@ class SubCategoryController extends Controller
 
                 return $query->whereStatus($data);
             }, function ($query, $filter) use ($request, $category) {
-            	if($category->id??false)
-            	{
-            		return $query->where("name",'like',"%".$request->filter."%")
-                    ->orWhere("category_id",$category->id);
-            	}
-              return $query->where("name",'like',"%".$request->filter."%");
+                if ($category->id ?? false) {
+                    return $query->where("name", 'like', "%" . $request->filter . "%")
+                        ->orWhere("category_id", $category->id);
+                }
+                return $query->where("name", 'like', "%" . $request->filter . "%");
             })
                 ->paginate(20) :
 
@@ -121,6 +120,16 @@ class SubCategoryController extends Controller
     {
         $subCategory->delete();
         return redirect()->route('subCategory.index')->withSuccess("Sub Category Deleted!");
+    }
+    /**
+     * Subcategories against a category
+     *
+     * @param  \App\Category  $categoryId
+     * @return \Illuminate\Http\Response
+     */
+    public function subCategories(Request $request)
+    {
+        return SubCategory::whereCategoryId($request->categoryId)->get();
     }
     /**
      * Get a validator for an incoming registration request.
