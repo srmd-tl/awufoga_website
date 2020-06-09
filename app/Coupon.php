@@ -30,7 +30,7 @@ class Coupon extends Model
     }
     public function subcategories()
     {
-        return $this->belongsToMany('App\Category', 'coupon_category', 'coupon_id', 'category_id');
+        return $this->belongsToMany('App\SubCategory', 'coupon_sub_category', 'coupon_id', 'sub_category_id');
     }
     public function ratings()
     {

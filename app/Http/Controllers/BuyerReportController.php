@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Buyer;
+use App\Category;
 use App\Exports\BuyerExport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,58 +17,82 @@ class BuyerReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = [
-            "buyers" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
+        $buyers         = null;
+        $buyerMainQuery = Buyer::
+            when($request->fromDate && $request->toDate, function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
 
-            Buyer::when(
-                (
-                    (!is_null(request()->filter) && is_null(request()->statusFilter) || (is_null(request()->filter) && !is_null(request()->statusFilter)))
+                return $query->whereDate('created_at', '>=', $request->fromDate)
+                    ->whereDate('created_at', '<', $request->toDate);
 
-                    && (request()->statusFilter == "0" || request()->statusFilter == "1" || request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive")
-                ), function ($query, $filter) {
-                    $data = request()->filter;
-                    if (request()->filter == "Active" || request()->filter == "1" || request()->statusFilter == "1") {
-                        $data = 1;
-                    } else {
-                        $data = 0;
-                    }
+            });
+        }, function ($query) use ($request) {
 
-                    return $query->whereStatus($data);
-                }, function ($query, $filter) use ($request) {
-                    return $query
-                        ->where(function ($query) {
+            if ($request->fromDate) {
+                $query->whereDate('created_at', '>=', $request->fromDate);
+            } else if ($request->toDate) {
 
-                            if (!is_null(request()->statusFilter)) {
-                                $data = 0;
-                                if (request()->statusFilter == "1") {
-                                    $data = 1;
-                                }
+                $query->whereDate('created_at', '<=', $request->toDate);
+            }
+        })
+        //Status Filter
+            ->where(function ($query) use ($request) {
 
-                                return $query->whereStatus($data);
-                            }
+                $query->whereStatus($request->activeFilter ?? 1);
+            })
+        //Category Filter
+            ->where(function ($query) use ($request) {
+                if (!is_null($request->categoryFilter) && $request->categoryFilter != "All") {
 
-                            return;
-                        })
-                        ->where(function ($query) {
-                            return $query->where("full_name", "like", "%" . request()->filter . "%")
-                                ->orWhere('user_name', 'like', "%" . request()->filter . "%")
-                                ->orWhere('email', request()->filter)
-                                ->orWhere('phone', request()->filter);
+                    $query->whereHas('usedCoupons', function ($innserQuery) use ($request) {
+
+                        $innserQuery->whereHas('coupon', function ($mostInnerQuery) use ($request) {
+                            $mostInnerQuery->whereHas('categories', function ($couponCategoryQuery) use ($request) {
+                                $couponCategoryQuery->whereCategoryId($request->categoryFilter);
+
+                            });
                         });
+                    });
+                }
 
-                })
-                ->paginate(20) :
+            });
 
-            Buyer::where('id', '>=', 25)->whereStatus(1)->paginate(20),
+        //Order By Filter
+        if ($request->orderByFilter == "mostPurchasing") {
+
+            $buyers = $buyerMainQuery->select('buyer.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where buyer.id = used_coupon.buyer_id)  as sort'))
+                ->orderBy('sort', 'desc');
+
+        } else if ($request->orderByFilter == "leastPurchasing") {
+            $buyers = $buyerMainQuery->select('buyer.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where buyer.id = used_coupon.buyer_id)  as sort'))
+                ->orderBy('sort', 'asc');
+
+        } else if ($request->orderByFilter == "highestWallet") {
+            $buyers = $buyerMainQuery->select('buyer.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where buyer.id = used_coupon.buyer_id)  as sort'))
+                ->orderBy('sort', 'desc');
+
+        } else if ($request->orderByFilter == "lowestWallet") {
+            $buyers = $buyerMainQuery->select('buyer.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where buyer.id = used_coupon.buyer_id)  as sort'))
+                ->orderBy('sort', 'asc');
+        } else {
+            $buyers = $buyerMainQuery;
+        }
+        //Enwrapping Data
+        $data =
+            [
+            "buyers"     => $buyers->paginate(20),
+            "categories" => Category::all(),
         ];
+        //Report Type Check
         if (request()->pdf) {
             $pdf = PDF::loadView('reports.pdfViews.buyerReport', $data);
             return $pdf->download('buyerReport_' . Carbon::now() . '.pdf');
         } elseif (request()->excel) {
             return Excel::download(new BuyerExport, 'buyerReport_' . Carbon::now() . '.xlsx');
         }
+
         return view('reports.buyerReport', $data);
     }
 
@@ -134,6 +159,6 @@ class BuyerReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

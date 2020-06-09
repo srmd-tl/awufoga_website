@@ -55,3 +55,7 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
     });
 
 });
+/*Ajax Routes*/
+Route::group(['prefix' => 'ajax','middleware'=>['auth:admin']], function () {
+    Route::get('subCategories/{categoryId}', 'SubCategoryController@subCategories')->name('filter.subcategory');
+});

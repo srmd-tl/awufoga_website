@@ -7,175 +7,115 @@
    <div class="row">
       <div class="col">
          <div class="card shadow">
-            <div class="card-header border-0">
-               <div class="row align-items-center">
-                  <div class="col-12">
-                     <div class="categories-detail">
-                        <h3 class="mb-0">Vendors</h3>
-                        <div class="btn_style1">
-                           <a href="{{route('vendor.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
-                           
-                          
-                           
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12">
-                     <div class="Search_item">
-                          <!-- <form method="GET" action="{{route('vendor.index')}}" class="mr-2">
-                           <div class="form-group">
-                                 <button value="1" class="btn btn-sm btn-primary" name="statusFilter">Active Search</button>
-                                 <button value="0" class="btn btn-sm btn-primary" name="statusFilter">Inactive Search</button>
-                           </div>
-                           </form> -->
-                        <form action="{{route('vendor.index')}}">
-                           <div class="select_option">
-                              <select name="statusFilter">
-                                 <option {{request()->statusFilter=='1'?'selected':''}} value="1">Active</option>
-                                 <option {{request()->statusFilter=='0'?'selected':''}} value="0">Inactive</option>
-                              </select>
-                           </div>
-                           <div class="form-group">
-                               <div class="input-group">
-                                 <div class="input-group-prepend">
-                                   <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-                                 </div>
-                                 
-                                <!--  @if(isset(request()->statusFilter))
-                                 <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
-                                 @endif -->
-                                 <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
-
-                                 <datalist id="filters">
-                                     <option value="Active">
-                                     <option value="Inactive">
-                                   </datalist>
-                               </div>
-                               <button class="btn btn-sm btn-primary" >Search</button>
-                           </div>
-                        </form>
-
-                     </div>
-                     
-                  </div>
-               </div>
-            </div>
-            <div class="col-12">
-            </div>
-               <div class="leader-box">
+         
+            <div class="leader-box mt-5">
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader">
-                        <h3>Buy leader board</h3>
+                        <h3>Vendor leader board</h3>
                      </div>
                   </div>
                </div>
-               <div class="row">
-                <div class="col-12">
-                  <form action="">
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">From Date</label>
-                              <input type="text" id="datepicker">
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">To Date</label>
-                              <input type="text">
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Category</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Sub Category</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Active Buyer</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Order By</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">City</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Coupon Type</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="leader-btn">
-                              <a href="" class="search-btn">Search</a>
-                              <a href="" class="clear-btn">Clear</a>
-                              <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
-                              <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
-                           </div>
-                        </div>
-                     </div>
-                  </form>
+           <div class="row">
+                  <div class="col-12">
+                    <form action="{{route('buyersReport.index')}}" method="GET">
+                       <div class="row">
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">From Date</label>
+                                <input type="text" class="datepicker" name="fromDate">
+                             </div>
+                          </div>
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">To Date</label>
+                                <input type="text" class="datepicker" name="toDate">
+                             </div>
+                          </div>
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">Category</label>
+                                <select name="categoryFilter">
+                                  <option value="All">All</option>
+                                 @forelse($categories as $category)
+                                   <option {{request()->categoryFilter==$category->id?'selected':null}} value="{{$category->id}}">{{$category->name}}</option>
+                                 @empty
+                                 @endforelse
+                                </select>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">Sub Category</label>
+                                <select name="subCategoryFilter">
+                                   
+                                </select>
+                             </div>
+                          </div>
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">Active Vendor</label>
+                                <select name="activeFilter" >
+                                   <option value="1">Yes</option>
+                                   <option value="0">No</option>
+                                 
+                                </select>
+                             </div>
+                          </div>
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">Order By</label>
+                                <select name="orderByFilter">
+                                    <option {{request()->orderByFilter=="mostPurchasing"?'selected':null}} value="mostPurchasing">Most Selling Vendor</option>
+                                    <option {{request()->orderByFilter=="leastPurchasing"?'selected':null}} value="leastPurchasing">Least Selling Vendor</option>
+                                    <option {{request()->orderByFilter=="highestWallet"?'selected':null}} value="highestWallet">Highest Wallet Point</option>
+                                    <option {{request()->orderByFilter=="lowestWallet"?'selected':null}} value="lowestWallet">Lowest Wallet Point</option>
+                                </select>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">City</label>
+                                <select name="" id="">
+                                   <option value="">Most Purchasing Buyers</option>
+                                   <option value="">Category 1</option>
+                                   <option value="">Category 2</option>
+                                   <option value="">Category 3</option>
+                                   <option value="">Category 4</option>
+                                </select>
+                             </div>
+                          </div>
+                          <div class="col-md-4">
+                             <div class="buyer-leader-box">
+                                <label for="">Coupon Type</label>
+                                <select name="" id="">
+                                   <option value="">Most Purchasing Buyers</option>
+                                   <option value="">Category 1</option>
+                                   <option value="">Category 2</option>
+                                   <option value="">Category 3</option>
+                                   <option value="">Category 4</option>
+                                </select>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-md-12">
+                             <div class="leader-btn">
+                                <button  class="search-btn">Search</button>
+                                <a href="" class="clear-btn">Clear</a>
+                                <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
+                                <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
+                             </div>
+                          </div>
+                       </div>
+                    </form>
+                  </div>
                 </div>
-            </div>
+
 
             <div class="table_design">
                <div class="table-responsive">
