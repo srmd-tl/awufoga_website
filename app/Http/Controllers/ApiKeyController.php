@@ -50,7 +50,18 @@ class ApiKeyController extends Controller
                             return;
                         })
                         ->where(function ($query)  use ($keyType) {
-                            return $query->where("key_type_id",  $keyType->id??null);
+                                if(isset($keyType))
+                                {
+                                    return $query->where("key_type_id",  $keyType->id);
+                                }
+                                else
+                                {
+                                    return $query->where("description",'like','%'.request()->filter.'%')
+                                                ->orWhere("key",request()->filter)
+                                                ->orWhere("value",request()->filter);
+                                }
+                         
+                            ;
                         });
 
                 })

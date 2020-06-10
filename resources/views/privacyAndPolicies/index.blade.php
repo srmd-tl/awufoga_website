@@ -11,9 +11,9 @@
                <div class="row align-items-center">
                   <div class="col-12">
                      <div class="categories-detail">
-                        <h3 class="mb-0">Term And Condition</h3>
-                        <div class="btn_style1">
-                           <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form">Add TermAndCondition</a>
+                        <h3 class="mb-0">Privacy And Policy</h3>
+                        <div class="btn_style12">
+                           <a href="" class="btn btn-sm btn-primary " data-toggle="modal" data-target="#modal-form">Add New Privacy And Policy</a>
                            <a href="{{route('privacyAndPolicy.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
                         </div>
                      </div>
@@ -128,7 +128,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Add new privacyAndPolicy</small>
+                           <small>Add new Privacy And Policy</small>
                         </div>
                         <form role="form" method="POST" action="{{route('privacyAndPolicy.store')}}" enctype="multipart/form-data">
                            @csrf
@@ -146,7 +146,7 @@
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
-                                 <input class="form-control" placeholder="Description" type="text" name="description">
+                                 <textarea class="form-control" placeholder="Description" type="text" name="description"></textarea>
                               </div>
                            </div>
 
@@ -165,7 +165,7 @@
                               </div>
                            </div>
                            <div class="text-center">
-                              <button type="submit" class="btn btn-primary my-4">Add TermAndCondition</button>
+                              <button type="submit" class="btn btn-primary my-4">Add Privacy And Policy</button>
                            </div>
                         </form>
                      </div>
@@ -185,7 +185,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Edit TermAndCondition</small>
+                           <small>Edit Privacy And Policy</small>
                         </div>
                         <form role="form" method="POST" id="editForm"  enctype="multipart/form-data">
                            @csrf
@@ -206,7 +206,7 @@
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
-                                 <input class="form-control" placeholder="Description" type="text" name="description" id="editDescription">
+                                 <textarea class="form-control" placeholder="Description" type="text" name="description" id="editDescription"></textarea>
                               </div>
                            </div>
                         
@@ -222,7 +222,7 @@
                               </div>
                            </div>
                            <div class="text-center">
-                              <button type="submit" class="btn btn-primary my-4">Update TermAndCondition</button>
+                              <button type="submit" class="btn btn-primary my-4">Update Privacy And Policy</button>
                            </div>
                         </form>
                      </div>
@@ -251,7 +251,7 @@
                             <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control" >Are You Sure You Want To Delete This TermAndCondition?</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Delete This Privacy And Policy?</label>
                               </div>
                             </div>
                            
@@ -315,7 +315,7 @@
             var route="{{route('privacyAndPolicy.update',':id')}}"
             route = route.replace(':id',id)
             $("#editTitle").val(title)
-            $("#editDescription").val(description)
+            $("#editDescription").text(description)
             $("#editStatus").val(status)
             $("#editForm").attr("action",route)
 

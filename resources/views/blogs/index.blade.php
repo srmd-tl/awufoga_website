@@ -65,7 +65,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Body</th>
                         <th scope="col">Category</th>
-                        <!-- <th scope="col">Status</th> -->
+                        <th scope="col">Status</th>
                         <th scope="col"></th>
                      </tr>
                   </thead>
@@ -77,11 +77,11 @@
                         <td >{{$blog->body}}</td>
                         <td >{{$blog->category->name}}</td>
                        
-              <!--           <td>
+                        <td>
 
                            <span class="badge badge-{{$blog->status==1?'success':'danger'}}">{{$blog->status==1?'Active':'Inactive'}}</span>
                            
-                        </td -->
+                        </td>
                         <td class="text-right">
                            <div class="dropdown">
                               <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,6 +92,7 @@
                                  <button class="dropdown-item editBlog" 
                                  data-id="{{$blog->id}}"
                                   data-title="{{$blog->title}}" 
+                                  data-category="{{$blog->category->id}}" 
                                   data-body="{{$blog->body}}" 
                                      data-image="{{$blog->image}}" 
                                   data-status="{{$blog->status}}" >Edit</button>
@@ -162,7 +163,7 @@
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
-                                 <input class="form-control" placeholder="Body" type="text" name="body">
+                                 <textarea class="form-control" placeholder="Body" type="text" name="body"></textarea> 
                               </div>
                            </div>
 
@@ -177,7 +178,7 @@
                               
              
                         
-                       <!--     <div class="form-group">
+                           <div class="form-group">
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -187,7 +188,7 @@
                                     <option value="0">Inactive</option>
                                  </select>
                               </div>
-                           </div> -->
+                           </div>
                            <div class="text-center">
                               <button type="submit" class="btn btn-primary my-4">Add Blog</button>
                            </div>
@@ -214,37 +215,36 @@
                         <form role="form" method="POST" id="editForm"  enctype="multipart/form-data">
                            @csrf
                            @method('PUT')
-                      
-                           <div class="form-group">
+                            <div class="form-group">
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                  </div>
-                           
+                                 <select class="form-control" name="categoryId" id="editCategory"> 
+                                    @forelse($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @empty
+                                    @endforelse
+                                   
+                                 </select>
                               </div>
                            </div>
+                       
                            <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
-                                 <input class="form-control" placeholder="Key" type="text" name="key" id="editKey">
+                                 <input class="form-control" placeholder="Title" type="text" name="title" id="editTitle">
                               </div>
                            </div>
+                         
                             <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
-                                 <input class="form-control" placeholder="Value" type="text" name="value" id="editValue">
-                              </div>
-                           </div>
-                            <div class="form-group mb-3">
-                              <div class="input-group input-group-merge input-group-alternative">
-                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                 </div>
-                                 <input class="form-control" placeholder="Description" type="text" name="description" id="editDescription">
+                                 <textarea class="form-control" placeholder="Description" type="text" name="body" id="editDescription"></textarea>
                               </div>
                            </div>
                         
@@ -286,10 +286,10 @@
                         <form role="form" method="POST" id="deleteForm">
                            @csrf
                            @method('DELETE')
-                            <div class="form-group mb-3">
+                            <div class="form-group">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control" >Are You Sure You Want To Delete This Blog?</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Delete This Blog?</label>
                               </div>
                             </div>
                            
@@ -345,19 +345,21 @@
 <script type="text/javascript">
     $(function(){
         $(".editBlog").click(function(){
-            var id = $(this).data('id')
-            var key = $(this).data('key')
-            var value = $(this).data('value')
-            var keytype = $(this).data('keytype')
-            var description = $(this).data('description')
-            var status = $(this).data('status')
 
+
+            var title = $(this).data('title')
+
+            var description = $(this).data('body')
+            var status = $(this).data('status')
+            var category = $(this).data('category')
+            var id  =$(this).data('id')
             var route="{{route('blog.update',':id')}}"
             route = route.replace(':id',id)
-            $("#editKey").val(key)
-            $("#editValue").val(value)
-            $("#editDescription").val(description)
-            $("#ediKeyTypeId").val(keytype)
+     
+            $("#editTitle").val(title)
+            $("#editCategory").val(category)
+            $("#editDescription").text(description)
+   
             $("#editStatus").val(status)
             $("#editForm").attr("action",route)
 

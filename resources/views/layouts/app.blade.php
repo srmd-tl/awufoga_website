@@ -7,7 +7,7 @@
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Argon Dashboard') }}</title>
+        <title>{{ config('app.name', 'Awufoga Dashboard') }}</title>
         <!-- Favicon -->
         <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
         <!-- Fonts -->
@@ -38,7 +38,7 @@
         </div>
 
         @guest()
-            @include('layouts.footers.guest')
+            <!-- @include('layouts.footers.guest') -->
         @endguest
 
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
@@ -51,6 +51,14 @@
 
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+        <!-- Custom Script To Turnf Off Autocomplete -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $( document ).on( 'focus', ':input', function(){
+                    $( this ).attr( 'autocomplete', 'off' );
+                });
+            });
+        </script>
 
     </body>
 </html>

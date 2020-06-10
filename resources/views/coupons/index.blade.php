@@ -7,143 +7,182 @@
    <div class="row">
       <div class="col">
          <div class="card shadow">
-            <div class="card-header border-0">
-               <div class="row align-items-center">
-                  <div class="col-12">
-                     <div class="categories-detail">
-                        <h3 class="mb-0">Coupons</h3>
-                        <div class="btn_style1">
-                           <a href="{{route('coupon.index')}}" class="btn btn-sm btn-primary">Clear Search</a>
-                           
-       
-                           
+            <div class="leader-box mt-5">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="title-leader">
+                           <h3>Coupons</h3>
                         </div>
                      </div>
                   </div>
-                  <div class="col-12">
-                     <div class="Search_item">
-                          <!-- <form method="GET" action="{{route('coupon.index')}}" class="mr-2">
-                           <div class="form-group">
-                                 <button value="1" class="btn btn-sm btn-primary" name="statusFilter">Active Search</button>
-                                 <button value="0" class="btn btn-sm btn-primary" name="statusFilter">Inactive Search</button>
-                           </div>
-                           </form> -->
-                        <form action="{{route('coupon.index')}}">
-                           <div class="select_option">
-                              <select name="statusFilter">
-                                 <option {{request()->statusFilter=='1'?'selected':''}} value="1">Active</option>
-                                 <option {{request()->statusFilter=='0'?'selected':''}} value="0">Inactive</option>
-                              </select>
-                           </div>
-                           <div class="form-group">
-                               <div class="input-group">
-                                 <div class="input-group-prepend">
-                                   <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
-                                 </div>
-                                 
-                                <!--  @if(isset(request()->statusFilter))
-                                 <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
-                                 @endif -->
-                                 <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
-
-                                 <datalist id="filters">
-                                     <option value="Active">
-                                     <option value="Inactive">
-                                   </datalist>
-                               </div>
-                               <button class="btn btn-sm btn-primary" >Search</button>
-                           </div>
-                        </form>
-
-                     </div>
-                     
-                  </div>
-               </div>
-            </div>
-            <div class="col-12">
-            </div>
-            <div class="table_design">
-               <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
-                     <thead class="thead-light">
-                        <tr>
-                           <th scope="col">Coupon Name</th>
-                           <th scope="col">Coupon Type</th>
-                           <th scope="col">Vendor</th>
-                           <th scope="col">Discount</th>
-                           <th scope="col">From Date</th>
-                           <th scope="col">To Date</th>
-                           <th scope="col">Status</th>
-                           <th scope="col">Is Featured</th>
-                    
-                           <th scope="col"></th>
-                        </tr>
-                     </thead>
-                     <tbody>
-
-                        @forelse($coupons as $coupon)
-                        <tr>
-                           <td  class="viewCoupon" data-image="{{$coupon->images}}">{{$coupon->title}}</td>
-                           <td>{{$coupon->coupon_type==1?'Discount':'Cash Back'}}</td>
-                           <td>{{$coupon->vendor->full_name}}</td>
-                           <td>{{$coupon->discount}}</td>
-                           <td>{{$coupon->start_date}}</td>
-                           <td>{{$coupon->end_date}}</td>
-                           <td>
-                              <span class="badge badge-{{$coupon->status==1?'success':'danger'}}">{{$coupon->status==1?'Accepted':'Rejected'}}</span>
-                           </td>
-                             <td>
-                              <span class="badge badge-{{$coupon->featured==1?'success':'danger'}}">{{$coupon->featured==1?'Yes':'No'}}</span>
-                           </td>
-                     
-                           <td class="text-right">
-                              <div class="dropdown">
-                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <i class="fas fa-ellipsis-v"></i>
-                                 </a>
-                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                 
-                                    <button class="dropdown-item editCoupon" 
-                                    data-id="{{$coupon->id}}" 
-                                    data-title="{{$coupon->title}}" 
-                                    data-description="{{$coupon->description}}" 
-                                    data-start_date="{{$coupon->start_date}}" 
-                                    data-enddate="{{$coupon->end_date}}" 
-                                    data-discount="{{$coupon->discount}}" 
-                                    data-vendor="{{$coupon->vendor->id}}" 
-                                    data-image="{{$coupon->images}}" 
-                                    data-status="{{$coupon->status}}" 
-                                    data-featured="{{$coupon->featured}}" 
-                                    data-longitude="{{$coupon->longitude}}" 
-                                    data-latitude="{{$coupon->latitude}}" 
-                                    data-terms="{{$coupon->terms}}" 
-                                    data-offertype="{{$coupon->offer_type}}" 
+                  <div class="row">
+                     <div class="col-12">
+                       <form action="{{route('coupon.index')}}" method="GET">
+                          <div class="row">
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">From Date</label>
+                                   <input type="text" class="datepicker" name="fromDate" value="{{request()->fromDate??null}}">
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">To Date</label>
+                                   <input type="text" class="datepicker" name="toDate" value="{{request()->toDate??null}}">
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Is Favourite</label>
+                                   <input type="checkbox" name="isFavouriteFilter" {{request()->isFavouriteFilter?'checked=""':''}}>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Coupon Name</label>
+                                   <input type="text" name="nameFilter" value="{{request()->nameFilter??null}}">
+                                      
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Coupon Type</label>
+                                   <select name="typeFilter" >
+                                      <option value="1">Yes</option>
+                                      <option value="0">No</option>
                                     
-                                    >Edit</button>
-                                    <button class="dropdown-item deleteCoupon" data-id="{{$coupon->id}}" >Delete</button>
-                                    <button class="dropdown-item acceptCoupon" data-id="{{$coupon->id}}" >Accept</button>
-                                    <button class="dropdown-item rejectCoupon" data-id="{{$coupon->id}}" >Reject</button>
-                                 </div>
-                              </div>
-                           </td>
-                        </tr>
-                        @empty
-                        <tr>
-                           <td>Nothing Found!</td>
-                        </tr>
-                        @endforelse
-                     </tbody>
-                     <tfoot>
-                        <tr>
-                           <td>{{$coupons->withQueryString()->links()}}</td>
-                        </tr>
-                     </tfoot>
-                  </table>
-               </div>
-            </div>
-            <div class="card-footer py-4">
-               <nav class="d-flex justify-content-end" aria-label="...">
-               </nav>
+                                   </select>
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Discount %</label>
+                                   <input type="text" name="discountFilter" value="{{request()->discountFilter??null}}">
+                                </div>
+                             </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Is Active</label>
+                                   <select name="activeFilter" >
+                                      <option {{request()->activeFilter=="1"?'selected':null}} value="1">Yes</option>
+                                      <option {{request()->activeFilter=="0"?'selected':null}} value="0">No</option>
+                                    
+                                   </select>
+                                </div>
+                             </div>
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Description</label>
+                                    <textarea name="descriptionFilter" value="{{request()->descriptionFilter??null}}"></textarea>
+                                </div>
+                             </div>
+                              <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Terms & Conditions</label>
+                                    <textarea name="termsFilter" value="{{request()->termsFilter??null}}"></textarea>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="row">
+                             <div class="col-md-12">
+                                <div class="leader-btn">
+                                   <button  class="search-btn">Search</button>
+                                   <a href="{{route('coupon.index')}}" class="clear-btn">Clear</a>
+                      
+                                </div>
+                             </div>
+                          </div>
+                       </form>
+                     </div>
+                  </div >
+
+                  <div class="table_design">
+                     <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                           <thead class="thead-light">
+                              <tr>
+                                 <th scope="col">Coupon Name</th>
+                                 <th scope="col">Coupon Type</th>
+                                 <th scope="col">Vendor</th>
+                                 <th scope="col">Discount</th>
+                                 <th scope="col">From Date</th>
+                                 <th scope="col">To Date</th>
+                                 <th scope="col">Status</th>
+                                 <th scope="col">Is Featured</th>
+                          
+                                 <th scope="col"></th>
+                              </tr>
+                           </thead>
+                           <tbody>
+
+                              @forelse($coupons as $coupon)
+                              <tr>
+                                 <td  class="viewCoupon" data-image="{{$coupon->images}}" data-description="{{$coupon->description}}" data-term="{{$coupon->terms}}">{{$coupon->title}}</td>
+                                 <td>{{$coupon->coupon_type==1?'Discount':'Cash Back'}}</td>
+                                 <td>{{$coupon->vendor->full_name}}</td>
+                                 <td>{{$coupon->discount}}</td>
+                                 <td>{{$coupon->start_date}}</td>
+                                 <td>{{$coupon->end_date}}</td>
+                                 <td>
+                                    <span class="badge badge-{{$coupon->status==1?'success':'danger'}}">{{$coupon->status==1?'Accepted':'Rejected'}}</span>
+                                 </td>
+                                   <td>
+                                    <span class="badge badge-{{$coupon->featured==1?'success':'danger'}}">{{$coupon->featured==1?'Yes':'No'}}</span>
+                                 </td>
+                           
+                                 <td class="text-right">
+                                    <div class="dropdown">
+                                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       <i class="fas fa-ellipsis-v"></i>
+                                       </a>
+                                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                       
+                                          <button class="dropdown-item editCoupon" 
+                                          data-id="{{$coupon->id}}" 
+                                          data-title="{{$coupon->title}}" 
+                                          data-description="{{$coupon->description}}" 
+                                          data-start_date="{{$coupon->start_date}}" 
+                                          data-enddate="{{$coupon->end_date}}" 
+                                          data-discount="{{$coupon->discount}}" 
+                                          data-vendor="{{$coupon->vendor->id}}" 
+                                          data-image="{{$coupon->images}}" 
+                                          data-status="{{$coupon->status}}" 
+                                          data-featured="{{$coupon->featured}}" 
+                                          data-longitude="{{$coupon->longitude}}" 
+                                          data-latitude="{{$coupon->latitude}}" 
+                                          data-terms="{{$coupon->terms}}" 
+                                          data-offertype="{{$coupon->offer_type}}" 
+                                          
+                                          >Edit</button>
+                                          <button class="dropdown-item deleteCoupon" data-id="{{$coupon->id}}" >Delete</button>
+                                          <button class="dropdown-item acceptCoupon" data-id="{{$coupon->id}}" >Approve</button>
+                                          <button class="dropdown-item rejectCoupon" data-id="{{$coupon->id}}" >Reject</button>
+                                       </div>
+                                    </div>
+                                 </td>
+                              </tr>
+                              @empty
+                              <tr>
+                                 <td>Nothing Found!</td>
+                              </tr>
+                              @endforelse
+                           </tbody>
+                           <tfoot>
+                              <tr>
+                                 <td>{{$coupons->withQueryString()->links()}}</td>
+                              </tr>
+                           </tfoot>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="card-footer py-4">
+                     <nav class="d-flex justify-content-end" aria-label="...">
+                     </nav>
+                  </div>
             </div>
          </div>
       </div>
@@ -171,7 +210,7 @@
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                        </div>
-                                       <input class="form-control" placeholder="Coupon Username" type="text" name="title" id="editTitle">
+                                       <textarea class="form-control" placeholder="Coupon Username" type="text" name="title" id="editTitle"></textarea>
                                     </div>
                                  </div>
                               </div>
@@ -181,7 +220,7 @@
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                        </div>
-                                       <input class="form-control" placeholder="Coupon Full Name" type="text" name="description" id="editDescription">
+                                       <textarea class="form-control" placeholder="Coupon Full Name" type="text" name="description" id="editDescription"></textarea>
                                     </div>
                                  </div>
                               </div>
@@ -366,7 +405,7 @@
                             <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control" >Are You Sure You Want To Delete This Coupon?</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Delete This Coupon?</label>
                               </div>
                             </div>
                            
@@ -505,8 +544,8 @@
             console.log(images)
             var route="{{route('coupon.update',':id')}}"
             route = route.replace(':id',id)
-            $("#editTitle").val(title)
-            $("#editDescription").val(description)
+            $("#editTitle").text(title)
+            $("#editDescription").text(description)
             $("#editStartDate").val(start_date)
             $("#editDiscount").val(discount)
             $("#editEndDate").val(enddate)
@@ -524,11 +563,14 @@
         })
           $(".viewCoupon").click(function(){
             var images = $(this).data('image')
-            console.log(images);
+          
             $("#imageDiv").html("")
             $.each(images,function(key,value){
                $("#imageDiv").append('<img src='+value.image+'>')
             })
+
+            $("#imageDiv").append('<textarea class="form-control">'+$(this).data('description')+'</textarea>')
+            $("#imageDiv").append('<textarea class="form-control">'+$(this).data('terms')+'</textarea>')
 
   
             $("#view-category-form").modal()       

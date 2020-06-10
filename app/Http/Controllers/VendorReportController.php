@@ -20,7 +20,7 @@ class VendorReportController extends Controller
     public function index(Request $request)
     {
         $vendors        = null;
-        $buyerMainQuery = Vendor::
+        $vendorMainQuery = Vendor::
             when($request->fromDate && $request->toDate, function ($query) use ($request) {
             $query->where(function ($query) use ($request) {
 
@@ -62,22 +62,22 @@ class VendorReportController extends Controller
         //Order By Filter
         if ($request->orderByFilter == "mostPurchasing") {
 
-            $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
+            $vendors = $vendorMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.vendor_id)  as sort'))
                 ->orderBy('sort', 'desc');
 
         } else if ($request->orderByFilter == "leastPurchasing") {
-            $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
+            $vendors = $vendorMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.vendor_id)  as sort'))
                 ->orderBy('sort', 'asc');
 
         } else if ($request->orderByFilter == "highestWallet") {
-            $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
+            $vendors = $vendorMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.vendor_id)  as sort'))
                 ->orderBy('sort', 'desc');
 
         } else if ($request->orderByFilter == "lowestWallet") {
-            $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
+            $vendors = $vendorMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.vendor_id)  as sort'))
                 ->orderBy('sort', 'asc');
         } else {
-            $vendors = $buyerMainQuery;
+            $vendors = $vendorMainQuery;
         }
         //Enwrapping Data
         $data =

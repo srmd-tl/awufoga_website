@@ -11860,8 +11860,9 @@ textarea[resize='horizontal'] {
     letter-spacing: .05px;
     text-transform: uppercase;
 }
+
 .navbar-horizontal .navbar-brand img {
-    height: 30px;
+    height: 70px;
 }
 .navbar-horizontal .navbar-dark .navbar-brand {
     color: #fff;
@@ -12291,9 +12292,9 @@ textarea[resize='horizontal'] {
         padding-bottom: 1rem;
         text-align: center;
     }
-    .navbar-vertical.navbar-expand-md .navbar-brand-img {
-        max-height: 2.5rem;
-    }
+   .navbar-vertical.navbar-expand-md .navbar-brand-img {
+    max-height: 4.5rem;
+}
     .navbar-vertical.navbar-expand-md .navbar-user {
         margin-right: -1.5rem;
         margin-left: -1.5rem;
@@ -13931,7 +13932,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 }
 
 .btn_style12 a:first-child {
-    width: 135px;
+    width: 200px;
 }
 
 /*================== table style // start ==========================*/
@@ -14112,7 +14113,7 @@ input:focus , select:focus {
     margin-top: 15px;
 }
 .btn_style12 a:first-child {
-    width: 120px;
+    width: 220px;
 }
 
 }
@@ -14141,6 +14142,17 @@ input:focus , select:focus {
   cursor: pointer;  
 }
 
+.viewCoupon:hover
+{
+     color:blue;
+  cursor: pointer;  
+}
+
+.viewBlog:hover
+{
+     color:blue;
+  cursor: pointer;  
+}
 
 
 
@@ -14154,3 +14166,8 @@ input:focus , select:focus {
 
 
 
+
+
+input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset !important;
+      }

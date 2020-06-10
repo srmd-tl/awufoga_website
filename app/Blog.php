@@ -20,4 +20,9 @@ class Blog extends Model
     {
         return $this->belongsTo('App\Category');
     }
+    //Relations
+    public function blogDetail()
+    {
+        return $this->hasOne('App\BlogDetail');
+    }
 }
