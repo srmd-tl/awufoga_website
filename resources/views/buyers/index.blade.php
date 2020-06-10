@@ -44,12 +44,8 @@
                                 <!--  @if(isset(request()->statusFilter))
                                  <input type="hidden" name="statusFilter" value="{{request()->statusFilter}}">
                                  @endif -->
-                                 <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
+                                 <input class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
 
-                                 <datalist id="filters">
-                                     <option value="Active">
-                                     <option value="Inactive">
-                                   </datalist>
                                </div>
                                <button class="btn btn-sm btn-primary" >Search</button>
                            </div>

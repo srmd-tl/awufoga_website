@@ -26,13 +26,9 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
                               </div>
-                              <input list="filters" class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
+                              <input class="form-control" placeholder="Search" type="text" name="filter" value="{{request()->filter}}">
 
-                              <datalist id="filters">
-                                  <option value="Active">
-                                  <option value="Inactive">
-                         
-                                </datalist>
+                     
                             </div>
                             <button class="btn btn-sm btn-primary" >Search</button>
                            </div>
