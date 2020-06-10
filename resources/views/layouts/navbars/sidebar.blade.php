@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="{{ asset('logo.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -85,17 +85,17 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                        <i class="fa fa-user-secret" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('Admin Area') }}</span>
                     </a>
 
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                           <!--  <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
                                     {{ __('User profile') }}
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.index') }}">
                                     {{ __('User Management') }}
@@ -131,32 +131,33 @@
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="{{route('apiKey.index')}}">
-                        <i class="fa fa-tag text-yellow"></i> {{ __('API Key') }}
+                        <i class="fa fa-key text-black"></i> {{ __('API Key') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('blog.index')}}">
-                        <i class="fa fa-tag text-yellow"></i> {{ __('Blog') }}
+                        <i class="fa fa-rss-square text-green"></i> {{ __('Blog') }}
                     </a>
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="{{route('privacyAndPolicy.index')}}">
-                        <i class="fa fa-tag text-yellow"></i> {{ __('Privacy And Policy') }}
+                        <i class="fa fa-snowflake text-cyan"></i> {{ __('Privacy And Policy') }}
                     </a>
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="{{route('termAndCondition.index')}}">
-                        <i class="fa fa-tag text-yellow"></i> {{ __('Term And Condition') }}
+                        <i class="fa fa-gavel text-purple"></i> {{ __('Term And Condition') }}
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                    <a class="nav-link active" href="#navbar-report" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-report">
+                        <i class="fa fa-print" style="color: #f4645f;"></i>
+
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('Reports') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse show" id="navbar-report">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('vendorsReport.index') }}">

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Coupon;
 use App\Vendor;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class CouponController extends Controller
 {
     /**
@@ -15,49 +15,89 @@ class CouponController extends Controller
      */
     public function index(Request $request)
     {
-        $data = [
-            "coupons" => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 
-            Coupon::when(
-                (
-                    (!is_null(request()->filter) && is_null(request()->statusFilter) || (is_null(request()->filter) && !is_null(request()->statusFilter)))
+        $coupons         = null;
+        $couponMainQuery = Coupon::
+            when($request->fromDate && $request->toDate, function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
 
-                    && (request()->statusFilter == "0" || request()->statusFilter == "1" || request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive")
-                ), function ($query, $filter) {
-                    $data = request()->filter;
-                    if (request()->filter == "Active" || request()->filter == "1" || request()->statusFilter == "1") {
-                        $data = 1;
-                    } else {
-                        $data = 0;
-                    }
+                return $query->whereDate('created_at', '>=', $request->fromDate)
+                    ->whereDate('created_at', '<', $request->toDate);
 
-                    return $query->whereStatus($data);
-                }, function ($query, $filter) use ($request) {
-                    return $query
-                        ->where(function ($query) {
+            });
+        }, function ($query) use ($request) {
 
-                            if (!is_null(request()->statusFilter)) {
-                                $data = 0;
-                                if (request()->statusFilter == "1") {
-                                    $data = 1;
-                                }
+            if ($request->fromDate) {
+                $query->whereDate('created_at', '>=', $request->fromDate);
+            } else if ($request->toDate) {
 
-                                return $query->whereStatus($data);
-                            }
+                $query->whereDate('created_at', '<=', $request->toDate);
+            }
+        })
+        //Is Favourite Filter
+            ->where(function ($query) use ($request) {
+                if (isset($request->isFavouriteFilter)) {
+                    $query->whereStatus(3);
+                }
+            })
+        //Status  Filter
+            ->where(function ($query) use ($request) {
+                if (isset($request->activeFilter)&&$request->activeFilter==1) {
+                  
+                    $query->whereDate('end_date','>=',Carbon::now()->toDateString());
+                }
+                elseif(isset($request->activeFilter)&&$request->activeFilter==0) 
+                {
+                    $query->whereDate('end_date','<',Carbon::now()->toDateString());
 
-                            return;
-                        })
-                        ->where(function ($query) {
-                            return $query->where("full_name", "like", "%" . request()->filter . "%")
-                                ->orWhere('user_name', 'like', "%" . request()->filter . "%")
-                                ->orWhere('email', request()->filter)
-                                ->orWhere('phone', request()->filter);
+                }
+            })
+
+        //Discount Filter
+            ->where(function ($query) use ($request) {
+                if (isset($request->discountFilter)) {
+                    $query->whereDiscount($request->discountFilter);
+                }
+
+            })
+        //Description Filter
+            ->where(function ($query) use ($request) {
+
+                $query->where('description', 'like', '%' . $request->descriptionFilter . '%');
+
+            })
+        //Terms Filter
+            ->where(function ($query) use ($request) {
+
+                $query->where('terms', 'like', '%' . $request->termsFilter . '%');
+
+            })
+        //Coupon Name Filter
+            ->where(function ($query) use ($request) {
+
+                $query->where('title', 'like', '%' . $request->nameFilter . '%');
+
+            })
+
+        //Category Filter
+            ->where(function ($query) use ($request) {
+                if (!is_null($request->categoryFilter) && $request->categoryFilter != "All") {
+
+                    $query->whereHas('usedCoupons', function ($innserQuery) use ($request) {
+
+                        $innserQuery->whereHas('coupon', function ($mostInnerQuery) use ($request) {
+                            $mostInnerQuery->whereHas('categories', function ($couponCategoryQuery) use ($request) {
+                                $couponCategoryQuery->whereCategoryId($request->categoryFilter);
+
+                            });
                         });
+                    });
+                }
 
-                })
-                ->paginate(20) :
+            });
 
-            Coupon::paginate(20),
+        $data = [
+            "coupons" => $couponMainQuery->paginate(20),
             "vendors" => Vendor::all(),
         ];
         return view('coupons.index', $data);

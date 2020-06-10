@@ -18,14 +18,14 @@ class BlogController extends Controller
     {
         $categories =
         $data       = [
-            "blogs"    => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
+            "blogs"      => (!is_null(request()->filter) || !is_null(request()->statusFilter)) ?
 
             Blog::when(
                 (
                     (!is_null(request()->filter) && is_null(request()->statusFilter) || (is_null(request()->filter) && !is_null(request()->statusFilter)))
 
                     && (request()->statusFilter == "0" || request()->statusFilter == "1" || request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive")
-                ), function ($query, $filter) use ($keyType) {
+                ), function ($query, $filter) {
                     $data = request()->filter;
                     if (request()->filter == "Active" || request()->filter == "1" || request()->statusFilter == "1") {
                         $data = 1;
@@ -34,7 +34,7 @@ class BlogController extends Controller
                     }
 
                     return $query->whereStatus($data);
-                }, function ($query, $filter) use ($keyType) {
+                }, function ($query, $filter) {
                     return $query
                         ->where(function ($query) {
 
@@ -49,8 +49,8 @@ class BlogController extends Controller
 
                             return;
                         })
-                        ->where(function ($query) use ($keyType) {
-                            return $query->where("key_type_id", $keyType->id ?? null);
+                        ->where(function ($query) {
+                            return $query->where("title",'like' ,"%".request()->filter."%");
                         });
 
                 })
@@ -87,7 +87,7 @@ class BlogController extends Controller
                 'title'       => $request->title,
                 'body'        => $request->body,
                 'category_id' => $request->categoryId,
-                'blog_image' => $path,
+                'blog_image'  => $path,
             ]);
         return redirect()->route('blog.index')->withSuccess("Blog Added!");
     }
@@ -127,10 +127,11 @@ class BlogController extends Controller
             [
             'title'       => $request->title,
             'body'        => $request->body,
+            'status'      => $request->status,
             'category_id' => $request->categoryId,
         ];
         if ($request->image) {
-            $path          = $request->file('image')->store('blog');
+            $path               = $request->file('image')->store('blog');
             $data["blog_image"] = $path;
         }
         $blog->update($data);
