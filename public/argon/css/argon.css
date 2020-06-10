@@ -14135,6 +14135,11 @@ input:focus , select:focus {
 }
 
 
+.viewVendor:hover
+{
+     color:blue;
+  cursor: pointer;  
+}
 
 
 

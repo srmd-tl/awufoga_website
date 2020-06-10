@@ -60,121 +60,7 @@
                   </div>
                </div>
             </div>
-            <div class="leader-box">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="title-leader">
-                        <h3>Buy leader board</h3>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                <div class="col-12">
-                  <form action="">
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">From Date</label>
-                              <input type="text" id="datepicker">
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">To Date</label>
-                              <input type="text">
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Category</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Sub Category</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Active Buyer</label>
-                              <select name="" id="">
-                                 <option value="">All</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Order By</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">City</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="col-md-4">
-                           <div class="buyer-leader-box">
-                              <label for="">Coupon Type</label>
-                              <select name="" id="">
-                                 <option value="">Most Purchasing Buyers</option>
-                                 <option value="">Category 1</option>
-                                 <option value="">Category 2</option>
-                                 <option value="">Category 3</option>
-                                 <option value="">Category 4</option>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="leader-btn">
-                              <a href="" class="search-btn">Search</a>
-                              <a href="" class="clear-btn">Clear</a>
-                              <a href="" class="export-btn">Export To PDF</a>
-                              <a href="" class="export-btn">Export To Excel</a>
-                           </div>
-                        </div>
-                     </div>
-                  </form>
-                </div>
-            </div>
-            </div>
+        
             
             <div class="table_design">
                <div class="table-responsive">
@@ -277,7 +163,7 @@
                         <form role="form" method="POST" action="{{route('vendor.store')}}" enctype="multipart/form-data">
                            @csrf
                            <div class="row">
-                              <div class="col-md-6">  
+                              <div class="col-md-4">  
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -287,7 +173,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -297,10 +183,7 @@
                                     </div>
                                  </div>
                               </div>
-
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                                 <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -311,7 +194,11 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+
+                           </div>
+                           <div class="row">
+                            
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -468,7 +355,7 @@
                                              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
                                              <option data-countryCode="NO" value="47">Norway (+47)</option>
                                              <option data-countryCode="OM" value="968">Oman (+968)</option>
-                                             <option data-countryCode="PK value="92">Pakistan (+92)</option>
+                                             <option data-countryCode="PK" value="92">Pakistan (+92)</option>
                                              <option data-countryCode="PW" value="680">Palau (+680)</option>
                                              <option data-countryCode="PA" value="507">Panama (+507)</option>
                                              <option data-countryCode="PG" value="675">Papua New Guinea (+675)</option>
@@ -542,9 +429,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -554,7 +439,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -565,9 +450,9 @@
                                  </div>
                               </div>
                            </div>
-
+                          
                           <div class="row">
-                              <div class="col-md-6">  
+                              <div class="col-md-4">  
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -577,7 +462,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -588,10 +473,7 @@
                                  </div>
                               </div>
 
-                           </div>
-                           <div class="row">
-                            
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -822,7 +704,11 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6"> 
+
+                           </div>
+                           <div class="row">
+                            
+                              <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -833,9 +719,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                         
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -845,7 +730,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -857,7 +742,7 @@
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-6"> 
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -867,7 +752,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -877,9 +762,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -889,7 +772,10 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                           </div>
+                           <div class="row">
+                             
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -899,9 +785,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -911,7 +795,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -925,7 +809,7 @@
                            
                            <div class="row">
                         
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -938,7 +822,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                    <div class="form-group">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -951,9 +835,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                    
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -991,7 +874,7 @@
                            @csrf
                            @method('PUT')
                            <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -1002,7 +885,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1012,10 +895,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6">
-                                   <div class="form-group mb-3">
+                              <div class="col-md-4">
+                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -1024,7 +905,10 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                           </div>
+                           <div class="row">
+                         
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1254,9 +1138,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6">
+                           
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1266,7 +1149,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                          
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -1281,7 +1164,7 @@
 
 
                           <div class="row">
-                              <div class="col-md-6">  
+                              <div class="col-md-4">  
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1291,7 +1174,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1301,11 +1184,7 @@
                                     </div>
                                  </div>
                               </div>
-
-                           </div>
-                           <div class="row">
-                            
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1536,7 +1415,11 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6"> 
+                           </div>
+                           <div class="row">
+                            
+                           
+                              <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
@@ -1547,9 +1430,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                         
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1559,7 +1441,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1571,7 +1453,7 @@
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col-md-6"> 
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1581,7 +1463,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1591,9 +1473,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1603,7 +1483,10 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                           </div>
+                           <div class="row">
+                             
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1613,9 +1496,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6"> 
+               
+                              <div class="col-md-4"> 
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1625,7 +1507,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1638,7 +1520,7 @@
                            </div>
                            <div class="row">
 
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1652,7 +1534,7 @@
                                  </div>
                                  
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
                                  <div class="form-group">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
@@ -1665,9 +1547,8 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-6">
+                         
+                              <div class="col-md-4">
                                  <div class="form-group mb-3">
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
