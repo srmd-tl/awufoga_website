@@ -289,7 +289,7 @@
                             <div class="form-group">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control" >Are You Sure You Want To Delete This Blog?</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Delete This Blog?</label>
                               </div>
                             </div>
                            

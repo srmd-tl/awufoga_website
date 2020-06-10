@@ -251,7 +251,7 @@
                             <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control" >Are You Sure You Want To Delete This Privacy And Policy?</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Delete This Privacy And Policy?</label>
                               </div>
                             </div>
                            
