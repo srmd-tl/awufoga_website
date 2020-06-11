@@ -162,6 +162,7 @@
                            <div class="row">
                               <div class="col-md-4">  
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
@@ -172,6 +173,7 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
@@ -183,6 +185,7 @@
                                  <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Email</label>
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>

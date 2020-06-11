@@ -121,7 +121,7 @@
    </div>
    <!-- Add ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -134,6 +134,7 @@
                            @csrf
                          
                            <div class="form-group mb-3">
+                              <label class="form-control-label" for="input-username">Title</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -142,11 +143,12 @@
                               </div>
                            </div>
                             <div class="form-group mb-3">
+                              <label class="form-control-label" for="input-username">Description</label>
                               <div class="input-group input-group-merge input-group-alternative">
-                                 <div class="input-group-prepend">
+                                 <!-- <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                 </div>
-                                 <textarea class="form-control" placeholder="Description" type="text" name="description"></textarea>
+                                 </div> -->
+                                 <textarea class="form-control" placeholder="Description" rows="10" cols="30" type="text" name="description"></textarea>
                               </div>
                            </div>
 
@@ -154,6 +156,7 @@
              
                         
                            <div class="form-group">
+                              <label class="form-control-label" for="input-username">Active</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
