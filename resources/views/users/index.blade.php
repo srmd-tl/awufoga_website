@@ -79,7 +79,9 @@
                         <form role="form" method="POST" action="{{route('admin.store')}}">
                            @csrf
                            <div class="form-group mb-3">
+                              <label class="form-control-label" for="input-username">Email</label>
                               <div class="input-group input-group-merge input-group-alternative">
+
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
@@ -87,6 +89,7 @@
                               </div>
                            </div>
                            <div class="form-group mb-3">
+                              <label class="form-control-label" for="input-username">Name</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
@@ -95,6 +98,7 @@
                               </div>
                            </div>
                            <div class="form-group">
+                              <label class="form-control-label" for="input-username">Password</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>

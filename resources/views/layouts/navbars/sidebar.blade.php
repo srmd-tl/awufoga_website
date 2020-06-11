@@ -83,81 +83,93 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
+    
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fa fa-user-secret" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Admin Area') }}</span>
+                    <a class="nav-link" href="#navbar-masters" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-masters">
+                        <i class="fa fa-home text-primary"></i>
+                        <span class="nav-link-text">{{ __('Masters') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse" id="navbar-masters">
                         <ul class="nav nav-sm flex-column">
-                           <!--  <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
-                                </a>
-                            </li> -->
+                           
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link" href="{{route('category.index')}}">
+                                    {{ __('Category') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('subCategory.index')}}">
+                                     {{ __('Sub Category') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('buyer.index')}}">
+                                     {{ __('Buyer') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('vendor.index')}}">
+                                   {{ __('Vendor') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('coupon.index')}}">
+                                    {{ __('Coupon') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('category.index')}}">
-                        <i class="ni ni-box-2 text-blue"></i> {{ __('Category') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('subCategory.index')}}">
-                        <i class="ni ni-books text-orange"></i> {{ __('Sub Category') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('buyer.index')}}">
-                        <i class="ni ni-circle-08 text-red"></i> {{ __('Buyer') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('vendor.index')}}">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Vendor') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('coupon.index')}}">
-                        <i class="fa fa-tag text-yellow"></i> {{ __('Coupon') }}
-                    </a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('apiKey.index')}}">
-                        <i class="fa fa-key text-black"></i> {{ __('API Key') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('blog.index')}}">
-                        <i class="fa fa-rss-square text-green"></i> {{ __('Blog') }}
-                    </a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('privacyAndPolicy.index')}}">
-                        <i class="fa fa-snowflake text-cyan"></i> {{ __('Privacy And Policy') }}
-                    </a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('termAndCondition.index')}}">
-                        <i class="fa fa-gavel text-purple"></i> {{ __('Term And Condition') }}
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-report" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-report">
-                        <i class="fa fa-print" style="color: #f4645f;"></i>
-
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Reports') }}</span>
+               <li class="nav-item">
+                    <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                        <i class="fa fa-cog text-primary"></i>
+                        <span class="nav-link-text ">{{ __('Settings') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-report">
+                    <div class="collapse" id="navbar-settings">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.index') }}">
+                                    {{ __('User Management') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('apiKey.index')}}">
+                                    {{ __('API Key') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('blog.index')}}">
+                                    {{ __('Blog') }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('privacyAndPolicy.index')}}">
+                                     {{ __('Privacy And Policy') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('termAndCondition.index')}}">
+                                    {{ __('Term And Condition') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                 
+             
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#navbar-report" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-report">
+                        <i class="fa fa-print text-primary"></i>
+
+                        <span class="nav-link-text">{{ __('Reports') }}</span>
+                    </a>
+
+                    <div class="collapse" id="navbar-report">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('vendorsReport.index') }}">

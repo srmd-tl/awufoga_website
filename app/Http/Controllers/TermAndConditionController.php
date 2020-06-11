@@ -25,7 +25,7 @@ class TermAndConditionController extends Controller
                     (!is_null(request()->filter) && is_null(request()->statusFilter) || (is_null(request()->filter) && !is_null(request()->statusFilter)))
 
                     && (request()->statusFilter == "0" || request()->statusFilter == "1" || request()->filter == "0" || request()->filter == "1" || request()->filter == "Active" || request()->filter == "Inactive")
-                ), function ($query, $filter) use ($keyType) {
+                ), function ($query, $filter) {
                     $data = request()->filter;
                     if (request()->filter == "Active" || request()->filter == "1" || request()->statusFilter == "1") {
                         $data = 1;
@@ -34,7 +34,7 @@ class TermAndConditionController extends Controller
                     }
 
                     return $query->whereStatus($data);
-                }, function ($query, $filter) use ($keyType) {
+                }, function ($query, $filter) {
                     return $query
                         ->where(function ($query) {
 
@@ -49,8 +49,9 @@ class TermAndConditionController extends Controller
 
                             return;
                         })
-                        ->where(function ($query) use ($keyType) {
-                            return $query->where("key_type_id", $keyType->id ?? null);
+                        ->where(function ($query) {
+                            return $query->where("title", 'like', '%' . request()->filter . '%')
+                                ->orWhere("description", 'like', '%' . request()->filter . '%');
                         });
 
                 })
@@ -95,8 +96,8 @@ class TermAndConditionController extends Controller
             'status'      => $request->status,
         ];
 
-        $termAdnCondtion->update($data);
-        return redirect()->route('termAndCondition.index')->withSuccess("TermAndCondition Updated!");
+        $termAndCondition->update($data);
+        return redirect()->route('termAndCondition.index')->withSuccess("Term And Condition Updated!");
     }
 
     /**

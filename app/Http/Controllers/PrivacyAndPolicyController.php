@@ -50,7 +50,8 @@ class PrivacyAndPolicyController extends Controller
                             return;
                         })
                         ->where(function ($query) {
-                            // return $query->where("key_type_id", $keyType->id ?? null);
+                            return $query->where("title", 'like', '%' . request()->filter . '%')
+                                ->orWhere("description", 'like', '%' . request()->filter . '%');
                         });
 
                 })
