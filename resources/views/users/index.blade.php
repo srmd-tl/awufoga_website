@@ -81,7 +81,6 @@
                            <div class="form-group mb-3">
                               <label class="form-control-label" for="input-username">Email</label>
                               <div class="input-group input-group-merge input-group-alternative">
-
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>

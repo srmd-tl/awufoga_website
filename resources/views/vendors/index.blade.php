@@ -148,7 +148,7 @@
    </div>
    <!-- Add ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel lg_modal" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">

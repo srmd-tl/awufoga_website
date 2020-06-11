@@ -14025,16 +14025,9 @@ input:focus , select:focus {
 /*================== add modal // start ==========================*/
 
 .addModel .modal-content {
-    width: 100% !important;
+    width: 50% !important;
 }
 
-.addModel .card-body.px-lg-5.py-lg-5 {
-    width: 500px;
-}
-
-.addModel .card.bg-secondary.border-0.mb-0 {
-    width: 500px;
-}
 
 .addModel .form-group {
     display: flex;
@@ -14054,6 +14047,21 @@ input:focus , select:focus {
     font-size: 13px !important;
     font-weight: 600;
 }
+
+.addModel .modal-content {
+    width: initial !important;
+    width: 100% !important;
+}
+
+
+.modal-lg {
+    max-width: 80% !important;
+}
+
+.modal-sm{
+    max-width: 50% !important;
+}
+
 /*================== add modal // end ==========================*/
 
 
