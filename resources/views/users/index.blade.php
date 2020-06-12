@@ -81,7 +81,6 @@
                            <div class="form-group mb-3">
                               <label class="form-control-label" for="input-username">Email</label>
                               <div class="input-group input-group-merge input-group-alternative">
-
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                  </div>
@@ -120,7 +119,7 @@
    <!-- End Add ADmin Modal -->
   <!-- Edit ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="edit-admin-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="edit-admin-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -134,6 +133,8 @@
                            @method('PUT')
                       
                            <div class="form-group mb-3">
+                                       <label class="form-control-label" for="input-username">Email</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -142,6 +143,8 @@
                               </div>
                            </div>
                            <div class="form-group mb-3">
+                                       <label class="form-control-label" for="input-username">Name</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
@@ -150,6 +153,8 @@
                               </div>
                            </div>
                            <div class="form-group">
+                                       <label class="form-control-label" for="input-username">Password</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>

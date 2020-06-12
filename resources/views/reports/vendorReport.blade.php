@@ -106,7 +106,7 @@
                           <div class="col-md-12">
                              <div class="leader-btn">
                                 <button  class="search-btn">Search</button>
-                                <a href="" class="clear-btn">Clear</a>
+                                <a href="{{route('vendorsReport.index')}}" class="clear-btn">Clear</a>
                                 <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
                                 <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
                              </div>
@@ -133,7 +133,6 @@
                            <th scope="col"> Expired Coupons</th>
                            <th scope="col"> Most sales in Category</th>
                            <th scope="col"> Most sales in Sub Category</th>
-                           <th scope="col"> Most sales in Coupon Type</th>
                            <th scope="col"> Wallet Point</th>
                            <th scope="col"></th>
                         </tr>
@@ -153,46 +152,40 @@
                            <td>{{$vendor->activeCoupons->count()}}</td>
                            <td>{{$vendor->expiredCoupons->count()}}</td>
 
+                           <td>
+                            @php
+                            $mostCoupon = json_decode($vendor->mostUsedCategories());
+                            //print_r($mostCoupon->id??0);
+
+                            @endphp
+                            @if($mostCoupon)
+                              @foreach($mostCoupon->categories as $data)
+              
+                              {{$data->id}} {{$data->name}}
+                              @endforeach
+                            @endif
+                            </td>
+                             <td>
+                            @if($mostCoupon)
+                              @php
+                              
+                              $mostCoupon = json_decode($vendor->mostUsedSubCategories($mostCoupon->categories));
+                              //print_r($mostCoupon->id??0);
+
+                              @endphp
+                              @if($mostCoupon)
+                                @foreach($mostCoupon->subcategories as $data)
+                                {{$data->id}} {{$data->name}}
+                                @endforeach
+                              @endif
+                            @endif
+                            </td>
+
                            
       
                            <td>{{$vendor->usedCoupons->sum('payment_wallet')}}</td>
-                           <td>
-                              <span class="badge badge-{{$vendor->notification_on_off==1?'success':'danger'}}">{{$vendor->notification_on_off==1?'On':'Off'}}</span>
-                           </td>
-                           <td class="text-right">
-                              <div class="dropdown">
-                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <i class="fas fa-ellipsis-v"></i>
-                                 </a>
-                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                 
-                                    <button class="dropdown-item editVendor" 
-                                    data-id="{{$vendor->id}}" 
-                                    data-username="{{$vendor->user_name}}" 
-                                    data-fullname="{{$vendor->full_name}}" 
-                                    data-email="{{$vendor->email}}" 
-                                    data-countrycode="{{$vendor->country_code}}" 
-                                    data-phone="{{$vendor->phone}}" 
-                                    data-businessname="{{$vendor->business_name}}" 
-                                    data-businessemail="{{$vendor->business_email}}" 
-                                    data-businesscountrycode="{{$vendor->business_country_code}}" 
-                                    data-businessphone="{{$vendor->business_phone}}" 
-                                    data-businesswebsite="{{$vendor->website}}" 
-                                    data-businessaddress="{{$vendor->address}}" 
-                                    data-longitude="{{$vendor->longitude}}" 
-                                    data-latitude="{{$vendor->latitude}}" 
-                                    data-correctaddress="{{$vendor->correct_address}}" 
-                                    data-rate="{{$vendor->rate}}" 
-                                    data-reviewcount="{{$vendor->review_count}}" 
-                                    data-firstreferral="{{$vendor->first_referral}}" 
-                                    data-notification="{{$vendor->notification_on_off}}" 
-                                    data-image="{{$vendor->image}}" 
-                                    data-status="{{$vendor->status}}" 
-                                    >Edit</button>
-                                    <button class="dropdown-item deleteVendor" data-id="{{$vendor->id}}" >Delete</button>
-                                 </div>
-                              </div>
-                           </td>
+             
+                         
                         </tr>
                         @empty
                         <tr>
@@ -218,7 +211,7 @@
 
         <!-- View Vendor Modal -->
      <div class="col-md-4">
-      <div class="modal fade" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">

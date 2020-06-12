@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Exports\SalesExport;
 use App\UsedCoupon;
 use Carbon\Carbon;
@@ -16,9 +17,77 @@ class SalesReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = ["sales" => UsedCoupon::paginate()];
+        // $data = ["sales" => UsedCoupon::paginate(), "categories" => Category::all()];
+
+        $sales          = null;
+        $salesMainQuery = UsedCoupon::
+            when($request->fromDate && $request->toDate, function ($query) use ($request) {
+            $query->where(function ($query) use ($request) {
+
+                return $query->whereDate('created_at', '>=', $request->fromDate)
+                    ->whereDate('created_at', '<', $request->toDate);
+
+            });
+        }, function ($query) use ($request) {
+
+            if ($request->fromDate) {
+                $query->whereDate('created_at', '>=', $request->fromDate);
+            } else if ($request->toDate) {
+
+                $query->whereDate('created_at', '<=', $request->toDate);
+            }
+        })
+        //Status Filter
+        // ->where(function ($query) use ($request) {
+
+        //     $query->whereStatus($request->activeFilter ?? 1);
+        // })
+        //Category Filter
+            ->where(function ($query) use ($request) {
+                if (!is_null($request->categoryFilter) && $request->categoryFilter != "All") {
+
+                    $query->whereHas('coupon', function ($mostInnerQuery) use ($request) {
+                        $mostInnerQuery->whereHas('categories', function ($couponCategoryQuery) use ($request) {
+                            $couponCategoryQuery->whereCategoryId($request->categoryFilter);
+
+                        });
+                    });
+
+                }
+
+            });
+
+        //Order By Filter
+        if ($request->orderByFilter == "highSaleAmount") {
+
+            $sales = $salesMainQuery
+                ->orderBy('paid_price', 'desc');
+
+        } else if ($request->orderByFilter == "lowSaleAmount") {
+            $sales = $salesMainQuery
+                ->orderBy('paid_price', 'asc');
+
+        } else if ($request->orderByFilter == "salesDateAsc") {
+            $sales = $salesMainQuery
+                ->orderBy('created_at', 'asc');
+
+        } else if ($request->orderByFilter == "salesDateDsc") {
+            $sales = $salesMainQuery
+                ->orderBy('created_at', 'desc');
+        } else {
+            $sales = $salesMainQuery;
+        }
+
+        //Enwrapping Data
+        $data =
+            [
+            "sales"      => $sales->paginate(20),
+            "categories" => Category::all(),
+        ];
+
+        //Report Type Check
         if (request()->pdf) {
             $pdf = PDF::loadView('reports.pdfViews.salesReport', $data);
             return $pdf->download('salesReport_' . Carbon::now() . '.pdf');

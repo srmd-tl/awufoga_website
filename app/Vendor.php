@@ -4,7 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Arr;
 class Vendor extends Model
 {
     /*Table name*/
@@ -46,15 +46,45 @@ class Vendor extends Model
         return $this->hasMany('App\ReferralHistory','vendor_id')->where('referral_vendor','like','vendor_%');
     }
 
-    public function most()
+
+
+        public function mostUsedCategories()
     {
+        $data = $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->selectRaw('coupon_id,count(*) as count,SUM(paid_price) as price_total')
+            ->orderByRaw('count DESC')
+            ->first();
+        if ($data) {
+            $coupon = Coupon::with('categories')->whereId($data->coupon_id)->first();
+
+            return $coupon;
+
+        }
+        return null;
+        // dd($data);
+
+        return $this->usedCoupons()
+            ->groupBy('coupon_id')
+            ->count();
+    }
+    public function mostUsedSubCategories($categoryId)
+    {
+        $categoryIds=Arr::pluck($categoryId,'id');
         $data = $this->usedCoupons()
             ->groupBy('coupon_id')
             ->selectRaw('coupon_id,count(*) as count')
             ->orderByRaw('count DESC')
             ->first();
-        $coupon = Coupon::whereId($data->coupon_id)->first();
-        $coupon->category;
+        if ($data) {
+
+            $coupon = Coupon::with(['subcategories'=>function($query) use($categoryIds){
+                $query->whereIn('coupon_sub_category.category_id',$categoryIds);
+            }])->whereId($data->coupon_id)->first();
+            return $coupon;
+
+        }
+        return null;
         // dd($data);
 
         return $this->usedCoupons()

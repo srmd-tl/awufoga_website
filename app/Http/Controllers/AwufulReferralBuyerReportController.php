@@ -18,18 +18,25 @@ class AwufulReferralBuyerReportController extends Controller
      */
     public function index()
     {
+
         $data = [
 
             "buyers" => Buyer::
                 when(!is_null(request()->fromDate) || !is_null(request()->toDate) || !is_null(request()->filterorderBy), function ($query) {
+                    // if(request()->filterorderBy)
+                    // {
+                    //     return $query->
+                    // }
+
+
 
             }
                 , function ($query) {
                     return $query->whereHas('referrals')
                         ->with(['referrals' => function ($query) {
                             $query
-                                ->groupBy('referral_vendor', 'buyer_id')
-                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,buyer_id');
+                                ->groupBy('referral_buyer', 'buyer_id')
+                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,buyer_id,referral_buyer');
                         }]);
                 })
 

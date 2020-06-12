@@ -19,7 +19,6 @@
                <th scope="col"> Expired Coupons</th>
                <th scope="col"> Most sales in Category</th>
                <th scope="col"> Most sales in Sub Category</th>
-               <th scope="col"> Most sales in Coupon Type</th>
                <th scope="col"> Wallet Point</th>
             </tr>
          </thead>
@@ -37,15 +36,38 @@
                <td>{{$vendor->usedCoupons->sum('paid_price')}}</td>
                <td>{{$vendor->activeCoupons->count()}}</td>
                <td>{{$vendor->expiredCoupons->count()}}</td>
+                <td>
+                  @php
+                  $mostCoupon = json_decode($vendor->mostUsedCategories());
+                  //print_r($mostCoupon->id??0);
 
-               
+                  @endphp
+                  @if($mostCoupon)
+                    @foreach($mostCoupon->categories as $data)
+    
+                    {{$data->id}} {{$data->name}}
+                    @endforeach
+                  @endif
+                  </td>
+                 <td>
+                @if($mostCoupon)
+                  @php
+                  
+                  $mostCoupon = json_decode($vendor->mostUsedSubCategories($mostCoupon->categories));
+                  //print_r($mostCoupon->id??0);
+
+                  @endphp
+                  @if($mostCoupon)
+                    @foreach($mostCoupon->subcategories as $data)
+                    {{$data->id}} {{$data->name}}
+                    @endforeach
+                  @endif
+                @endif
+                </td>
+     
 
                <td>{{$vendor->usedCoupons->sum('payment_wallet')}}</td>
-               <td>
-                  <span class="badge badge-{{$vendor->notification_on_off==1?'success':'danger'}}">{{$vendor->notification_on_off==1?'On':'Off'}}</span>
-               </td>
-               <td></td>
-               <td></td>
+        
 
               
             </tr>

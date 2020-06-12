@@ -134,6 +134,8 @@
                            @csrf
                          
                            <div class="form-group mb-3">
+                                      
+
                               <label class="form-control-label" for="input-username">Title</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
@@ -143,6 +145,8 @@
                               </div>
                            </div>
                             <div class="form-group mb-3">
+                                  
+
                               <label class="form-control-label" for="input-username">Description</label>
                               <div class="input-group input-group-merge input-group-alternative">
                                  <!-- <div class="input-group-prepend">
@@ -156,7 +160,8 @@
              
                         
                            <div class="form-group">
-                              <label class="form-control-label" for="input-username">Active</label>
+                                       <label class="form-control-label" for="input-username">Status</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -181,7 +186,7 @@
    <!-- End Add ADmin Modal -->
   <!-- Edit ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="edit-privacyAndPolicy-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="edit-privacyAndPolicy-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -196,6 +201,8 @@
                       
                           
                            <div class="form-group mb-3">
+                                       <label class="form-control-label" for="input-username">Title</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -205,15 +212,17 @@
                            </div>
                         
                             <div class="form-group mb-3">
+                                       <label class="form-control-label" for="input-username">Description</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
-                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                 </div>
-                                 <textarea class="form-control" placeholder="Description" type="text" name="description" id="editDescription"></textarea>
+                                 
+                                 <textarea rows="10" cols="30" class="form-control" placeholder="Description" type="text" name="description" id="editDescription"></textarea>
                               </div>
                            </div>
                         
                            <div class="form-group">
+                                       <label class="form-control-label" for="input-username">Status</label>
+
                               <div class="input-group input-group-merge input-group-alternative">
                                  <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -246,7 +255,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Delete admin</small>
+                           <small>Delete Privacy And Policy</small>
                         </div>
                         <form role="form" method="POST" id="deleteForm">
                            @csrf

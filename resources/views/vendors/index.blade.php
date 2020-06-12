@@ -148,7 +148,7 @@
    </div>
    <!-- Add ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel lg_modal" id="modal-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -200,6 +200,8 @@
                             
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Country Code</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -349,7 +351,7 @@
                                              <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
                                              <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
                                              <option data-countryCode="NE" value="227">Niger (+227)</option>
-                                             <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+                                             <option selected data-countryCode="NG" value="234">Nigeria (+234)</option>
                                              <option data-countryCode="NU" value="683">Niue (+683)</option>
                                              <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
                                              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
@@ -431,6 +433,8 @@
                               </div>
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Phone</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -441,6 +445,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Password</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -454,6 +460,8 @@
                           <div class="row">
                               <div class="col-md-4">  
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Name</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-building"></i></span>
@@ -464,6 +472,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Email</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-email"></i></span>
@@ -475,6 +485,8 @@
 
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Country Code</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -624,7 +636,7 @@
                                              <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
                                              <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
                                              <option data-countryCode="NE" value="227">Niger (+227)</option>
-                                             <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+                                             <option selected="" data-countryCode="NG" value="234">Nigeria (+234)</option>
                                              <option data-countryCode="NU" value="683">Niue (+683)</option>
                                              <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
                                              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
@@ -711,6 +723,8 @@
                               <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Phone</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -722,6 +736,8 @@
                          
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Website</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-globe"></i></span>
@@ -732,6 +748,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Address</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -744,6 +762,8 @@
                            <div class="row">
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Longitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-location-arrow"></i></span>
@@ -754,6 +774,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Latitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-location-arrow"></i></span>
@@ -764,6 +786,8 @@
                               </div>
                                <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Correct Address</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
@@ -777,6 +801,8 @@
                              
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Rate</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-star-half"></i></span>
@@ -787,6 +813,8 @@
                               </div>
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Review Count</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-calculator"></i></span>
@@ -797,6 +825,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">First Referral</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-users"></i></span>
@@ -811,6 +841,8 @@
                         
                               <div class="col-md-4">
                                  <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Status</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-toggle-off"></i></span>
@@ -824,6 +856,8 @@
                               </div>
                               <div class="col-md-4">
                                    <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Notification</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-send"></i></span>
@@ -838,10 +872,10 @@
                     
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Image</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-file-image-o"></i></span>
-                                       </div>
+                                
                                        <input class="form-control" placeholder="File" type="file" name="image">
                                     </div>
                                  </div>
@@ -861,7 +895,7 @@
    <!-- End Add ADmin Modal -->
   <!-- Edit ADmin Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="edit-vendor-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="edit-vendor-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -877,6 +911,8 @@
                               <div class="col-md-4">
                                  
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Username</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
@@ -887,6 +923,8 @@
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Full Name</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-single-02"></i></span>
@@ -897,6 +935,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Email</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-email-83"></i></span>
@@ -910,6 +950,8 @@
                          
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Country Code</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -1058,7 +1100,7 @@
                                              <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
                                              <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
                                              <option data-countryCode="NE" value="227">Niger (+227)</option>
-                                             <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+                                             <option selected="" data-countryCode="NG" value="234">Nigeria (+234)</option>
                                              <option data-countryCode="NU" value="683">Niue (+683)</option>
                                              <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
                                              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
@@ -1141,6 +1183,8 @@
                            
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Phone</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -1152,6 +1196,8 @@
                               <div class="col-md-4">
                          
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Password</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -1166,6 +1212,8 @@
                           <div class="row">
                               <div class="col-md-4">  
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Name</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-building"></i></span>
@@ -1176,6 +1224,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Email</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-email"></i></span>
@@ -1186,6 +1236,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Country Code</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -1335,7 +1387,7 @@
                                              <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
                                              <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
                                              <option data-countryCode="NE" value="227">Niger (+227)</option>
-                                             <option data-countryCode="NG" value="234">Nigeria (+234)</option>
+                                             <option selected="" data-countryCode="NG" value="234">Nigeria (+234)</option>
                                              <option data-countryCode="NU" value="683">Niue (+683)</option>
                                              <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
                                              <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
@@ -1422,6 +1474,8 @@
                               <div class="col-md-4"> 
                              
                                    <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Phone</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
@@ -1433,6 +1487,8 @@
                          
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Website</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-globe"></i></span>
@@ -1443,6 +1499,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Business Address</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -1455,6 +1513,8 @@
                            <div class="row">
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Latitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-location-arrow"></i></span>
@@ -1465,6 +1525,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Longitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-location-arrow"></i></span>
@@ -1475,6 +1537,8 @@
                               </div>
                                <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Correct Address</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
@@ -1488,6 +1552,8 @@
                              
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Rate</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-star-half"></i></span>
@@ -1499,6 +1565,8 @@
                
                               <div class="col-md-4"> 
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Review Count</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-calculator"></i></span>
@@ -1509,6 +1577,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">First Referral</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-users"></i></span>
@@ -1522,6 +1592,8 @@
 
                               <div class="col-md-4">
                                   <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Notification</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-send"></i></span>
@@ -1536,6 +1608,8 @@
                               </div>
                               <div class="col-md-4">
                                  <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Status</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-toggle-off"></i></span>
@@ -1550,10 +1624,10 @@
                          
                               <div class="col-md-4">
                                  <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Image</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-file-image-o"></i></span>
-                                       </div>
+                                      
                                        <input class="form-control" placeholder="File" type="file" name="image" id="editImage">
                                     </div>
                                  </div>
@@ -1582,7 +1656,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Delete admin</small>
+                           <small>Delete Vendor</small>
                         </div>
                         <form role="form" method="POST" id="deleteForm">
                            @csrf
@@ -1609,7 +1683,7 @@
    <!-- End Delete Admin Modal -->
         <!-- View Vendor Modal -->
      <div class="col-md-4">
-      <div class="modal fade" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">

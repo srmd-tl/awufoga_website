@@ -190,7 +190,7 @@
 
   <!-- Edit Coupon Modal -->
    <div class="col-md-4">
-      <div class="modal fade" id="edit-coupon-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="edit-coupon-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">
@@ -200,34 +200,41 @@
                            <small>Edit Coupon</small>
                         </div>
                         <form role="form" method="POST" id="editForm"  enctype="multipart/form-data">
+
                            @csrf
                            @method('PUT')
                            <div class="row">
                               <div class="col-md-6">
                                  
                                  <div class="form-group mb-3">
+                                  <label class="form-control-label" for="input-username">Title</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                       </div>
+
+
                                        <textarea class="form-control" placeholder="Coupon Username" type="text" name="title" id="editTitle"></textarea>
                                     </div>
                                  </div>
                               </div>
                               <div class="col-md-6">
                                   <div class="form-group mb-3">
+
+                                     <label class="form-control-label" for="input-username">Image</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="ni ni-single-02"></i></span>
-                                       </div>
-                                       <textarea class="form-control" placeholder="Coupon Full Name" type="text" name="description" id="editDescription"></textarea>
+                                       
+                                       <input class="form-control" placeholder="File" type="file" name="image" id="editImage">
                                     </div>
+
+                                    
                                  </div>
                               </div>
                            </div>
                            <div class="row">
                               <div class="col-md-6">
                                    <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Start Date</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-start_date-83"></i></span>
@@ -238,6 +245,8 @@
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group mb-3">
+                                  <label class="form-control-label" for="input-username">End Date</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-discount"></i></span>
@@ -252,6 +261,8 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group mb-3">
+                                  <label class="form-control-label" for="input-username">Discount</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-discount"></i></span>
@@ -263,6 +274,8 @@
                               <div class="col-md-6">
                          
                                  <div class="form-group mb-3">
+                                  <label class="form-control-label" for="input-username">Vendor</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
@@ -282,6 +295,8 @@
 
                               <div class="col-md-6">
                                   <div class="form-group">
+                                    <label class="form-control-label" for="input-username">Is Featured</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-send"></i></span>
@@ -296,6 +311,8 @@
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
+                                  <label class="form-control-label" for="input-username">Status</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-toggle-off"></i></span>
@@ -313,26 +330,28 @@
 
                               <div class="col-md-6">
                                   <div class="form-group">
+
+                                     <label class="form-control-label" for="input-username">Description</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="ni ni-send"></i></span>
-                                       </div>
-                                       <select class="form-control"  name="offerType" id="editOfferType"> 
-                                          <option value="1">On</option>
-                                          <option value="0">Off</option>
-                                       </select>
+                                     
+                                       <textarea rows="10" cols="30" class="form-control" placeholder="Coupon Full Name" type="text" name="description" id="editDescription"></textarea>
                                     </div>
+
+
+                                 
                                  </div>
                                  
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group">
+                                  <label class="form-control-label" for="input-username">Terms</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-toggle-off"></i></span>
-                                       </div>
-                                       <input class="form-control" placeholder="Coupon Email" type="text" name="term" id="editTerms"> 
-                                  
+                                       
+                     
+                                       <textarea rows="10" cols="30" class="form-control" placeholder="Coupon Terms" type="text" name="term" id="editTerms"></textarea>
+
                                     </div>
                                  </div>
                               </div>
@@ -340,6 +359,8 @@
                             <div class="row">
                               <div class="col-md-6">
                                    <div class="form-group mb-3">
+                                    <label class="form-control-label" for="input-username">Longitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="ni ni-start_date-83"></i></span>
@@ -350,6 +371,8 @@
                               </div>
                               <div class="col-md-6">
                                  <div class="form-group mb-3">
+                                  <label class="form-control-label" for="input-username">Latitude</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-discount"></i></span>
@@ -364,11 +387,16 @@
                            <div class="row">
                               <div class="col-md-6">
                                  <div class="form-group mb-3">
+                                     <label class="form-control-label" for="input-username">Offer Type</label>
+
                                     <div class="input-group input-group-merge input-group-alternative">
                                        <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-file-image-o"></i></span>
+                                          <span class="input-group-text"><i class="ni ni-send"></i></span>
                                        </div>
-                                       <input class="form-control" placeholder="File" type="file" name="image" id="editImage">
+                                       <select class="form-control"  name="offerType" id="editOfferType"> 
+                                          <option value="1">On</option>
+                                          <option value="0">Off</option>
+                                       </select>
                                     </div>
                                  </div>
                                   
@@ -397,7 +425,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Delete admin</small>
+                           <small>Delete Coupon</small>
                         </div>
                         <form role="form" method="POST" id="deleteForm">
                            @csrf
@@ -492,7 +520,7 @@
    <!-- End Delete Admin Modal -->
         <!-- View Coupon Modal -->
      <div class="col-md-4">
-      <div class="modal fade" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal fade addModel" id="view-category-form" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                <div class="modal-body p-0">

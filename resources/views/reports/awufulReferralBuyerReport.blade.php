@@ -83,8 +83,9 @@
                         <tr>
                            <td ><a >{{$buyer->id}}</a></td>
                            <td  ><a >{{$buyer->full_name}}</a></td>
-                           <td>{{$buyer->mobile}}</td>
+                           
                            <td>{{$buyer->phone}}</td>
+                           <td>{{$buyer->referrals->count()}}</td>
                            <td>{{$buyer->created_at}}</td>
                           
                            <td>{{$buyer->referrals[0]->earnedFromReferral}}</td>
@@ -111,6 +112,7 @@
                                     data-notification="{{$buyer->notification_on_off}}" 
                                     data-image="{{$buyer->image}}" 
                                     data-status="{{$buyer->status}}" 
+                                    data-referrals="{{$buyer->referrals}}" 
                               >  
                               <a  >Click To View</a>
                              
@@ -160,7 +162,7 @@
                                      <th scope="col">Total Sale Amount</th>
                                  </tr>
                              </thead>
-                             <tbody>
+                             <tbody id="referralBuyers">
                                  <tr>
                                      <th>1</th>
                                      <td>Abdullahi</td>
@@ -199,8 +201,16 @@
     $(function(){
 
           $(".viewVendor").click(function(){
+
+            var referralBuyers = $(this).data("referrals")
+            $.each(referralBuyers,function(key,value){
+              id=value.referral_buyer.split('_')
+              console.log(id[1])
+            })
             var image = "{{asset('storage')}}/"+$(this).data('image')
             $("#viewImage").attr('src',image)
+
+
             $("#view-category-form").modal()       
 
         })
