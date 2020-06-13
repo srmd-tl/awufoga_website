@@ -31,7 +31,7 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                            <tbody>
 
                               @forelse($coupons as $coupon)
                               <tr>
@@ -62,8 +62,30 @@
                                  <td>{{$coupon->start_date}}</td>
                                  <td>{{$coupon->end_date}}</td>                  
                                 <td>
-                                    <a class="btn btn-success btn-sm"href="">Accept</a>
-                                    <a class="btn btn-danger btn-sm"href="">Reject</a>
+                                       <a  title="Accept"  class="btn btn-success btn-sm"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('accept-form-{{$coupon->id}}').submit();">
+                                             Accept
+                                       </a>
+
+                                     <form method="POST" action="{{route('coupon.updateStatus',$coupon->id)}}" id="accept-form-{{$coupon->id}}" style="display: none;">
+                                      @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="1">
+                                       </form>
+
+                                  
+                                      <a  title="Reject"  class="btn btn-danger btn-sm"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('reject-form-{{$coupon->id}}').submit();">
+                                             Reject
+                                       </a>
+
+                                       <form method="POST" action="{{route('coupon.updateStatus',$coupon->id)}}" id="reject-form-{{$coupon->id}}" style="display: none;">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="2">
+                                       </form>
                                 </td>
                               </tr>
                               @empty
@@ -92,123 +114,83 @@
                             <!-- Projects table -->
                               <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
-                                   <tr>
-                                        <th>#</th>
-                                        <th>Vendor Name</th>
-                                        <th>City</th>
-                                        <th>From Date</th>
-                                        <th>To Date</th>
-                                        <th>Details</th>
-                                        <th>Actions</th>
-                                    </tr>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Vendor Name</th>
+                                      <th>Phone</th>
+
+                                      <th>City</th>
+                            
+                                      <th>Actions</th>
+                                  </tr>
                                 </thead>
-                                 <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <th>
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm"href="">Accept</a>
-                                            <a class="btn btn-danger btn-sm"href="">Reject</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <th>
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm"href="">Accept</a>
-                                            <a class="btn btn-danger btn-sm"href="">Reject</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <th>
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm"href="">Accept</a>
-                                            <a class="btn btn-danger btn-sm"href="">Reject</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <th>
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm"href="">Accept</a>
-                                            <a class="btn btn-danger btn-sm"href="">Reject</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            /argon/
-                                        </th>
-                                        <th>
-                                            /argon/
-                                        </th>
-                                        <td>
-                                            4,569
-                                        </td>
-                                        <td>
-                                            340
-                                        </td>
-                                        <td>
-                                            <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm"href="">Accept</a>
-                                            <a class="btn btn-danger btn-sm"href="">Reject</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                   <tbody>
+
+                              @forelse($vendors as $vendor)
+                              <tr>
+                                <td>{{$loop->iteration}}</td>
+                                 <td class="viewVendor" 
+                                 data-image="{{$vendor->image}}"
+                                   data-id="{{$vendor->id}}" 
+                                    data-username="{{$vendor->user_name}}" 
+                                    data-fullname="{{$vendor->full_name}}" 
+                                    data-email="{{$vendor->email}}" 
+                                    data-countrycode="{{$vendor->country_code}}" 
+                                    data-phone="{{$vendor->phone}}" 
+                                    data-businessname="{{$vendor->business_name}}" 
+                                    data-businessemail="{{$vendor->business_email}}" 
+                                    data-businesscountrycode="{{$vendor->business_country_code}}" 
+                                    data-businessphone="{{$vendor->business_phone}}" 
+                                    data-businesswebsite="{{$vendor->website}}" 
+                                    data-businessaddress="{{$vendor->address}}" 
+                                    data-longitude="{{$vendor->longitude}}" 
+                                    data-latitude="{{$vendor->latitude}}" 
+                                    data-correctaddress="{{$vendor->correct_address}}" 
+                                    data-rate="{{$vendor->rate}}" 
+                                    data-reviewcount="{{$vendor->review_count}}" 
+                                    data-firstreferral="{{$vendor->first_referral}}" 
+                                    data-notification="{{$vendor->notification_on_off}}" 
+                                    data-image="{{$vendor->image}}" 
+                                    data-status="{{$vendor->status}}" 
+                                  ><a >{{$vendor->full_name}}</a></td>
+                                 <td>{{$vendor->full_phone}}</td>
+                                 <td>{{$vendor->city}}</td>
+                             
+                               
+                     
+                                <td>
+                                       <a  title="Accept"  class="btn btn-success btn-sm"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('accept-form-{{$vendor->id}}').submit();">
+                                             Accept
+                                       </a>
+
+                                     <form method="POST" action="{{route('vendor.updateStatus',$vendor->id)}}" id="accept-form-{{$vendor->id}}" style="display: none;">
+                                      @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="1">
+                                       </form>
+
+                                  
+                                      <a  title="Reject"  class="btn btn-danger btn-sm"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('reject-form-{{$vendor->id}}').submit();">
+                                             Reject
+                                       </a>
+
+                                       <form method="POST" action="{{route('vendor.updateStatus',$vendor->id)}}" id="reject-form-{{$vendor->id}}" style="display: none;">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="status" value="2">
+                                       </form>
+                                </td>
+                              </tr>
+                              @empty
+                              <tr>
+                                 <td>Nothing Found!</td>
+                              </tr>
+                              @endforelse
+                           </tbody>
                             </table>
                         </div>
                     </div>

@@ -31,6 +31,8 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
         Route::resource('subCategory', 'SubCategoryController');
         Route::resource('buyer', 'BuyerController');
         Route::resource('vendor', 'VendorController');
+        Route::put('vendorUpdateStatus/{vendor}', 'VendorController@updateStatus')->name('vendor.updateStatus');
+
         Route::resource('coupon', 'CouponController');
         Route::resource('apiKey', 'ApiKeyController');
         Route::resource('blog', 'BlogController');
@@ -54,6 +56,6 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
 
 });
 /*Ajax Routes*/
-Route::group(['prefix' => 'ajax','middleware'=>['auth:admin']], function () {
+Route::group(['prefix' => 'ajax', 'middleware' => ['auth:admin']], function () {
     Route::get('subCategories/{categoryId}', 'SubCategoryController@subCategories')->name('filter.subcategory');
 });

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Buyer;
 use App\Coupon;
 use App\Vendor;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -25,9 +27,16 @@ class HomeController extends Controller
     public function index()
     {
         $data = [
-            "coupons" => Coupon::whereStatus(0)->paginate(5),
-            "vendors" => Vendor::whereStatus(-1)->paginate(5),
+
+            "prevMonthBuyer"  => Buyer::whereMonth('created_at', Carbon::now()->subMonth()->month)->count(),
+            "todaysBuyer"     => Buyer::whereDate('created_at', Carbon::now()->toDateString())->count(),
+
+            "todaysVendor"    => Vendor::whereDate('created_at', Carbon::now()->toDateString())->count(),
+            "prevMonthVendor" => Vendor::whereMonth('created_at', Carbon::now()->subMonth()->month)->count(),
+
+            "coupons"         => Coupon::whereStatus(0)->paginate(5),
+            "vendors"         => Vendor::whereStatus(-1)->paginate(5),
         ];
-        return view('dashboard',$data);
+        return view('dashboard', $data);
     }
 }

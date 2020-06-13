@@ -131,7 +131,18 @@ class VendorController extends Controller
     {
         //
     }
-
+       /**
+     * Update the Status
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Vendor  $vendor
+     * @return \Illuminate\Http\Response
+     */
+    public function updateStatus(Request $request, Vendor $vendor)
+    {
+        $vendor->update(['status' => $request->status]);
+        return redirect()->route('vendor.index')->withSuccess("Vendor Status Updated!");
+    }
     /**
      * Update the specified resource in storage.
      *
