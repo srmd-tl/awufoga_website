@@ -13907,8 +13907,16 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 .table_design .table .thead-light th {
     color: #ffffff;
     background-color: #6772e5;
-    padding: 10px 20px;
     font-size: 15px;
+}
+
+.table_design .table .thead-light th, .table_design .table .thead-light td {
+    padding: 10px 5px !important;
+}
+
+
+.table_design .myTable.myTableStyle table td, .table_design .myTable.myTableStyle table th {
+    padding: 10px 5px !important;
 }
 
 .table_design .table td {
@@ -13921,9 +13929,12 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
     justify-content: flex-end;
 }
 
-
 .table-responsive.myTable {
     overflow: initial;
+}
+
+.myTable.myTableStyle table td, .myTable.myTableStyle table th {
+    padding: 10px 5px !important;
 }
 
 .table-responsive.myTable table td, 

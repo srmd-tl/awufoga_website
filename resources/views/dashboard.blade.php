@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="table_design">
-                        <div class="table-responsive myTable">
+                        <div class="table-responsive myTable myTableStyle">
                             <!-- Projects table -->
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
