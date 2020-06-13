@@ -23,8 +23,8 @@
 
              <th scope="col"> Most Purchase in Category</th>
              <th scope="col"> Most Purchase in Sub Category</th>
-             <th scope="col"> Most sales in Coupon Type</th>
-             <th scope="col"> Wallet Point</th>
+  
+   
        </tr>
     </thead>
     <tbody>

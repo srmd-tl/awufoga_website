@@ -132,10 +132,10 @@
                         <tr>
                            <td class="viewVendor" data-image="{{$vendor->image}}" ><a >{{$loop->iteration}}</a></td>
                            <td  ><a >{{$vendor->full_name}}</a></td>
-                           <td>{{$vendor->email}}</td>
                            <td>{{$vendor->phone}}</td>
+                           
                            <td>{{$vendor->created_at}}</td>
-                          
+                          <td>Not Known Yet</td>
                            <td>{{$vendor->usedCoupons->count()}}</td>
                            <td>{{$vendor->usedCoupons->sum('paid_price')}}</td>
                            <td>{{$vendor->activeCoupons->count()}}</td>

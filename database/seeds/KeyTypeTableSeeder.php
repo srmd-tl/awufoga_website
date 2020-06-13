@@ -11,7 +11,7 @@ class KeyTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        $keyTypes = [["title" => "Africa Talking"], ["title" => "Flutterwave"], ["title" => "Firebase"], ["title" => "Branch.IO"]];
+        $keyTypes = [["title" => "Africa Talking"], ["title" => "Flutterwave"], ["title" => "Firebase"], ["title" => "Branch.IO"],["title"=>"Google Map"]];
         KeyType::insert($keyTypes);
     }
 }

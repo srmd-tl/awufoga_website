@@ -124,8 +124,7 @@
 
                            <th scope="col"> Most Purchase in Category</th>
                            <th scope="col"> Most Purchase in Sub Category</th>
-                           <th scope="col"> Most sales in Coupon Type</th>
-                           <th scope="col"> Wallet Point</th>
+                     
                            <th scope="col"></th>
                         </tr>
                      </thead>
@@ -173,43 +172,8 @@
                             </td>
                            
 
-                           <td>
-                              <span class="badge badge-{{$buyer->notification_on_off==1?'success':'danger'}}">{{$buyer->notification_on_off==1?'On':'Off'}}</span>
-                           </td>
-                           <td class="text-right">
-                              <div class="dropdown">
-                                 <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <i class="fas fa-ellipsis-v"></i>
-                                 </a>
-                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                 
-                                    <button class="dropdown-item editVendor" 
-                                    data-id="{{$buyer->id}}" 
-                                    data-username="{{$buyer->user_name}}" 
-                                    data-fullname="{{$buyer->full_name}}" 
-                                    data-email="{{$buyer->email}}" 
-                                    data-countrycode="{{$buyer->country_code}}" 
-                                    data-phone="{{$buyer->phone}}" 
-                                    data-businessname="{{$buyer->business_name}}" 
-                                    data-businessemail="{{$buyer->business_email}}" 
-                                    data-businesscountrycode="{{$buyer->business_country_code}}" 
-                                    data-businessphone="{{$buyer->business_phone}}" 
-                                    data-businesswebsite="{{$buyer->website}}" 
-                                    data-businessaddress="{{$buyer->address}}" 
-                                    data-longitude="{{$buyer->longitude}}" 
-                                    data-latitude="{{$buyer->latitude}}" 
-                                    data-correctaddress="{{$buyer->correct_address}}" 
-                                    data-rate="{{$buyer->rate}}" 
-                                    data-reviewcount="{{$buyer->review_count}}" 
-                                    data-firstreferral="{{$buyer->first_referral}}" 
-                                    data-notification="{{$buyer->notification_on_off}}" 
-                                    data-image="{{$buyer->image}}" 
-                                    data-status="{{$buyer->status}}" 
-                                    >Edit</button>
-                                    <button class="dropdown-item deleteVendor" data-id="{{$buyer->id}}" >Delete</button>
-                                 </div>
-                              </div>
-                           </td>
+     
+                        
                         </tr>
                         @empty
                         <tr>
