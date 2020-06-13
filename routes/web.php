@@ -24,9 +24,7 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
     Route::post('login', 'AdminController@login')->name('admin.login');
 
     Route::group(['middleware' => 'auth:admin'], function () {
-        Route::get('/', function () {
-            return view('dashboard');
-        })->name('home');
+        Route::get('/', 'HomeController@index')->name('home');
         // Route::resource('user', 'UserController', ['except' => ['show']]);
         Route::resource('admin', 'AdminController');
         Route::resource('category', 'CategoryController');

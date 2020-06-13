@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Coupon;
+use App\Vendor;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $data = [
+            "coupons" => Coupon::whereStatus(0)->paginate(5),
+            "vendors" => Vendor::whereStatus(-1)->paginate(5),
+        ];
+        return view('dashboard',$data);
     }
 }
