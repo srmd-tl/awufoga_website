@@ -80,7 +80,7 @@
 
                         @forelse($vendors as $vendor)
                         <tr>
-                           <td ><a >{{$vendor->id}}</a></td>
+                           <td ><a >{{$loop->iteration}}</a></td>
                            <td  ><a >{{$vendor->full_name}}</a></td>
                            <td>{{$vendor->mobile}}</td>
                            <td>{{$vendor->phone}}</td>

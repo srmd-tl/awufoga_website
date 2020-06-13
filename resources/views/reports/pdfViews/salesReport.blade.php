@@ -49,14 +49,19 @@
              @endphp
           <td  >{{ $vendorAmount}}</td>
           <td  >{{$sale->paid_price*(8/100)}}</td>
-             @php
-                $data = $sale->coupon->singleCouponRating($sale->buyer->id??1);
-             
-                if($data)
-                {
-                   $data = $data->pivot->rating;
-                }
-             @endphp
+            @php
+                           $data = 0;
+                           if($sale->coupon)
+                           {
+                              $data = $sale->coupon->singleCouponRating($sale->buyer->id??1);
+                           
+                              if($data)
+                              {
+                                 $data = $data->pivot->rating;
+                              }
+                           }
+                            
+                           @endphp
           <td > {{$data}}</td>
           <td>
 

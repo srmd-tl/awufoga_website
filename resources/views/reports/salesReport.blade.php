@@ -78,21 +78,7 @@
                              </div>
                           </div>
                        </div>
-                       <div class="row">
-                       
-                          <div class="col-md-4">
-                             <div class="buyer-leader-box">
-                                <label for="">Coupon Type</label>
-                                <select name="" id="">
-                                   <option value="">Most Purchasing Buyers</option>
-                                   <option value="">Category 1</option>
-                                   <option value="">Category 2</option>
-                                   <option value="">Category 3</option>
-                                   <option value="">Category 4</option>
-                                </select>
-                             </div>
-                          </div>
-                       </div>
+         
                        <div class="row">
                           <div class="col-md-12">
                              <div class="leader-btn">
@@ -155,12 +141,17 @@
                         <td  >{{ $vendorAmount}}</td>
                         <td  >{{$sale->paid_price*(8/100)}}</td>
                            @php
+                           $data = 0;
+                           if($sale->coupon)
+                           {
                               $data = $sale->coupon->singleCouponRating($sale->buyer->id??1);
                            
                               if($data)
                               {
                                  $data = $data->pivot->rating;
                               }
+                           }
+                            
                            @endphp
                         <td > {{$data}}</td>
                         <td>

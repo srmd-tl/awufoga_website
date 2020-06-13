@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Category;
 use App\Vendor;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -12,36 +13,36 @@ class VendorExport implements FromView
     {
         $vendors        = null;
         $buyerMainQuery = Vendor::
-            when($request->fromDate && $request->toDate, function ($query) use ($request) {
-            $query->where(function ($query) use ($request) {
+            when(request()->fromDate && request()->toDate, function ($query) {
+            $query->where(function ($query) {
 
-                return $query->whereDate('created_at', '>=', $request->fromDate)
-                    ->whereDate('created_at', '<', $request->toDate);
+                return $query->whereDate('created_at', '>=', request()->fromDate)
+                    ->whereDate('created_at', '<', request()->toDate);
 
             });
-        }, function ($query) use ($request) {
+        }, function ($query) {
 
-            if ($request->fromDate) {
-                $query->whereDate('created_at', '>=', $request->fromDate);
-            } else if ($request->toDate) {
+            if (request()->fromDate) {
+                $query->whereDate('created_at', '>=', request()->fromDate);
+            } else if (request()->toDate) {
 
-                $query->whereDate('created_at', '<=', $request->toDate);
+                $query->whereDate('created_at', '<=', request()->toDate);
             }
         })
         //Status Filter
-            ->where(function ($query) use ($request) {
+            ->where(function ($query) {
 
-                $query->whereStatus($request->activeFilter ?? 1);
+                $query->whereStatus(request()->activeFilter ?? 1);
             })
         //Category Filter
-            ->where(function ($query) use ($request) {
-                if (!is_null($request->categoryFilter) && $request->categoryFilter != "All") {
+            ->where(function ($query) {
+                if (!is_null(request()->categoryFilter) && request()->categoryFilter != "All") {
 
-                    $query->whereHas('usedCoupons', function ($innserQuery) use ($request) {
+                    $query->whereHas('usedCoupons', function ($innserQuery) {
 
-                        $innserQuery->whereHas('coupon', function ($mostInnerQuery) use ($request) {
-                            $mostInnerQuery->whereHas('categories', function ($couponCategoryQuery) use ($request) {
-                                $couponCategoryQuery->whereCategoryId($request->categoryFilter);
+                        $innserQuery->whereHas('coupon', function ($mostInnerQuery) {
+                            $mostInnerQuery->whereHas('categories', function ($couponCategoryQuery) {
+                                $couponCategoryQuery->whereCategoryId(request()->categoryFilter);
 
                             });
                         });
@@ -51,20 +52,20 @@ class VendorExport implements FromView
             });
 
         //Order By Filter
-        if ($request->orderByFilter == "mostPurchasing") {
+        if (request()->orderByFilter == "mostPurchasing") {
 
             $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
                 ->orderBy('sort', 'desc');
 
-        } else if ($request->orderByFilter == "leastPurchasing") {
+        } else if (request()->orderByFilter == "leastPurchasing") {
             $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT count(*) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
                 ->orderBy('sort', 'asc');
 
-        } else if ($request->orderByFilter == "highestWallet") {
+        } else if (request()->orderByFilter == "highestWallet") {
             $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
                 ->orderBy('sort', 'desc');
 
-        } else if ($request->orderByFilter == "lowestWallet") {
+        } else if (request()->orderByFilter == "lowestWallet") {
             $vendors = $buyerMainQuery->select('vendor.*', \DB::raw('(SELECT SUM(payment_wallet) as totalPurchase FROM used_coupon where vendor.id = used_coupon.buyer_id)  as sort'))
                 ->orderBy('sort', 'asc');
         } else {

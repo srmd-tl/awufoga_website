@@ -89,18 +89,7 @@
                                 </select>
                              </div>
                           </div>
-                          <div class="col-md-4">
-                             <div class="buyer-leader-box">
-                                <label for="">Coupon Type</label>
-                                <select name="" id="">
-                                   <option value="">Most Purchasing Buyers</option>
-                                   <option value="">Category 1</option>
-                                   <option value="">Category 2</option>
-                                   <option value="">Category 3</option>
-                                   <option value="">Category 4</option>
-                                </select>
-                             </div>
-                          </div>
+                      
                        </div>
                        <div class="row">
                           <div class="col-md-12">
@@ -144,7 +133,7 @@
 
                         @forelse($buyers as $buyer)
                         <tr>
-                           <td  class="viewVendor" data-image="{{$buyer->image}}">{{$buyer->id}}</td>
+                           <td  class="viewVendor" data-image="{{$buyer->image}}">{{$loop->iteration}}</td>
                            <td ><a >{{$buyer->full_name}}</a></td>
                            <td>{{$buyer->phone}}</td>
                            <td>{{$buyer->created_at}}</td>

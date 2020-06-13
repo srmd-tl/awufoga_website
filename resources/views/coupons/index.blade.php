@@ -46,25 +46,7 @@
                                       
                                 </div>
                              </div>
-                             <div class="col-md-4">
-                                <div class="buyer-leader-box">
-                                   <label for="">Coupon Type</label>
-                                   <select name="typeFilter" >
-                                      <option value="1">Yes</option>
-                                      <option value="0">No</option>
-                                    
-                                   </select>
-                                </div>
-                             </div>
-                             <div class="col-md-4">
-                                <div class="buyer-leader-box">
-                                   <label for="">Discount %</label>
-                                   <input type="text" name="discountFilter" value="{{request()->discountFilter??null}}">
-                                </div>
-                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-4">
+                                      <div class="col-md-4">
                                 <div class="buyer-leader-box">
                                    <label for="">Is Active</label>
                                    <select name="activeFilter" >
@@ -74,6 +56,25 @@
                                    </select>
                                 </div>
                              </div>
+                           <!--   <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Coupon Type</label>
+                                   <select name="typeFilter" >
+                                      <option value="1">Yes</option>
+                                      <option value="0">No</option>
+                                    
+                                   </select>
+                                </div>
+                             </div> -->
+                             <div class="col-md-4">
+                                <div class="buyer-leader-box">
+                                   <label for="">Discount %</label>
+                                   <input type="text" name="discountFilter" value="{{request()->discountFilter??null}}">
+                                </div>
+                             </div>
+                          </div>
+                          <div class="row">
+                   
                              <div class="col-md-4">
                                 <div class="buyer-leader-box">
                                    <label for="">Description</label>

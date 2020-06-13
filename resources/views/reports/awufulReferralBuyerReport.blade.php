@@ -81,7 +81,7 @@
 
                         @forelse($buyers as $buyer)
                         <tr>
-                           <td ><a >{{$buyer->id}}</a></td>
+                           <td ><a >{{$loop->iteration}}</a></td>
                            <td  ><a >{{$buyer->full_name}}</a></td>
                            
                            <td>{{$buyer->phone}}</td>
