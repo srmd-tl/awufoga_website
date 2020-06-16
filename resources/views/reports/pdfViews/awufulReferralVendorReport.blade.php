@@ -1,8 +1,7 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  <h2 style="margin-top: 20px !important">Awuful Referral VendorReport Report</h2>
-  <p>Awuful Referral VendorReport</p>            
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Awuful  Referral Vendor Report','logo'=>asset('logo.png')])     
   <table  style="
     table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
@@ -38,5 +37,6 @@
                         @endforelse
                      </tbody>
                  </table>
+      @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Awuful  Referral Vendor Report','page'=>$vendors->currentPage()])
              </div>
              @endsection

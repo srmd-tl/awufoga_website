@@ -1,16 +1,8 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  <div style="text-align: center;">
-    <!-- <img src="http://127.0.0.1:8000/logo.png" width="300" alt=""> -->
-  </div>
-  <div class="" style="text-align: center;">
-    <h2 style="margin-top: 20px !important">Vendor Report</h2>
-    <p>Report About Vendor</p>      
-  </div> 
-  <div class="date-detail" style="padding: 0px 50px">
-    <p>17/30/2020</p>
-  </div>
+@includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Vendor Report','logo'=>asset('logo.png')])
+
   <table  style="
     table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
@@ -88,10 +80,8 @@
          </tbody>
      </table>
 
+     @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Vendor Report','page'=>$vendors->currentPage()])
 
-     <div class="page-number" style="text-align: center; margin:10px 0px;">
-        <span style="font-size: 18px; color: #000000; margin:0px 10px;">Vendor Report</span>
-        <span><span>Page:</span> 15</span>
-     </div>
+   
  </div>
 @endsection

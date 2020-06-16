@@ -1,8 +1,7 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  <h2 style="margin-top: 20px !important">Basic Table</h2>
-  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>            
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Sales Report','logo'=>asset('logo.png')])         
   <table  style="
     table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
@@ -84,6 +83,7 @@
     </tbody>
 
   </table>
+    @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Sales Report','page'=>$sales->currentPage()])
 </div>
 
 @endsection

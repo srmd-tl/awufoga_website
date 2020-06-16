@@ -1,8 +1,7 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  <h2 style="margin-top: 20px !important">Blog Report</h2>
-  <p>Report About Blog</p>            
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Blogs Report','logo'=>asset('logo.png')])              
   <table  style="
     table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
@@ -37,5 +36,6 @@
        @endforelse
     </tbody>
     </table>
+      @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Blogs Report','page'=>$blogs->currentPage()])
   </div>
 @endsection

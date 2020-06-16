@@ -181,7 +181,7 @@ class CouponController extends Controller
     public function updateStatus(Request $request, Coupon $coupon)
     {
         $coupon->update(['status' => $request->status]);
-        return redirect()->route('coupon.index')->withSuccess("Coupon Status Updated!");
+        return redirect()->back()->withSuccess("Coupon Status Updated!");
     }
 
     /**

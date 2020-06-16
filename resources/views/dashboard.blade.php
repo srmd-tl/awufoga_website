@@ -61,31 +61,20 @@
                     
                                  <td>{{$coupon->start_date}}</td>
                                  <td>{{$coupon->end_date}}</td>                  
-                                <td>
-                                       <a  title="Accept"  class="btn btn-success btn-sm"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('accept-form-{{$coupon->id}}').submit();">
+                                <td >
+                                       <a  title="Accept"  class="btn btn-success btn-sm accept"  data-action="{{route('coupon.updateStatus',$coupon->id)}}"
+                                       >
                                              Accept
                                        </a>
 
-                                     <form method="POST" action="{{route('coupon.updateStatus',$coupon->id)}}" id="accept-form-{{$coupon->id}}" style="display: none;">
-                                      @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="1">
-                                       </form>
+                                    
 
                                   
-                                      <a  title="Reject"  class="btn btn-danger btn-sm"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('reject-form-{{$coupon->id}}').submit();">
+                                      <a  title="Reject"  class="btn btn-danger btn-sm reject" data-action="{{route('coupon.updateStatus',$coupon->id)}}" >
                                              Reject
                                        </a>
 
-                                       <form method="POST" action="{{route('coupon.updateStatus',$coupon->id)}}" id="reject-form-{{$coupon->id}}" style="display: none;">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="2">
-                                       </form>
+                                   
                                 </td>
                               </tr>
                               @empty
@@ -159,30 +148,22 @@
                                
                      
                                 <td>
-                                       <a  title="Accept"  class="btn btn-success btn-sm"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('accept-form-{{$vendor->id}}').submit();">
+
+                                     <a  title="Accept"  class="btn btn-success btn-sm accept"  data-action="{{route('vendor.updateStatus',$vendor->id)}}"
+                                       >
                                              Accept
                                        </a>
 
-                                     <form method="POST" action="{{route('vendor.updateStatus',$vendor->id)}}" id="accept-form-{{$vendor->id}}" style="display: none;">
-                                      @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="1">
-                                       </form>
+                                    
 
                                   
-                                      <a  title="Reject"  class="btn btn-danger btn-sm"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('reject-form-{{$vendor->id}}').submit();">
+                                      <a  title="Reject"  class="btn btn-danger btn-sm reject" data-action="{{route('vendor.updateStatus',$vendor->id)}}" >
                                              Reject
                                        </a>
 
-                                       <form method="POST" action="{{route('vendor.updateStatus',$vendor->id)}}" id="reject-form-{{$vendor->id}}" style="display: none;">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="status" value="2">
-                                       </form>
+
+                                       
+                                     
                                 </td>
                               </tr>
                               @empty
@@ -244,7 +225,7 @@
                          </table>
 
                          <div class="close_btn">
-                           <a href="#">Close</a>
+                           <a data-dismiss="modal">Close</a>
                          </div>
                      </div>
                   </div>
@@ -253,6 +234,80 @@
          </div>
       </div>
    </div>
+
+
+
+    <!-- Accept Modal -->
+     <div class="col-md-4">
+      <div class="modal fade" id="accept-modal" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+               <div class="modal-body p-0">
+                  <div class="card bg-secondary border-0 mb-0">
+                     <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                           <small>Accept</small>
+                        </div>
+                        <form role="form"  method="POST" id="acceptForm">
+                          <input type="hidden" name="status" value="1">
+                           @csrf
+                           @method('PUT')
+                            <div class="form-group mb-3">
+                              <div class="input-group input-group-merge input-group-alternative">
+                                 
+                                 <label class="form-control pb-5" >Are You Sure You Want To Accept</label>
+                              </div>
+                            </div>
+                           
+                           <div class="text-center">
+                              <button type="submit" class="btn btn-danger my-4">Yes</button>
+                              <button type="button" class="btn btn-success my-4" data-dismiss="modal">No </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- End Accept Modal -->
+
+   <!-- Reject Modal -->
+     <div class="col-md-4">
+      <div class="modal fade" id="reject-modal" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+               <div class="modal-body p-0">
+                  <div class="card bg-secondary border-0 mb-0">
+                     <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                           <small>Reject</small>
+                        </div>
+                        <form role="form" method="POST" id="rejectForm">
+                          <input type="hidden" name="status" value="2">
+                           @csrf
+                           @method('PUT')
+                            <div class="form-group mb-3">
+                              <div class="input-group input-group-merge input-group-alternative">
+                                 
+                                 <label class="form-control pb-5" >Are You Sure You Want To Reject</label>
+                              </div>
+                            </div>
+                           
+                           <div class="text-center">
+                              <button type="submit" class="btn btn-danger my-4">Yes</button>
+                              <button type="button" class="btn btn-success my-4" data-dismiss="modal">No </button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- End Reject Modal -->
 @endsection
 
 @push('js')
@@ -270,7 +325,20 @@
           var latitude = $(this).data('latitude')
           $("#view-form").modal()       
 
+         
+
         })
+
+           $(".accept").click(function(){
+            var action = $(this).data('action')
+            $("#acceptForm").attr('action',action)
+            $('#accept-modal').modal()
+          })
+            $(".reject").click(function(){
+            var action = $(this).data('action')
+            $("#rejectForm").attr('action',action)
+            $('#reject-modal').modal()
+          })
 
     })
 </script>

@@ -199,23 +199,7 @@
                            <span class="badge badge-{{$blog->status==1?'success':'danger'}}">{{$blog->status==1?'Active':'Inactive'}}</span>
 
                         </td -->
-                        <td class="text-right">
-                           <div class="dropdown">
-                              <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
-                              </a>
-                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                 <button class="dropdown-item editBlog"
-                                 data-id="{{$blog->id}}"
-                                  data-title="{{$blog->title}}"
-                                  data-body="{{$blog->body}}"
-                                     data-image="{{$blog->image}}"
-                                  data-status="{{$blog->status}}" >Edit</button>
-                                 <button class="dropdown-item deleteBlog" data-id="{{$blog->id}}" >Delete</button>
-                              </div>
-                           </div>
-                        </td>
+           
                      </tr>
                      @empty
                      <tr>

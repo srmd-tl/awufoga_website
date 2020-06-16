@@ -85,6 +85,7 @@ class VendorReportController extends Controller
             "vendors"    => $vendors->paginate(20),
             "categories" => Category::all(),
         ];
+
         //Report Type Check
         if (request()->pdf) {
             $pdf = PDF::loadView('reports.pdfViews.vendorReport', $data);
