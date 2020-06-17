@@ -158,6 +158,7 @@ a:hover {
 a:not([href]):not([tabindex]) {
     text-decoration: none;
     /*! color: inherit; */
+    color: inherit;
 }
 a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
     text-decoration: none;
@@ -13914,6 +13915,9 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
     padding: 10px 5px !important;
 }
 
+#view-form .close_btn a {
+    color: #fff;
+}
 
 .table_design .myTable.myTableStyle table td, .table_design .myTable.myTableStyle table th {
     padding: 10px 5px !important;
@@ -13931,6 +13935,10 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 
 .table-responsive.myTable {
     overflow: initial;
+}
+
+.table-responsive.myTable .btn {
+    color: #fff;
 }
 
 .myTable.myTableStyle table td, .myTable.myTableStyle table th {

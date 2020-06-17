@@ -341,5 +341,13 @@
           })
 
     })
+
+   
+
+  var url= window.location.href;
+
+  var  loadpage = 
+
+
 </script>
 @endpush

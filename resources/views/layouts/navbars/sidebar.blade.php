@@ -9,7 +9,7 @@
             <img src="{{ asset('logo.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
-        <ul class="nav align-items-center d-md-none">
+        <ul class="nav align-items-center d-md-none ">
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
@@ -77,7 +77,7 @@
                 </div>
             </form>
             <!-- Navigation -->
-            <ul class="navbar-nav">
+            <ul class="navbar-nav leftSideBar">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
