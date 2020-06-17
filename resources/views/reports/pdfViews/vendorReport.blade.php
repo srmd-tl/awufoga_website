@@ -1,7 +1,9 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-@includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Vendor Report','logo'=>asset('logo.png')])
+@includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'
+Vendor Leader Board
+','logo'=>asset('logo.png')])
 
   <table  style="
     table-layout: fixed;
@@ -80,7 +82,7 @@
          </tbody>
      </table>
 
-     @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Vendor Report','page'=>$vendors->currentPage()])
+     @includeWhen(request()->pdf==true,'reports.pdfViews.include.footer',['name'=>'Vendor Leader Board','page'=>$vendors->currentPage()])
 
    
  </div>
