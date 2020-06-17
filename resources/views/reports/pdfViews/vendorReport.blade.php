@@ -28,8 +28,8 @@ Vendor Leader Board
 
             @forelse($vendors as $vendor)
             <tr>
-               <td class="viewVendor" data-image="{{$vendor->image}}" ><a >{{$loop->iteration}}</a></td>
-               <td  ><a >{{$vendor->full_name}}</a></td>
+               <td class="viewVendor" data-image="{{$vendor->image}}" >{{$loop->iteration}}</td>
+               <td  ><{{$vendor->full_name}}</td>
    
                <td>{{$vendor->phone}}</td>
                <td>{{$vendor->created_at}}</td>

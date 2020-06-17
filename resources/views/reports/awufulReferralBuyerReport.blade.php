@@ -13,7 +13,9 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader mt-3">
-                        <h3>Awuful Buyer Referral Report</h3>
+                        <h3>
+Awuf Referral Buyer Report
+</h3>
                      </div>
                   </div>
                </div>
@@ -81,8 +83,8 @@
 
                         @forelse($buyers as $buyer)
                         <tr>
-                           <td ><a >{{$loop->iteration}}</a></td>
-                           <td  ><a >{{$buyer->full_name}}</a></td>
+                           <td >{{$loop->iteration}}</td>
+                           <td  >{{$buyer->full_name}}</td>
                            
                            <td>{{$buyer->phone}}</td>
                            <td>{{$buyer->referrals->count()}}</td>

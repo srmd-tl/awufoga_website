@@ -13,7 +13,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader mt-3">
-                        <h3>Awuful Vendor Referral Report</h3>
+                        <h3>Awuf Referral Vendor Report</h3>
                      </div>
                   </div>
                </div>
@@ -80,8 +80,8 @@
 
                         @forelse($vendors as $vendor)
                         <tr>
-                           <td ><a >{{$loop->iteration}}</a></td>
-                           <td  ><a >{{$vendor->full_name}}</a></td>
+                           <td >{{$loop->iteration}}</td>
+                           <td  >{{$vendor->full_name}}</td>
                            <td>{{$vendor->mobile}}</td>
                            <td>{{$vendor->phone}}</td>
                            <td>{{$vendor->created_at}}</td>
