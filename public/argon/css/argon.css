@@ -13810,6 +13810,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 /*=========================== custom css // start =================================*/
 .modal-content{
     width: initial !important;
+    margin: auto;
 }
 
 .close_btn a {
