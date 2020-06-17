@@ -178,7 +178,7 @@
                             </li>  
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('awufulReferralVendorsReport.index') }}">
-                                    {{ __('Awuful Referral Vendor Report') }}
+                                    {{ __('Awuf Referral Vendor') }}
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -188,7 +188,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('awufulReferralBuyersReport.index') }}">
-                                    {{ __('Awuful Referral Buyer Report') }}
+                                    {{ __('Awuf Referral Buyer ') }}
                                 </a>
                             </li>
                             <li class="nav-item">

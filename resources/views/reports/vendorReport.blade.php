@@ -12,7 +12,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader">
-                        <h3>Vendor leader board</h3>
+                        <h3>Vendor Leader Board     </h3>
                      </div>
                   </div>
                </div>
@@ -130,8 +130,8 @@
 
                         @forelse($vendors as $vendor)
                         <tr>
-                           <td class="viewVendor" data-image="{{$vendor->image}}" ><a >{{$loop->iteration}}</a></td>
-                           <td  ><a >{{$vendor->full_name}}</a></td>
+                           <td>{{$loop->iteration}}</td>
+                           <td  class="viewVendor" data-image="{{$vendor->image}}"  >{{$vendor->full_name}}</td>
                            <td>{{$vendor->phone}}</td>
                            
                            <td>{{$vendor->created_at}}</td>

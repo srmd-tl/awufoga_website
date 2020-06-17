@@ -12,7 +12,7 @@
                <div class="row">
                   <div class="col-md-12">
                      <div class="title-leader">
-                        <h3>Buy leader board</h3>
+                        <h3>Buyer Leader Board</h3>
                      </div>
                   </div>
                </div>

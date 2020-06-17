@@ -77,7 +77,7 @@
 
                         @forelse($buyers as $buyer)
                         <tr>
-                           <td class="viewBuyer" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
+                           <td class="viewBuyer" data-image="{{$buyer->image}}" >{{$buyer->full_name}}</td>
                            <td>{{$buyer->user_name}}</td>
                            <td>{{$buyer->email}}</td>
                            <td>{{$buyer->full_phone}}</td>
