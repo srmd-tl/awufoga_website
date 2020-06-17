@@ -14218,7 +14218,9 @@ input:focus , select:focus {
 
 
 
-
+.close_btn a {
+    cursor: pointer;
+}
 
 
 
