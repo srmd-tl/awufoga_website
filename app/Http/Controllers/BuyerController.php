@@ -60,7 +60,7 @@ class BuyerController extends Controller
 
             Buyer::whereStatus(1)->paginate(20),
         ];
-      
+
         return view('buyers.index', $data);
 
     }
@@ -109,7 +109,10 @@ class BuyerController extends Controller
      */
     public function show(Buyer $buyer)
     {
-        //
+        $buyer = Buyer::with(['usedCoupons' => function ($query) {
+            $query->selectRaw('count(*) as count,SUM(paid_price) as price_total,buyer_id');
+        }])->whereId($buyer->id)->first();
+        return view('ajax.buyerReference', ["buyer" => $buyer]);
     }
 
     /**

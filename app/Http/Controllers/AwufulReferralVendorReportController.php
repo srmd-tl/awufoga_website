@@ -29,7 +29,7 @@ class AwufulReferralVendorReportController extends Controller
                         ->with(['referrals' => function ($query) {
                             $query
                                 ->groupBy('referral_vendor', 'vendor_id')
-                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,vendor_id');
+                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,vendor_id,referral_vendor');
                         }]);
                 })
 

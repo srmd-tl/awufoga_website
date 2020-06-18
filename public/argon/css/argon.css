@@ -1,7 +1,8 @@
 /*!
 
 =========================================================
-* Argon Dashboard - v1.0.0
+* 
+Argon Dashboard - v1.0.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/argon-dashboard
@@ -13810,6 +13811,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 /*=========================== custom css // start =================================*/
 .modal-content{
     width: initial !important;
+    margin: auto;
 }
 
 .close_btn a {
@@ -13919,6 +13921,9 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
     color: #fff;
 }
 
+#view-category-form .close_btn a {
+    color: #fff;
+}
 .table_design .myTable.myTableStyle table td, .table_design .myTable.myTableStyle table th {
     padding: 10px 5px !important;
 }
@@ -14217,7 +14222,9 @@ input:focus , select:focus {
 
 
 
-
+.close_btn a {
+    cursor: pointer;
+}
 
 
 

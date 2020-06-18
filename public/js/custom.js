@@ -1,3 +1,19 @@
+/*Call ajax to send get request to server to fetch sub categories against a category*/
+	function getData(url) {
+
+		  return new Promise((resolve, reject) => {
+		   $.get(url)
+		      .done(function(response) {
+		        resolve(response)
+		      })
+		      .fail(function(error) {
+		       reject(error)
+		      })
+		  })
+
+	
+	}
+
 $(function(){
 
 	//ON page load 
@@ -15,21 +31,7 @@ $(function(){
 
 	/*Functions*/
 
-	/*Call ajax to send get request to server to fetch sub categories against a category*/
-	function getData(url) {
-
-		  return new Promise((resolve, reject) => {
-		   $.get(url)
-		      .done(function(response) {
-		        resolve(response)
-		      })
-		      .fail(function(error) {
-		       reject(error)
-		      })
-		  })
-
 	
-	}
 
 	/*Dynamic Option Generation*/
 	 function dynamicOptions(selector,data)

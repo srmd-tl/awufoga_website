@@ -110,6 +110,7 @@
                                     data-notification="{{$vendor->notification_on_off}}" 
                                     data-image="{{$vendor->image}}" 
                                     data-status="{{$vendor->status}}" 
+                                     data-referrals="{{$vendor->referrals}}" 
                               >  
                               <a  >Click To View</a>
                              
@@ -146,7 +147,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body ">
                         <div class="text-center text-muted mb-4">
-                           <small>View  Image</small>
+                           <small>Vendor Reference Details</small>
                         </div>
                          <table class="table header-border table-hover verticle-middle">
                              <thead>
@@ -159,7 +160,7 @@
                                      <th scope="col">Total Sale Amount</th>
                                  </tr>
                              </thead>
-                             <tbody>
+                             <tbody id="vendorReference">
                                  <tr>
                                      <th>1</th>
                                      <td>Abdullahi</td>
@@ -180,7 +181,7 @@
                          </table>
 
                          <div class="close_btn">
-                           <a href="#">Close</a>
+                           <a data-dismiss="modal" >Close</a>
                          </div>
                      </div>
                   </div>
@@ -194,10 +195,28 @@
 </div>
 
 @push('js')
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <script type="text/javascript">
     $(function(){
 
           $(".viewVendor").click(function(){
+            $("#vendorReference").html('')
+
+            var referralVendors = $(this).data("referrals")
+
+            $.each(referralVendors,function(key,value){
+              id=value.referral_vendor.split('_')
+              
+              route = "{{route('vendor.show',':id')}}"
+              route =route.replace(':id',id[1])
+              getData(route) .then(data=>{
+                $("#vendorReference").append(data)
+         
+              })
+             
+            })
+
+
             var image = "{{asset('storage')}}/"+$(this).data('image')
             $("#viewImage").attr('src',image)
             $("#view-category-form").modal()       

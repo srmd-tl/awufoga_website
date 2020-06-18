@@ -344,10 +344,6 @@
 
    
 
-  var url= window.location.href;
-
-
-
 
 </script>
 @endpush

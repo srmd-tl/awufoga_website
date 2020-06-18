@@ -118,7 +118,10 @@ class VendorController extends Controller
      */
     public function show(Vendor $vendor)
     {
-        //
+        $vendor= Vendor::with(['usedCoupons'=>function($query){
+            $query->selectRaw('count(*) as count,SUM(paid_price) as price_total,vendor_id');
+        }])->whereId($vendor->id)->first();
+        return view('ajax.vendorReference',["vendor"=>$vendor]);
     }
 
     /**

@@ -1,8 +1,7 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-@includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'
-Vendor Leader Board
+@includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Vendor Leader Board
 ','logo'=>asset('logo.png')])
 
   <table  style="

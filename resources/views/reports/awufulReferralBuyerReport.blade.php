@@ -151,20 +151,20 @@ Awuf Referral Buyer Report
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body ">
                         <div class="text-center text-muted mb-4">
-                           <small>View  Image</small>
+                           <small>Buyer Reference Details</small>
                         </div>
                          <table class="table header-border table-hover verticle-middle">
                              <thead>
                                  <tr>
                                      <th scope="col">Sl No</th>
-                                     <th scope="col">Vendor Name</th>
-                                     <th scope="col">Vendor  mobile</th>
+                                     <th scope="col">Buyer Name</th>
+                                     <th scope="col">Buyer  mobile</th>
                                      <th scope="col">Reference code</th>
                                      <th scope="col">Total No Sale</th>
                                      <th scope="col">Total Sale Amount</th>
                                  </tr>
                              </thead>
-                             <tbody id="referralBuyers">
+                             <tbody id="buyerReference">
                                  <tr>
                                      <th>1</th>
                                      <td>Abdullahi</td>
@@ -185,7 +185,7 @@ Awuf Referral Buyer Report
                          </table>
 
                          <div class="close_btn">
-                           <a href="#">Close</a>
+                           <a data-dismiss="modal">Close</a>
                          </div>
                      </div>
                   </div>
@@ -199,15 +199,25 @@ Awuf Referral Buyer Report
 </div>
 
 @push('js')
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
 <script type="text/javascript">
     $(function(){
 
           $(".viewVendor").click(function(){
+             $("#buyerReference").html('')
 
             var referralBuyers = $(this).data("referrals")
+
             $.each(referralBuyers,function(key,value){
               id=value.referral_buyer.split('_')
-              console.log(id[1])
+
+              route = "{{route('buyer.show',':id')}}"
+              route =route.replace(':id',id[1])
+              getData(route) .then(data=>{
+                $("#buyerReference").append(data)
+         
+              })
+              
             })
             var image = "{{asset('storage')}}/"+$(this).data('image')
             $("#viewImage").attr('src',image)

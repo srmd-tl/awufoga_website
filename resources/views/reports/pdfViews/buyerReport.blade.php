@@ -7,7 +7,7 @@
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
     
 
-    <thead class="thead-light" style="background: #e8e8e8;">
+    <thead class="thead-light" >
        <tr>
              <th scope="col">Sl.No.</th>
              <th scope="col">Full Name</th>
