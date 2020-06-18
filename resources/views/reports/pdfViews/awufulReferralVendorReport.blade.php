@@ -1,19 +1,24 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Awuf Referral Vendor Report','logo'=>asset('logo.png')])     
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Awuf Referral Vendor Report','logo'=>asset('logo.png')]) 
+  <style>
+    th ,td{
+     text-align: left;
+     font-size: 14px;
+    }
+  </style>    
   <table  style="
-    table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
 
      <thead class="thead-light">
                         <tr>
-                            <th scope="col">Sl No</th>
-                            <th scope="col">Vendor Name</th>
-                            <th scope="col">Vendor  mobile</th>
-                            <th scope="col">Total No Refferal</th>
-                            <th scope="col">Referral Sale Amount</th>
-                            <th scope="col">Earned From Referral</th>
+                            <th>Sl No</th>
+                            <th>Vendor Name</th>
+                            <th>Vendor  mobile</th>
+                            <th>Total No Refferal</th>
+                            <th>Referral Sale Amount</th>
+                            <th>Earned From Referral</th>
                         </tr>
                     </thead>
                      <tbody>

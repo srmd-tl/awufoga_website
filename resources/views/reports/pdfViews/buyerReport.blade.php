@@ -3,7 +3,6 @@
 <div class="container" >
   @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Buyer Leader Board','logo'=>asset('logo.png')])              
   <table  style="
-    table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
     
 
@@ -30,17 +29,17 @@
 
         @forelse($buyers as $buyer)
         <tr>
-           <td  class="viewVendor" data-image="{{$buyer->image}}">{{$loop->iteration}}</td>
-           <td ><a >{{$buyer->full_name}}</a></td>
-           <td>{{$buyer->phone}}</td>
-           <td>{{$buyer->created_at}}</td>
-           <td>{{$buyer->created_at}}</td>
+           <td class="viewVendor" data-image="{{$buyer->image}}">{{$loop->iteration}}</td>
+           <td style="font-size: 14px;"><a >{{$buyer->full_name}}</a></td>
+           <td style="font-size: 14px;">{{$buyer->phone}}</td>
+           <td style="font-size: 14px;">{{$buyer->created_at}}</td>
+           <td style="font-size: 14px;">{{$buyer->created_at}}</td>
           
-           <td>{{$buyer->usedCoupons->count()}}</td>
-           <td>{{$buyer->usedCoupons->sum('paid_price')}}</td>
-           <td>{{$buyer->usedCoupons->sum('payment_wallet')}}</td>
-           <td>{{$buyer->favCoupons->count()}}</td>
-           <td>
+           <td style="font-size: 14px;">{{$buyer->usedCoupons->count()}}</td>
+           <td style="font-size: 14px;">{{$buyer->usedCoupons->sum('paid_price')}}</td>
+           <td style="font-size: 14px;">{{$buyer->usedCoupons->sum('payment_wallet')}}</td>
+           <td style="font-size: 14px;">{{$buyer->favCoupons->count()}}</td>
+           <td style="font-size: 14px;">
             @php
             $mostCoupon = json_decode($buyer->mostUsedCategories());
             //print_r($mostCoupon->id??0);

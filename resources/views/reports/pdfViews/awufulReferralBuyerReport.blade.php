@@ -5,7 +5,6 @@
 Awuf Referral Buyer Report
 ','logo'=>asset('logo.png')])             
   <table  style="
-    table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
   <thead class="thead-light">
        <tr>
