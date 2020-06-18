@@ -132,8 +132,8 @@
 
                         @forelse($buyers as $buyer)
                         <tr>
-                           <td  class="viewVendor" data-image="{{$buyer->image}}">{{$loop->iteration}}</td>
-                           <td ><a >{{$buyer->full_name}}</a></td>
+                           <td  >{{$loop->iteration}}</td>
+                           <td class="viewVendor" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
                            <td>{{$buyer->phone}}</td>
                            <td>{{$buyer->created_at}}</td>
                            <td>{{$buyer->created_at}}</td>
