@@ -1,7 +1,13 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Blogs Report','logo'=>asset('logo.png')])              
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Blogs Report','logo'=>asset('logo.png')])   
+    <style>
+    th ,td{
+     text-align: left;
+     font-size: 14px;
+    }
+  </style>             
   <table  style="
     table-layout: fixed;
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
@@ -9,10 +15,10 @@
 
    <thead class="thead-light"  style="background: #e8e8e8;">
        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Category </th>
-          <th scope="col">Share</th>
-          <th scope="col">Read</th>
+          <th >Title</th>
+          <th >Category </th>
+          <th >Share</th>
+          <th >Read</th>
        </tr>
     </thead>
     <tbody>

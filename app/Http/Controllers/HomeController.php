@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Buyer;
+use App\UsedCoupon;
 use App\Coupon;
 use App\Vendor;
 use Carbon\Carbon;
@@ -36,6 +37,8 @@ class HomeController extends Controller
 
             "coupons"         => Coupon::whereStatus(0)->paginate(5),
             "vendors"         => Vendor::whereStatus(-1)->paginate(5),
+
+            "paidAmount"      => UsedCoupon::whereDate('created_at',Carbon::now()->toDateString())->sum('paid_price'),
         ];
         return view('dashboard', $data);
     }

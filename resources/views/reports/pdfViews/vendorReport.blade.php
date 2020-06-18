@@ -3,36 +3,40 @@
 <div class="container" >
 @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Vendor Leader Board
 ','logo'=>asset('logo.png')])
-
+    <style>
+    th ,td{
+     text-align: left;
+     font-size: 14px;
+    }
+  </style>           
   <table  style="
-    
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
-    <thead class="thead-light"  style="background: #e8e8e8;">
+    <thead class="thead-light" >
             <tr>
-              <th scope="col">Sl.No.</th>
-               <th scope="col">Full Name</th>
-               <th scope="col">Mobile</th>
-               <th scope="col">Member Since</th>
-               <th scope="col">City</th>
-               <th scope="col">Sales Count</th>
-               <th scope="col">Sales Total</th>
-               <th scope="col"> Active coupons</th>
-               <th scope="col"> Expired Coupons</th>
-               <th scope="col"> Most sales in Category</th>
-               <th scope="col"> Most sales in Sub Category</th>
-               <th scope="col"> Wallet Point</th>
+              <th >Sl.No.</th>
+               <th >Full Name</th>
+               <th >Mobile</th>
+               <th >Member Since</th>
+               <th >City</th>
+               <th >Sales Count</th>
+               <th >Sales Total</th>
+               <th > Active coupons</th>
+               <th > Expired Coupons</th>
+               <th > Most sales in Category</th>
+               <th > Most sales in Sub Category</th>
+               <th > Wallet Point</th>
             </tr>
          </thead>
          <tbody>
 
             @forelse($vendors as $vendor)
             <tr>
-               <td class="viewVendor" data-image="{{$vendor->image}}" >{{$loop->iteration}}</td>
-               <td  ><{{$vendor->full_name}}</td>
+               <td >{{$loop->iteration}}</td>
+               <td  >{{$vendor->full_name}}</td>
    
                <td>{{$vendor->phone}}</td>
-               <td>{{$vendor->created_at}}</td>
-               <td>Not Known Yet</td>
+               <td>{{$vendor->created_at->toDateString()}}</td>
+               <td>N/A</td>
               
                <td>{{$vendor->usedCoupons->count()}}</td>
                <td>{{$vendor->usedCoupons->sum('paid_price')}}</td>

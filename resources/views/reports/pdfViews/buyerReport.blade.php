@@ -1,26 +1,33 @@
 @extends('layouts.report')
 @section('content')
 <div class="container" >
-  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Buyer Leader Board','logo'=>asset('logo.png')])              
+  @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Buyer Leader Board','logo'=>asset('logo.png')])      
+    <style>
+    th ,td{
+     text-align: left;
+     font-size: 14px;
+    }
+  </style>           
   <table  style="
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
     
 
     <thead class="thead-light" >
        <tr>
-             <th scope="col">Sl.No.</th>
-             <th scope="col">Full Name</th>
-             <th scope="col">Mobile</th>
-             <th scope="col">Member Since</th>
-             <th scope="col">City</th>
+             <th >Sl.No.</th>
+             <th >Sl.No.</th>
+             <th >Full Name</th>
+             <th >Mobile</th>
+             <th >Member Since</th>
+             <th >City</th>
 
-             <th scope="col">Purchase Count</th>
-             <th scope="col">Purchase Amount</th>
-             <th scope="col">Wallet points </th>
-             <th scope="col">Fav Coupons</th>
+             <th >Purchase Count</th>
+             <th >Purchase Amount</th>
+             <th >Wallet points </th>
+             <th >Fav Coupons</th>
 
-             <th scope="col"> Most Purchase in Category</th>
-             <th scope="col"> Most Purchase in Sub Category</th>
+             <th > Most Purchase in Category</th>
+             <th > Most Purchase in Sub Category</th>
   
    
        </tr>
@@ -30,16 +37,16 @@
         @forelse($buyers as $buyer)
         <tr>
            <td class="viewVendor" data-image="{{$buyer->image}}">{{$loop->iteration}}</td>
-           <td style="font-size: 14px;"><a >{{$buyer->full_name}}</a></td>
-           <td style="font-size: 14px;">{{$buyer->phone}}</td>
-           <td style="font-size: 14px;">{{$buyer->created_at}}</td>
-           <td style="font-size: 14px;">{{$buyer->created_at}}</td>
+           <td ><a >{{$buyer->full_name}}</a></td>
+           <td >{{$buyer->phone}}</td>
+           <td >{{$buyer->created_at->toDateString()}}</td>
+           <td >N/A</td>
           
-           <td style="font-size: 14px;">{{$buyer->usedCoupons->count()}}</td>
-           <td style="font-size: 14px;">{{$buyer->usedCoupons->sum('paid_price')}}</td>
-           <td style="font-size: 14px;">{{$buyer->usedCoupons->sum('payment_wallet')}}</td>
-           <td style="font-size: 14px;">{{$buyer->favCoupons->count()}}</td>
-           <td style="font-size: 14px;">
+           <td >{{$buyer->usedCoupons->count()}}</td>
+           <td >{{$buyer->usedCoupons->sum('paid_price')}}</td>
+           <td >{{$buyer->usedCoupons->sum('payment_wallet')}}</td>
+           <td >{{$buyer->favCoupons->count()}}</td>
+           <td >
             @php
             $mostCoupon = json_decode($buyer->mostUsedCategories());
             //print_r($mostCoupon->id??0);

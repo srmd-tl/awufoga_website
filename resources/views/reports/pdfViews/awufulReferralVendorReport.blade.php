@@ -27,9 +27,9 @@
                         <tr>
                            <td >{{$loop->iteration}}</td>
                            <td  >{{$vendor->full_name}}</td>
-                           <td>{{$vendor->mobile}}</td>
                            <td>{{$vendor->phone}}</td>
-                           <td>{{$vendor->created_at}}</td>
+                           <td>{{$vendor->phone}}</td>
+                           <td>{{$vendor->created_at->toDateString()}}</td>
                           
                            <td>{{$vendor->referrals[0]->earnedFromReferral}}</td>
                       
