@@ -62,9 +62,9 @@
                                  <td>{{$coupon->start_date}}</td>
                                  <td>{{$coupon->end_date}}</td>                  
                                 <td >
-                                       <a  title="Accept"  class="btn btn-success btn-sm accept"  data-action="{{route('coupon.updateStatus',$coupon->id)}}"
+                                       <a  title="Approve"  class="btn btn-success btn-sm accept"  data-action="{{route('coupon.updateStatus',$coupon->id)}}"
                                        >
-                                             Accept
+                                             Approve
                                        </a>
 
                                     
@@ -149,9 +149,9 @@
                      
                                 <td>
 
-                                     <a  title="Accept"  class="btn btn-success btn-sm accept"  data-action="{{route('vendor.updateStatus',$vendor->id)}}"
+                                     <a  title="Approve"  class="btn btn-success btn-sm accept"  data-action="{{route('vendor.updateStatus',$vendor->id)}}"
                                        >
-                                             Accept
+                                             Approve
                                        </a>
 
                                     
@@ -237,7 +237,7 @@
 
 
 
-    <!-- Accept Modal -->
+    <!-- Approve Modal -->
      <div class="col-md-4">
       <div class="modal fade" id="accept-modal" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
          <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
@@ -246,7 +246,7 @@
                   <div class="card bg-secondary border-0 mb-0">
                      <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                           <small>Accept</small>
+                           <small>Approve</small>
                         </div>
                         <form role="form"  method="POST" id="acceptForm">
                           <input type="hidden" name="status" value="1">
@@ -255,7 +255,7 @@
                             <div class="form-group mb-3">
                               <div class="input-group input-group-merge input-group-alternative">
                                  
-                                 <label class="form-control pb-5" >Are You Sure You Want To Accept</label>
+                                 <label class="form-control pb-5" >Are You Sure You Want To Approve</label>
                               </div>
                             </div>
                            
@@ -271,7 +271,7 @@
          </div>
       </div>
    </div>
-   <!-- End Accept Modal -->
+   <!-- End Approve Modal -->
 
    <!-- Reject Modal -->
      <div class="col-md-4">

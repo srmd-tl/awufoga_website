@@ -136,7 +136,7 @@
                            <td class="viewVendor" data-image="{{$buyer->image}}" ><a >{{$buyer->full_name}}</a></td>
                            <td>{{$buyer->phone}}</td>
                            <td>{{$buyer->created_at}}</td>
-                           <td>{{$buyer->created_at}}</td>
+                           <td>Not Known Yet</td>
                           
                            <td>{{$buyer->usedCoupons->count()}}</td>
                            <td>{{$buyer->usedCoupons->sum('paid_price')}}</td>

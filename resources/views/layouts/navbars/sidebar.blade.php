@@ -85,12 +85,19 @@
                 </li>
     
                 <li class="nav-item">
-                    <a class="nav-link" href="#navbar-masters" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-masters">
+                    <a class="nav-link" href="#navbar-masters" data-toggle="collapse" role="button" aria-expanded="{{ ((!str_contains(url()->current(), 'report'))    &&    (!str_contains(url()->current(), 'settings')) && request()->route()->getName()!= 'home' )?'true':'false'}}" aria-controls="navbar-masters">
                         <i class="fa fa-home text-primary"></i>
                         <span class="nav-link-text">{{ __('Masters') }}</span>
                     </a>
 
-                    <div class="collapse" id="navbar-masters">
+                    <div class="collapse
+                   @if(   (str_contains(url()->current(), 'report')    ||    str_contains(url()->current(), 'settings')    )  ))
+                   @elseif(request()->route()->getName()== 'home')
+                   @else
+                   show
+                   @endif
+
+                    " id="navbar-masters">
                         <ul class="nav nav-sm flex-column">
                            
                             <li class="nav-item">
@@ -123,12 +130,17 @@
                 </li>
 
                <li class="nav-item">
-                    <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                    <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="{{str_contains(url()->current(), 'settings')?'true':false}}" aria-controls="navbar-settings">
                         <i class="fa fa-cog text-primary"></i>
                         <span class="nav-link-text ">{{ __('Settings') }}</span>
                     </a>
 
-                    <div class="collapse" id="navbar-settings">
+                    <div class="collapse
+                     @if(str_contains(url()->current(), 'settings'))
+                   show
+                   @endif
+
+                    " id="navbar-settings">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.index') }}">
@@ -163,13 +175,17 @@
              
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#navbar-report" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-report">
+                    <a class="nav-link" href="#navbar-report" data-toggle="collapse" role="button" aria-expanded="{{str_contains(url()->current(), 'report')?'true':false}}" aria-controls="navbar-report">
                         <i class="fa fa-print text-primary"></i>
 
                         <span class="nav-link-text">{{ __('Reports') }}</span>
                     </a>
 
-                    <div class="collapse" id="navbar-report">
+                    <div class="collapse
+                     @if(str_contains(url()->current(), 'report'))
+                   show
+                   @endif
+                    " id="navbar-report">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('vendorsReport.index') }}">
