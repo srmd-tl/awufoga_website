@@ -73,13 +73,13 @@
                         <div class="col-md-4">
                            <div class="buyer-leader-box">
                               <label for="">From Date</label>
-                              <input type="text" id="datepicker">
+                              <input type="text" id="datepicker" value="{{\Carbon\Carbon::now()->toDateString()}}">
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="buyer-leader-box">
                               <label for="">To Date</label>
-                              <input type="text">
+                              <input type="text" value="{{\Carbon\Carbon::now()->toDateString()}}">
                            </div>
                         </div>
                         <div class="col-md-4">

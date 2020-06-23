@@ -2,12 +2,20 @@
 @section('content')
 <div class="container" >
   @includeWhen(request()->pdf==true,'reports.pdfViews.include.header',['date'=>\Carbon\Carbon::now()->toDateString(),'name'=>'Awuf Referral Vendor Report','logo'=>asset('logo.png')]) 
-  <style>
+    <style>
+    th{
+      background: #e2e2e2;
+    }
     th ,td{
      text-align: left;
      font-size: 14px;
+     border-bottom: 1px solid #e2e2e2;
     }
-  </style>    
+    table {
+      border: 1px solid #e2e2e2;
+    }
+ 
+  </style>      
   <table  style="
     margin: 30px auto !important; width: 100%;border-collapse: collapse;">
 
