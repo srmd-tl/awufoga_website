@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AwufulVendorExport;
 use App\Vendor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\AwufulVendorExport;
 use PDF;
 
 class AwufulReferralVendorReportController extends Controller
@@ -25,14 +25,22 @@ class AwufulReferralVendorReportController extends Controller
 
             }
                 , function ($query) {
-                    return $query->whereHas('referrals')
-                        ->with(['referrals' => function ($query) {
-                            $query
-                                ->groupBy('referral_vendor', 'vendor_id')
-                                ->selectRaw('id,sum(referral_reward) as earnedFromReferral,vendor_id,referral_vendor');
-                        }]);
-                })
+                    if (request()->fromDate) {
+                        $query->whereDate('created_at', '>=', request()->fromDate);
+                    } else if (request()->toDate) {
 
+                        $query->whereDate('created_at', '<=', request()->toDate);
+                    } else {
+                        $query->whereDate('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
+                            ->whereDate('created_at', '<=', Carbon::now()->endOfMonth()->toDateString());
+                    }
+                })
+                ->whereHas('referrals')
+                ->with(['referrals' => function ($query) {
+                    $query
+                        ->groupBy('referral_vendor', 'vendor_id')
+                        ->selectRaw('id,sum(referral_reward) as earnedFromReferral,vendor_id,referral_vendor');
+                }])
                 ->paginate(30),
 
         ];

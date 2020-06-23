@@ -22,13 +22,13 @@
                           <div class="col-md-4">
                              <div class="buyer-leader-box">
                                 <label for="">From Date</label>
-                                <input type="text" class="datepicker" name="fromDate" value="{{\Carbon\Carbon::now()->toDateString()}}">
+                                <input type="text" class="datepicker" name="fromDate" value="{{request()->fromDate??\Carbon\Carbon::now()->startOfMonth()->toDateString()}}">
                              </div>
                           </div>
                           <div class="col-md-4">
                              <div class="buyer-leader-box">
                                 <label for="">To Date</label>
-                                <input type="text" class="datepicker" name="toDate" value="{{\Carbon\Carbon::now()->toDateString()}}">
+                                <input type="text" class="datepicker" name="toDate" value="{{request()->toDate??\Carbon\Carbon::now()->endOfMonth()->toDateString()}}">
                              </div>
                           </div>
                           <div class="col-md-4">

@@ -30,6 +30,10 @@ class SalesExport implements FromView
 
                 $query->whereDate('created_at', '<=', request()->toDate);
             }
+            else {
+                $query->whereDate('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
+                    ->whereDate('created_at', '<=', Carbon::now()->endOfMonth()->toDateString());
+            }
         })
         //Status Filter
         // ->where(function ($query) {

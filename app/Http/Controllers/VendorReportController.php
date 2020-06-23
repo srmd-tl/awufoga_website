@@ -19,7 +19,7 @@ class VendorReportController extends Controller
      */
     public function index(Request $request)
     {
-        $vendors        = null;
+        $vendors         = null;
         $vendorMainQuery = Vendor::
             when($request->fromDate && $request->toDate, function ($query) use ($request) {
             $query->where(function ($query) use ($request) {
@@ -35,6 +35,9 @@ class VendorReportController extends Controller
             } else if ($request->toDate) {
 
                 $query->whereDate('created_at', '<=', $request->toDate);
+            } else {
+                $query->whereDate('created_at', '>=', Carbon::now()->startOfMonth()->toDateString())
+                    ->whereDate('created_at', '<=', Carbon::now()->endOfMonth()->toDateString());
             }
         })
         //Status Filter

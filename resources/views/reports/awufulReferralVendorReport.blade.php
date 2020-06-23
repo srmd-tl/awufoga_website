@@ -19,18 +19,18 @@
                </div>
                <div class="row mb-2">
                 <div class="col-12">
-                  <form action="">
+                  <form action="{{route('awufulReferralVendorsReport.index')}}" method="GET">
                      <div class="row">
                         <div class="col-md-4">
                            <div class="buyer-leader-box">
                               <label for="">From Date</label>
-                              <input type="text" class="datepicker" name="fromDate" value="{{\Carbon\Carbon::now()->toDateString()}}">
+                              <input type="text" class="datepicker" name="fromDate" value="{{request()->fromDate??\Carbon\Carbon::now()->startOfMonth()->toDateString()}}">
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="buyer-leader-box">
                               <label for="">To Date</label>
-                              <input type="text" class="datepicker" name="toDate" value="{{\Carbon\Carbon::now()->toDateString()}}">
+                              <input type="text" class="datepicker" name="toDate" value="{{request()->toDate??\Carbon\Carbon::now()->endOfMonth()->toDateString()}}">
                            </div>
                         </div>
                         <div class="col-md-4">
@@ -50,7 +50,7 @@
                      <div class="row">
                         <div class="col-md-12">
                            <div class="leader-btn">
-                              <a href="" class="search-btn">Search</a>
+                              <button class="search-btn">Search</button>
                               <a href="" class="clear-btn">Clear</a>
                               <a href="{{ request()->fullUrlWithQuery(['pdf' => 'true']) }}" class="export-btn">Export To PDF</a>
                               <a href="{{ request()->fullUrlWithQuery(['excel' => 'true']) }}" class="export-btn">Export To Excel</a>
