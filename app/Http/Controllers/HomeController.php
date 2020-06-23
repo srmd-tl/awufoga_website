@@ -27,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+      
         $data = [
 
             "prevMonthBuyer"  => Buyer::whereMonth('created_at', Carbon::now()->subMonth()->month)->count(),

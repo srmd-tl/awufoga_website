@@ -26,7 +26,6 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', 'HomeController@index')->name('home');
         // Route::resource('user', 'UserController', ['except' => ['show']]);
-        Route::resource('admin', 'AdminController');
         Route::resource('category', 'CategoryController');
         Route::resource('subCategory', 'SubCategoryController');
         Route::resource('buyer', 'BuyerController');
@@ -34,14 +33,21 @@ Route::group(['prefix' => 'AYLJAPANEL'], function () {
         Route::put('vendorUpdateStatus/{vendor}', 'VendorController@updateStatus')->name('vendor.updateStatus');
 
         Route::resource('coupon', 'CouponController');
-        Route::resource('apiKey', 'ApiKeyController');
-        Route::resource('blog', 'BlogController');
-        Route::resource('privacyAndPolicy', 'PrivacyAndPolicyController');
-        Route::resource('termAndCondition', 'TermAndConditionController');
+
         Route::put('updateStatus/{coupon}', 'CouponController@updateStatus')->name('coupon.updateStatus');
         Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
         Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
         Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+
+        //Settings
+        Route::group(['prefix' => 'settings'], function () {
+            Route::resource('admin', 'AdminController');
+            Route::resource('apiKey', 'ApiKeyController');
+            Route::resource('blog', 'BlogController');
+            Route::resource('privacyAndPolicy', 'PrivacyAndPolicyController');
+            Route::resource('termAndCondition', 'TermAndConditionController');
+
+        });
 
         //Reports
         Route::group(['prefix' => 'reports'], function () {
