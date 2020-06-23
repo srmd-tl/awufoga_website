@@ -75,7 +75,7 @@ class SalesExport implements FromView
         //Enwrapping Data
         $data =
             [
-            "sales"      => $sales->paginate(20),
+            "sales"      => $sales->paginate(30),
             "categories" => Category::all(),
         ];
         return view('reports.pdfViews.salesReport', $data);

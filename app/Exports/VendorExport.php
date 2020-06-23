@@ -74,7 +74,7 @@ class VendorExport implements FromView
         //Enwrapping Data
         $data =
             [
-            "vendors"    => $vendors->paginate(20),
+            "vendors"    => $vendors->paginate(30),
             "categories" => Category::all(),
         ];
         return view('reports.pdfViews.vendorReport', $data);

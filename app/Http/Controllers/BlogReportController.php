@@ -59,9 +59,9 @@ class BlogReportController extends Controller
                         });
 
                 })
-                ->paginate(20) :
+                ->paginate(30) :
 
-            Blog::paginate(20),
+            Blog::paginate(30),
             'categories' => Category::all(),
         ];
         if (request()->pdf) {

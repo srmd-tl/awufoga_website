@@ -83,7 +83,7 @@ class SalesReportController extends Controller
         //Enwrapping Data
         $data =
             [
-            "sales"      => $sales->paginate(20),
+            "sales"      => $sales->paginate(30),
             "categories" => Category::all(),
         ];
 

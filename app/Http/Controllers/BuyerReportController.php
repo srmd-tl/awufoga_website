@@ -82,7 +82,7 @@ class BuyerReportController extends Controller
         //Enwrapping Data
         $data =
             [
-            "buyers"     => $buyers->paginate(20),
+            "buyers"     => $buyers->paginate(30),
             "categories" => Category::all(),
         ];
         //Report Type Check

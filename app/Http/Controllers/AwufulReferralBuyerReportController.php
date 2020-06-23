@@ -40,7 +40,7 @@ class AwufulReferralBuyerReportController extends Controller
                         }]);
                 })
 
-                ->paginate(),
+                ->paginate(30),
 
         ];
 

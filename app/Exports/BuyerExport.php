@@ -74,7 +74,7 @@ class BuyerExport implements FromView
         //Enwrapping Data
         $data =
             [
-            "buyers"     => $buyers->paginate(20),
+            "buyers"     => $buyers->paginate(30),
             "categories" => Category::all(),
         ];
         return view('reports.pdfViews.buyerReport', $data);

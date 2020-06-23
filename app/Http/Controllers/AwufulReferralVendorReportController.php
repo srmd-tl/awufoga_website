@@ -33,7 +33,7 @@ class AwufulReferralVendorReportController extends Controller
                         }]);
                 })
 
-                ->paginate(),
+                ->paginate(30),
 
         ];
 

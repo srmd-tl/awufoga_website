@@ -82,7 +82,7 @@ class VendorReportController extends Controller
         //Enwrapping Data
         $data =
             [
-            "vendors"    => $vendors->paginate(20),
+            "vendors"    => $vendors->paginate(30),
             "categories" => Category::all(),
         ];
 
